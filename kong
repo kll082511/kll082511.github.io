@@ -1,38 +1,38 @@
-<<<<<<< HEAD
+
 pwd �鿴��ǰ�����ļ�·��
 ls  �鿴�ļ������ļ�
 mkdir �����ļ���
 touch �����ļ�
 git status �鿴�ļ���״̬
 git add �����ļ�
-=======
+
 ls  查看文件夹下文件
-mkdir 创建文件夹
+mkdir 创建文件�?
 touch 创建文件
-git status 查看文件夹状态
+git status 查看文件夹状�?
 git add 添加文件路径
->>>>>>> 4b7cec22180bc71f90dd62d49fae3d053cdc760d
+
 
 
 
 （将github复制成文件）
 第一步：
 $ git clone
-打开自己的github的源库，点击右边clone and download ，切换ssh，复制路径
+打开自己的github的源库，点击右边clone and download ，切换ssh，复制路�?
 在指令git clone 后面添加路径
 确定后再输入yes确定
 
 第二步：配置公钥
-$ ssh-keygen -t rsa -C “570047191@qq.com”
+$ ssh-keygen -t rsa -C �?70047191@qq.com�?
 三次回车
 在我的电脑打开用户，。。。打开.ssh文件夹，以记事本形式打开id_rsa.pub
 
-打开自己的github的用户设置，点击ssh and GPG keys ，添加公钥。随即名 和 记事本内容
+打开自己的github的用户设置，点击ssh and GPG keys ，添加公钥。随即名 �?记事本内�?
 
 再次执行git clone命令
-git config --global user.email "邮箱名"
-git config --global user.name "用户名"
-git commit(第一次写 要写 -m "标识名")
+git config --global user.email "邮箱�?
+git config --global user.name "用户�?
+git commit(第一次写 要写 -m "标识�?)
 git push -u origin master
 
 
