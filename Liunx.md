@@ -111,7 +111,8 @@ mkdir 创建目录（make directoriy）
  
 	- shutdown -h 10 	10分钟后自动关机
 
-- ![Linux运行级别](https://upload-images.jianshu.io/upload_images/14467627-90fd4261dab3737d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+- Linux运行级别:
+![Linux运行级别](https://upload-images.jianshu.io/upload_images/14467627-90fd4261dab3737d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 	- runlevel  切换前的运行级别,当前的运行级别(第一个数字代表未切换过的运行级别)
 	- init N 	N代表临时要切换到的运行级别
 - 查看主机名
