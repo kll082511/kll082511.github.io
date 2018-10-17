@@ -53,15 +53,21 @@ git push (第二次及以后 直接这样写)
 
 git 命令
 	git add 文件路径 让创建出来的文件告诉git仓库要添加
+
 	git commit -m “要提交的内容是什么---提交日志” 将我们做的操作提交到本地git仓库
+
 	git push -u origin master （第一遍这么写，目的是设置以后默认都是往master分支上提交代码）
 
 	git pull    更新本地仓库，使本地和github统一
+
 	echo "内容" >> 要添加到的文件名称
 
 解决代码冲突
+
 	git stash   入栈（撤回）
+
 	git pull
+
 	git stash pop   出栈
 
 
