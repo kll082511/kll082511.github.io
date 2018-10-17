@@ -62,7 +62,7 @@ git 命令
 解决代码冲突
 	git stash   入栈（撤回）
 	git pull
-	gitpop   出栈
+	git stash pop   出栈
 
 
 git add 
