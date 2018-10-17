@@ -10,18 +10,15 @@
 # 二.Linux命令
 - Linux命令的通用命令格式
 	- 命令字  [选项]  [参数]
-
 		- 选项: 用于调节命令的具体功能
 		- 参数: 命令操作的对象，如文件、目录名等
 
 - 目录操作命令
 	- pwd,cd,ls,mkdir,du
 - 文件操作命令
-		- 
-touch,file,cp,rm,mv,which,find
+	- touch,file,cp,rm,mv,which,find
 
 - 文件内容操作命令
-
 	- cat,more,less,head,tail,wc,grep
 
 - 压缩命令
@@ -46,51 +43,37 @@ touch,file,cp,rm,mv,which,find
 
 - cp命令: 复制（copy）文件或目录
 	- -r: 递归复制整个目录树
-
 	- -p: 保持源文件的属性不变
-
 	- -f: 强制覆盖目标同名文件或目录
 	- -i: 需要覆盖文件或目录时进行提醒
 
-- rm命令
-：删除（Remove）文件或目录
+- rm命令：删除（Remove）文件或目录
 	- 格式: rm   [选项]   文件或目录
 	- 常用命令选项
 		- -f: 强行删除文件，不进行提醒
 		- -i: 删除文件时提醒用户确认
 		- -r: 递归删除整个目录树
 
--  mv命令
-: 移动（Move）文件或目录—— 如果目标位置与源位置相同,则相当于改名
+-  mv命令: 移动（Move）文件或目录—— 如果目标位置与源位置相同,则相当于改名
 	- 格式: mv   [选项]...   源文件或目录…   目标文件或目录
 
 - which命令: 显示系统命令所在目录
 	- which <选项> 命令名称
 	- 常用命令选项
-		- -a	将所有由PATH路径中可以找到的指令均列出,而不止第一个被找到的指令名称
-
+	- -a	将所有由PATH路径中可以找到的指令均列出,而不止第一个被找到的指令名称
 
 - 内部命令：属于Shell解析器的一部分
-
 	- cd 切换目录（change directory）
-	- 
-pwd 显示当前工作目录（print working directory）
-
+	- pwd 显示当前工作目录（print working directory）
 	- help 帮助
 
-- 
-外部命令: 独立于Shell解析器之外的文件程序
-	- 
-ls 显示文件和目录列表（list）
-	- 
-mkdir 创建目录（make directoriy）
-
+- 外部命令: 独立于Shell解析器之外的文件程序
+	- ls 显示文件和目录列表（list）
+	- mkdir 创建目录（make directoriy）
 	- cp 复制文件或目录（copy）
-- 
-查看帮助文档
-	- 
-内部命令: help + 命令（help cd）
-
+	
+- 查看帮助文档
+	- 内部命令: help + 命令（help cd）
 	- 外部命令: man + 命令（man ls）
 
 
@@ -104,11 +87,8 @@ mkdir 创建目录（make directoriy）
 - 关机命令
  
 	- halt 	立刻关机
- 
 	- poweroff 	立刻关机
- 
 	- shutdown -h now 	立刻关机(root用户使用)
- 
 	- shutdown -h 10 	10分钟后自动关机
 
 - Linux运行级别:
