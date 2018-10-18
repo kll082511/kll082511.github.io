@@ -56,13 +56,17 @@
 - 用户管理命令
 
 ![用户管理命令](https://upload-images.jianshu.io/upload_images/14467627-5e5b44bf245d4f55.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-	- 例子含义:创建用户id为888,所属组为users,且还指定了组sys,root的用户zhangsan,其描述为"hr zhang"用户,设置密码
+
+- 例子含义:创建用户id为888,所属组为users,且还指定了组sys,root的用户zhangsan,其描述为"hr zhang"用户,设置密码
 	- useradd -u 888 -g users -G sys,root -c "hr zhang" zhangsan
 	- passwd zhangsan
 		- 命令格式:passwd   [选项]  <用户名>
-		- 常用命令选项
+		
+	- 常用命令选项
+	
 	![常用命令选项](https://upload-images.jianshu.io/upload_images/14467627-6c1868cb543a156b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-	- 修改已有用户属性
+	
+- 修改已有用户属性
 	- 修改用户命令:usermod (user modify)
 		- -l 修改用户名(login); 例子:usermod -l a b（b改为a）
 		- -g 添加组 ;例子:usermod -g sys tom
