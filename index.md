@@ -3,5 +3,6 @@
 - git
 	- [git 命令](https://kll082511.github.io/github命令)
 - linux
-	- [Liunx命令](https://kll082511.github.io/Liunx)
+	- [Liunx基础命令](https://kll082511.github.io/Liunx)
+	- [Liunx文本编辑器及用户和权限管理命令](https://kll082511.github.io/Liunx1)
 - hadoop
