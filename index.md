@@ -1,9 +1,8 @@
 ﻿<div style="margin-left:-357px;margin-top:135px">
-	<h1>Lodo</h1>	
+<h1>Lodo</h1>
 <img src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3571418600,3904597038&fm=26&gp=0.jpg" style="width:220px;height:220px;marginLeft:-300px;marginTop:300px">
 </div>
-<div style="margin-top:-150px">
-	
+<div style="margin-top:-150px"></div>
 # konglinglei's blog Welcome
 ## 点击下面的链接进入相应内容的博客
 - git
@@ -13,7 +12,3 @@
 	- [Liunx基础命令2](https://kll082511.github.io/unix)
 	- [Liunx文本编辑器及用户和权限管理命令](https://kll082511.github.io/Liunx1)
 - hadoop
-
-
-
-</div>
