@@ -1,4 +1,5 @@
-﻿# konglinglei's blog Welcome
+﻿<img src="https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2455628618,3191671183&fm=26&gp=0.jpg" style="width:220px;height:220px">
+# konglinglei's blog Welcome
 ## 点击下面的链接进入相应内容的博客
 - git
 	- [git 命令](https://kll082511.github.io/github命令)
