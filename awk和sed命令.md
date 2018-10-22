@@ -26,7 +26,7 @@
 
 ## 二.awk  行读取
 #### 基本格式:awk  选项 'command' file
-	#### 格式: awk -F '{print NR,$3}' file
+#### 格式: awk -F '{print NR,$3}' file
 - NR  行号
 - NF  列数
 - $N  第N列内容
