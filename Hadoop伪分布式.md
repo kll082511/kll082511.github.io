@@ -1,79 +1,79 @@
-# HadoopÎ±·Ö²¼Ê½
-#### 1.´´½¨ÓÃ»§
-#### 2.Ê¹ÓÃĞÂ´´½¨µÄÓÃ»§Á¬½Óµ½ĞéÄâ»ú
-#### 3.·À»ğÇ½¹Ø±Õ 
+# Hadoopä¼ªåˆ†å¸ƒå¼
+#### 1.åˆ›å»ºç”¨æˆ·
+#### 2.ä½¿ç”¨æ–°åˆ›å»ºçš„ç”¨æˆ·è¿æ¥åˆ°è™šæ‹Ÿæœº
+#### 3.é˜²ç«å¢™å…³é—­ 
 - (1)systemctl disable firewalld 
 - (2)systemctl status firewalld
 #### 4.JDK
-- (1)ÏÂÔØ
-- (2)ÉÏ´«
-- (3)½âÑ¹¡¢¸ÄÃû
-- (4)ÅäÖÃ»·¾³±äÁ¿
-#### 5.hadoopÅäÖÃ
-- (1)ÏÂÔØhadoop°ü
-- (2)ÉÏ´«
-- (3)½âÑ¹,¸ÄÃû
-- (4)ÅäÖÃ»·¾³±äÁ¿(bin\sbin)
-#### 6.ÅäÖÃhadoopÖĞ¼¸¸öÎÄ¼ş
+- (1)ä¸‹è½½
+- (2)ä¸Šä¼ 
+- (3)è§£å‹ã€æ”¹å
+- (4)é…ç½®ç¯å¢ƒå˜é‡
+#### 5.hadoopé…ç½®
+- (1)ä¸‹è½½hadoopåŒ…
+- (2)ä¸Šä¼ 
+- (3)è§£å‹,æ”¹å
+- (4)é…ç½®ç¯å¢ƒå˜é‡(bin\sbin)
+#### 6.é…ç½®hadoopä¸­å‡ ä¸ªæ–‡ä»¶
 - (1)hadoop-env.sh 
-	- ¢Ù($JAVA_HOMEÂ·¾¶ÉèÖÃ³ÉJDK½âÑ¹°üµÄÂ·¾¶)
+	- â‘ ($JAVA_HOMEè·¯å¾„è®¾ç½®æˆJDKè§£å‹åŒ…çš„è·¯å¾„)
 - (2)core-site.xml
-	- ¢Ùfs.defaultFS£º
-		- 1)Ä¬ÈÏÊÇ±¾µØÎÄ¼şÏµÍ³file:///
-		- 2)Ê¹ÓÃURLÍ³Ò»×ÊÔ´¶¨Î»·ûµÄ¸ñÊ½ÉèÖÃ³Éhdfs://±¾»úµÄipµØÖ·(ÊµÖÊÊÇnamenodeµÄip):9000
-			- Àà±È£ºjdbc:mysql://localhost:3306
-	- ¢Úhadoop.tmp.dir:´æ·ÅhadoopÁÙÊ±ÎÄ¼şµÄÎÄ¼şÄ¿Â¼
-	- ¢Û´úÂëÈçÏÂ(ÊÇ·ÅÔÚ<configuration>±êÇ©ÄÚµÄ):
+	- â‘ fs.defaultFSï¼š
+		- 1)é»˜è®¤æ˜¯æœ¬åœ°æ–‡ä»¶ç³»ç»Ÿfile:///
+		- 2)ä½¿ç”¨URLç»Ÿä¸€èµ„æºå®šä½ç¬¦çš„æ ¼å¼è®¾ç½®æˆhdfs://æœ¬æœºçš„ipåœ°å€(å®è´¨æ˜¯namenodeçš„ip):9000
+			- ç±»æ¯”ï¼šjdbc:mysql://localhost:3306
+	- â‘¡hadoop.tmp.dir:å­˜æ”¾hadoopä¸´æ—¶æ–‡ä»¶çš„æ–‡ä»¶ç›®å½•
+	- â‘¢ä»£ç å¦‚ä¸‹(æ˜¯æ”¾åœ¨<configuration>æ ‡ç­¾å†…çš„):
 
 ```
-	<property>??
-????????<name>hadoop.tmp.dir</name>?//´æ·ÅÁÙÊ±ÎÄ¼ş?
-????????<value>/home/hadoop/tmp</value>// ´æ·ÅÂ·¾¶
-????</property>??
-????<property>??
-????????<name>fs.defaultFS</name>??
-????????<value>hdfs://172.18.24.28:9000</value>??
-????</property>
+	<property>Â Â 
+Â Â Â Â Â Â Â Â <name>hadoop.tmp.dir</name>Â //å­˜æ”¾ä¸´æ—¶æ–‡ä»¶Â 
+Â Â Â Â Â Â Â Â <value>/home/hadoop/tmp</value>// å­˜æ”¾è·¯å¾„
+Â Â Â Â </property>Â Â 
+Â Â Â Â <property>Â Â 
+Â Â Â Â Â Â Â Â <name>fs.defaultFS</name>Â Â 
+Â Â Â Â Â Â Â Â <value>hdfs://172.18.24.28:9000</value>Â Â 
+Â Â Â Â </property>
 ```
 
 - (3)hdfs-site.xml:
-	- ¢Ùdfs.namenode.name.dir£ºnamenodeËùÔÚÂ·¾¶(¸ÃÂ·¾¶ĞèÒªÔÊĞíµ±Ç°µÇÂ¼µÄÓÃ»§¾ßÓĞĞ´µÄÈ¨ÏŞ)
-	- ¢Údfs.datanode.data.dir£ºdatanodeËùÔÚÂ·¾¶(¸ÃÂ·¾¶ĞèÒªÔÊĞíµ±Ç°µÇÂ¼µÄÓÃ»§¾ßÓĞĞ´µÄÈ¨ÏŞ)
-	- ¢Û´úÂëÈçÏÂ:
+	- â‘ dfs.namenode.name.dirï¼šnamenodeæ‰€åœ¨è·¯å¾„(è¯¥è·¯å¾„éœ€è¦å…è®¸å½“å‰ç™»å½•çš„ç”¨æˆ·å…·æœ‰å†™çš„æƒé™)
+	- â‘¡dfs.datanode.data.dirï¼šdatanodeæ‰€åœ¨è·¯å¾„(è¯¥è·¯å¾„éœ€è¦å…è®¸å½“å‰ç™»å½•çš„ç”¨æˆ·å…·æœ‰å†™çš„æƒé™)
+	- â‘¢ä»£ç å¦‚ä¸‹:
 	
 ```
-	<property>????
-????????<name>dfs.replication</name>//ÉèÖÃ±¸·İ(¿ÉÔİÊ±É¾³ı)????
-????????<value>1</value>????
-????</property>????
-????<property>????
-????????<name>hdfs.namenode.name.dir</name>????
-????????<value>file:/home/hadoop/dfs/name</value>????
-????</property>????
-????<property>????
-????????<name>dfs.datanode.data.dir</name>????
-????????<value>file:/home/hadoop/dfs/data</value>????
-????</property>
+	<property>Â Â Â Â 
+Â Â Â Â Â Â Â Â <name>dfs.replication</name>//è®¾ç½®å¤‡ä»½(å¯æš‚æ—¶åˆ é™¤)Â Â Â Â 
+Â Â Â Â Â Â Â Â <value>1</value>Â Â Â Â 
+Â Â Â Â </property>Â Â Â Â 
+Â Â Â Â <property>Â Â Â Â 
+Â Â Â Â Â Â Â Â <name>hdfs.namenode.name.dir</name>Â Â Â Â 
+Â Â Â Â Â Â Â Â <value>file:/home/hadoop/dfs/name</value>Â Â Â Â 
+Â Â Â Â </property>Â Â Â Â 
+Â Â Â Â <property>Â Â Â Â 
+Â Â Â Â Â Â Â Â <name>dfs.datanode.data.dir</name>Â Â Â Â 
+Â Â Â Â Â Â Â Â <value>file:/home/hadoop/dfs/data</value>Â Â Â Â 
+Â Â Â Â </property>
 ```
 
 - (4)yarn-site.xml
-	- ¢Ùyarn.nodemanager.aux-services£ºÊ¹ÓÃmapreduce_shuffle»úÖÆ
-	- ¢Ú´úÂëÈçÏÂ:
+	- â‘ yarn.nodemanager.aux-servicesï¼šä½¿ç”¨mapreduce_shuffleæœºåˆ¶
+	- â‘¡ä»£ç å¦‚ä¸‹:
 
 ```
-	<property>??
-		<name>mapreduce.framework.name</name>??
-		<value>yarn</value>??
-	</property>??
-	<property>??
-		<name>yarn.nodemanager.aux-services</name>??
-		<value>mapreduce_shuffle</value>??
+	<property>Â Â 
+		<name>mapreduce.framework.name</name>Â Â 
+		<value>yarn</value>Â Â 
+	</property>Â Â 
+	<property>Â Â 
+		<name>yarn.nodemanager.aux-services</name>Â Â 
+		<value>mapreduce_shuffle</value>Â Â 
 	</property>
 ```
 
-- (5)Mapred-site.xml£¨cp Mapred-site.xml.templete£©
-	- ¢ÙMapreduce.framework.name£ºyarn
-	- ¢Ú´úÂëÈçÏÂ:
+- (5)Mapred-site.xmlï¼ˆcp Mapred-site.xml.templeteï¼‰
+	- â‘ Mapreduce.framework.nameï¼šyarn
+	- â‘¡ä»£ç å¦‚ä¸‹:
 	
 ```
 	<property>
@@ -82,12 +82,12 @@
 	</property>
 ```
  
-#### 7.¸ñÊ½»¯HDFS
+#### 7.æ ¼å¼åŒ–HDFS
 - (1)Hadoop  namenode  -format
-	- ¸ñÊ½»¯³É¹¦µÄ±êÖ¾:Storage:.....successfully 
-#### 8.Æô¶¯HADOOP·şÎñ
-- (1)start-all.sh»òÕßstart-dfs.sh and start-yarn.sh
-	- ³É¹¦µÄ±êÖ¾ÊÇ:ÔËĞĞjpsÃüÁî³öÏÖµÄÈçÏÂÍ¼:
+	- æ ¼å¼åŒ–æˆåŠŸçš„æ ‡å¿—:Storage:.....successfully 
+#### 8.å¯åŠ¨HADOOPæœåŠ¡
+- (1)start-all.shæˆ–è€…start-dfs.sh and start-yarn.sh
+	- æˆåŠŸçš„æ ‡å¿—æ˜¯:è¿è¡Œjpså‘½ä»¤å‡ºç°çš„å¦‚ä¸‹å›¾:
 
-#### 9.¹Ø±Õhadoop·şÎñ
-- (1)Stop-all.sh»òÕß stop-yarn.sh and stop-dfs.sh
+#### 9.å…³é—­hadoopæœåŠ¡
+- (1)Stop-all.shæˆ–è€… stop-yarn.sh and stop-dfs.sh
