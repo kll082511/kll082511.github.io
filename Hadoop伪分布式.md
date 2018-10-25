@@ -24,6 +24,8 @@
 			- 类比：jdbc:mysql://localhost:3306
 	- ②hadoop.tmp.dir:存放hadoop临时文件的文件目录
 	- ③代码如下(是放在<configuration>标签内的):
+
+```
 	<property>??
 ????????<name>hadoop.tmp.dir</name>?//存放临时文件?
 ????????<value>/home/hadoop/tmp</value>// 存放路径
@@ -31,11 +33,15 @@
 ????<property>??
 ????????<name>fs.defaultFS</name>??
 ????????<value>hdfs://172.18.24.28:9000</value>??
-????</property>? 
+????</property>
+```
+
 - (3)hdfs-site.xml:
 	- ①dfs.namenode.name.dir：namenode所在路径(该路径需要允许当前登录的用户具有写的权限)
 	- ②dfs.datanode.data.dir：datanode所在路径(该路径需要允许当前登录的用户具有写的权限)
 	- ③代码如下:
+	
+```
 	<property>????
 ????????<name>dfs.replication</name>//设置备份(可暂时删除)????
 ????????<value>1</value>????
@@ -48,9 +54,13 @@
 ????????<name>dfs.datanode.data.dir</name>????
 ????????<value>file:/home/hadoop/dfs/data</value>????
 ????</property>
+```
+
 - (4)yarn-site.xml
 	- ①yarn.nodemanager.aux-services：使用mapreduce_shuffle机制
 	- ②代码如下:
+
+```
 	<property>??
 		<name>mapreduce.framework.name</name>??
 		<value>yarn</value>??
@@ -59,13 +69,19 @@
 		<name>yarn.nodemanager.aux-services</name>??
 		<value>mapreduce_shuffle</value>??
 	</property>
+```
+
 - (5)Mapred-site.xml（cp Mapred-site.xml.templete）
 	- ①Mapreduce.framework.name：yarn
 	- ②代码如下:
+	
+```
 	<property>
 		<name>mapreduce.framework.name</name>
 		<value>yarn</value>
-	</property> 
+	</property>
+```
+ 
 #### 7.格式化HDFS
 - (1)Hadoop  namenode  -format
 	- 格式化成功的标志:Storage:.....successfully 
