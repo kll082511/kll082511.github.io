@@ -1,4 +1,4 @@
-# Hadoop伪分布式
+﻿# Hadoop伪分布式
 #### 1.创建用户
 #### 2.使用新创建的用户连接到虚拟机
 #### 3.防火墙关闭 
@@ -71,7 +71,7 @@
 	</property>
 ```
 
-- (5)Mapred-site.xml（cp Mapred-site.xml.templete）
+- (5)mapred-site.xml（cp mapred-site.xml.templete mapred-site.xml[备份一份,在备份里面写,这样模板被保存,以后好修改]）
 	- ①Mapreduce.framework.name：yarn
 	- ②代码如下:
 	
@@ -91,3 +91,7 @@
 
 #### 9.关闭hadoop服务
 - (1)Stop-all.sh或者 stop-yarn.sh and stop-dfs.sh
+
+#### 端口进程查询和结束
+- netstat -tunlp|grep (端口号|java) 查看占用端口的进程
+- kill -9 进程号 通过杀死进程来释放端口,解决端口占用问题.
