@@ -93,5 +93,10 @@
 - (1)Stop-all.sh或者 stop-yarn.sh and stop-dfs.sh
 
 #### 端口进程查询和结束
-- netstat -tunlp|grep (端口号|java) 查看占用端口的进程
+- 查看占用端口的进程命令如下:
+
+```
+netstat -tunlp|grep (端口号|java) 
+```
+
 - kill -9 进程号 通过杀死进程来释放端口,解决端口占用问题.
