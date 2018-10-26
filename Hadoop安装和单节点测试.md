@@ -10,6 +10,7 @@ export HADOOP_HOME=/home/hadoop/tars/hadoop-2.7.3 #hadoop解压包所在路径
 :$HADOOP_HOME/bin:$HADOOP_HOME/sbin
 ```
 
+#### 单节点测试
 - 3.创建一个文件夹,命令是:mkdir kllinput.
 - 4.在kllinput文件夹下创建一个kll.txt文件,命令是:touch kll.txt
 - 5.使用命令:vi /home/hadoop/kllinput/kll.txt,进入文本编辑界面,随意输入内容.
