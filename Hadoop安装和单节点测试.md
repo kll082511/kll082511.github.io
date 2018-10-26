@@ -1,19 +1,21 @@
-#### hadoopµÄ°²×°(Ç°Ìá±ØĞë°²×°ÁËJDK,ÎÄ¼şÂ·¾¶¶¼Ê¹ÓÃµÄ¾ø¶ÔÂ·¾¶,¿ÉÒÔ¸ù¾İ×Ô¼ºËùÔÚÎ»ÖÃÊÊµ±µ÷Õû)
-- 1.°Ñhadoop°²×°°ü·ÅÔÚĞéÄâ»úÄÚ,½âÑ¹.ÎÒµÄÊÇÔÚ/home/hadoop/tarsÎÄ¼ş¼ĞÏÂ·Å×Å,ÒÔÏÂ»áÒÔÕâ¸öÎªÀı.
-- 2.ÔÚ/etc/profile»òÕß  ~/.bash_profileÀïÃæÌí¼ÓhadoopµÄÂ·¾¶
+#### hadoopçš„å®‰è£…(å‰æå¿…é¡»å®‰è£…äº†JDK,æ–‡ä»¶è·¯å¾„éƒ½ä½¿ç”¨çš„ç»å¯¹è·¯å¾„,å¯ä»¥æ ¹æ®è‡ªå·±æ‰€åœ¨ä½ç½®é€‚å½“è°ƒæ•´)
+- 1.æŠŠhadoopå®‰è£…åŒ…æ”¾åœ¨è™šæ‹Ÿæœºå†…,è§£å‹.æˆ‘çš„æ˜¯åœ¨/home/hadoop/tarsæ–‡ä»¶å¤¹ä¸‹æ”¾ç€,ä»¥ä¸‹ä¼šä»¥è¿™ä¸ªä¸ºä¾‹.
+- 2.åœ¨/etc/profileæˆ–è€…  ~/.bash_profileé‡Œé¢æ·»åŠ hadoopçš„è·¯å¾„
+	- é…ç½®ä¹‹åè¦æ‰§è¡Œå‘½ä»¤: . ~/.bash_profileæˆ–è€…. /etc/profile,ä½¿ä¹‹ç”Ÿæ•ˆ,é…ç½®çš„å“ªå„¿ä¸ªæ–‡ä»¶,å°±ç”¨å“ªå„¿ä¸ªå‘½ä»¤.
+	- æµ‹è¯•ç”Ÿæ•ˆçš„å‘½ä»¤æ˜¯:hadoop
+	
 ```
-export HADOOP_HOME=/home/hadoop/tars/hadoop-2.7.3 #hadoop½âÑ¹°üËùÔÚÂ·¾¶
-#ÔÚPATH±äÁ¿ºóÃæÌí¼ÓÈçÏÂÃüÁî
+export HADOOP_HOME=/home/hadoop/tars/hadoop-2.7.3 #hadoopè§£å‹åŒ…æ‰€åœ¨è·¯å¾„
+#åœ¨PATHå˜é‡åé¢æ·»åŠ å¦‚ä¸‹å‘½ä»¤
 :$HADOOP_HOME/bin:$HADOOP_HOME/sbin
 ```
 
-	- ÅäÖÃÖ®ºóÒªÖ´ĞĞÃüÁî: . ~/.bash_profile»òÕß. /etc/profile,Ê¹Ö®ÉúĞ§,ÅäÖÃµÄÄÄ¶ù¸öÎÄ¼ş,¾ÍÓÃÄÄ¶ù¸öÃüÁî.
-	- ²âÊÔÉúĞ§µÄÃüÁîÊÇ:hadoop
-- 3.´´½¨Ò»¸öÎÄ¼ş¼Ğ,ÃüÁîÊÇ:mkdir kllinput.
-- 4.ÔÚkllinputÎÄ¼ş¼ĞÏÂ´´½¨Ò»¸ökll.txtÎÄ¼ş,ÃüÁîÊÇ:touch kll.txt
-- 5.Ê¹ÓÃÃüÁî:vi /home/hadoop/kllinput/kll.txt,½øÈëÎÄ±¾±à¼­½çÃæ,ËæÒâÊäÈëÄÚÈİ.
+- 3.åˆ›å»ºä¸€ä¸ªæ–‡ä»¶å¤¹,å‘½ä»¤æ˜¯:mkdir kllinput.
+- 4.åœ¨kllinputæ–‡ä»¶å¤¹ä¸‹åˆ›å»ºä¸€ä¸ªkll.txtæ–‡ä»¶,å‘½ä»¤æ˜¯:touch kll.txt
+- 5.ä½¿ç”¨å‘½ä»¤:vi /home/hadoop/kllinput/kll.txt,è¿›å…¥æ–‡æœ¬ç¼–è¾‘ç•Œé¢,éšæ„è¾“å…¥å†…å®¹.
 
-- 6.Ö´ĞĞÃüÁî:hadoop jar /home/hadoop/tars/hadoop-2.7.3/share/hadoop/mapreduce/hadoop-mapreduce-examples-2.7.3.jar wordcount /home/hadoop/kll/kll.txt /home/hadoop/output
-	- Õâ¸öÃüÁîÊÇÀûÓÃjar°ühadoop-mapreduce-examples-2.7.3.jarÀïµÄwordcountÃüÁîÍ³¼ÆkllÎÄ¼ş¼ĞÏÂµÄµ¥´ÊµÄ³öÏÖ´ÎÊı.
-	- ¼ÇµÃ¹Ø±Õ·À»ğÇ½:systemctl disable firewalld ÓÀ¾Ã¹Ø±Õ·À»ğÇ½;systemctl stop firewalld ÔİÊ±¹Ø±Õ·À»ğÇ½,ÏÂ´ÎÆô¶¯,ĞèÒªÔÙ´Î¹Ø±Õ.
-- 7.Ö´ĞĞÃüÁî:cat output/*
+- 6.æ‰§è¡Œå‘½ä»¤:hadoop jar /home/hadoop/tars/hadoop-2.7.3/share/hadoop/mapreduce/hadoop-mapreduce-examples-2.7.3.jar wordcount /home/hadoop/kll/kll.txt /home/hadoop/output
+	- è¿™ä¸ªå‘½ä»¤æ˜¯åˆ©ç”¨jaråŒ…hadoop-mapreduce-examples-2.7.3.jaré‡Œçš„wordcountå‘½ä»¤ç»Ÿè®¡kllæ–‡ä»¶å¤¹ä¸‹çš„å•è¯çš„å‡ºç°æ¬¡æ•°.
+	- è®°å¾—å…³é—­é˜²ç«å¢™:systemctl disable firewalld æ°¸ä¹…å…³é—­é˜²ç«å¢™;systemctl stop firewalld æš‚æ—¶å…³é—­é˜²ç«å¢™,ä¸‹æ¬¡å¯åŠ¨,éœ€è¦å†æ¬¡å…³é—­.
+- 7.æ‰§è¡Œå‘½ä»¤:cat output/*
+	- æ˜¯æŒ‡æŸ¥çœ‹6çš„å‘½ä»¤çš„è¿è¡Œç»“æœ.
