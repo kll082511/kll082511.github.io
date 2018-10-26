@@ -13,4 +13,4 @@
 	- [Liunx文本编辑器及用户和权限管理命令](https://kll082511.github.io/Liunx1)
 	- [sed和awk命令](https://kll082511.github.io/awk和sed命令)
 - hadoop
-	- [Hadoop伪分布式](https://kll082511.github.io/Hadoop%E4%BC%AA%E5%88%86%E5%B8%83%E5%BC%8F)
+	- [Hadoop伪分布式安装步骤](https://kll082511.github.io/Hadoop%E4%BC%AA%E5%88%86%E5%B8%83%E5%BC%8F)
