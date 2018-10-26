@@ -15,3 +15,4 @@
 - hadoop
 	- [Hadoop安装和单节点测试](https://kll082511.github.io/Hadoop%E5%AE%89%E8%A3%85%E5%92%8C%E5%8D%95%E8%8A%82%E7%82%B9%E6%B5%8B%E8%AF%95)
 	- [Hadoop伪分布式安装步骤](https://kll082511.github.io/Hadoop%E4%BC%AA%E5%88%86%E5%B8%83%E5%BC%8F)
+	- [Hadoop分布式配置步骤](https://kll082511.github.io/hadoop%E5%AE%8C%E5%85%A8%E5%88%86%E5%B8%83%E5%BC%8F%E9%85%8D%E7%BD%AE)
