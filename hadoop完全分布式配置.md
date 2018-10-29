@@ -20,8 +20,8 @@ scp -r /home/tars/hadoop-2.7.3/etc/hadoop hadoop@172.18.24.190:/home/tars/hadoop
 #### 2.在hadoop解压包的etc下的hadoop文件夹下的slaves文件里加入新建的三个虚拟机的IP地址(是为把datanode写进去进行注册)
 #### 3.免密操作(都是在namenode虚拟机上操作)
 - ①注册命令是:ssh-keygen -t dsa(生成公钥和私钥文件,遇到写密码的地方直接回车,是为了在启动关闭时不需要密码)
-- ②执行命令:ssh-copy-id hadoop@172.18.24.190 (此语句是为了和datanode建立关系,匹配秘钥.语句执行三次,每次的IP地址写新建的三个虚拟机的地址)
-- ③执行名:cat .ssh/id_dsa.pub >> ~/.ssh/authorized_keys(将公钥文件追加到到 authorized_keys文件上)
+- ②执行命令:ssh-copy-id hadoop@172.18.24.190 (是把namenode公钥拷贝给datanode,使namenode可以免密操作datanode,此语句是为了和datanode建立关系,匹配秘钥.语句执行三次,每次的IP地址写新建的三个虚拟机的地址)
+- ③执行名:cat .ssh/id_dsa.pub >> ~/.ssh/authorized_keys(将公钥追加到自己的 authorized_keys文件上,namenode也可以免密)
 - ④查看正常加入的datanode的命令:hdfs dfsadmin -report
 
 #### 3.在网页上登录namenode,发现datanode没有正常加入到namenode上的解决方法
