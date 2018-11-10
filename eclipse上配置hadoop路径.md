@@ -1,14 +1,19 @@
-- 1.Ñ¡ÖĞ¹¤³Ì,ÓÒ¼üÈçÍ¼:
-![µÚÒ»²½](https://upload-images.jianshu.io/upload_images/14467627-3441a0c3148b07e6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-- 2.½øÈëConfigure bilud PathÖ®ºó,Ñ¡ÖĞLiraries,Ñ¡Ôñadd Liraries,ÈçÍ¼:
-![µÚ¶ş²½](https://upload-images.jianshu.io/upload_images/14467627-89b010136e8bd275.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-- 3.²Ù×÷ÈçÍ¼,µã»÷ÏÂÒ»²½.
-![µÚÈı²½](https://upload-images.jianshu.io/upload_images/14467627-9b540df6661857b2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-- 4.ÈçÍ¼,µã»÷User Liraries
-![µÚËÄ²½](https://upload-images.jianshu.io/upload_images/14467627-1620bae19401d455.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-- 5.½øÈëÖ®ºó,Ñ¡Ôñnew,ĞÂ½¨Ò»¸öhdfsµÄjarµ¼ÈëµÄÃû³Æ.µã»÷OK,ÈçÍ¼
-![µÚÎå²½](https://upload-images.jianshu.io/upload_images/14467627-849cbaa82d1522af.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-- 6.µ¼Èëjar°ü,µã»÷ÈçÍ¼°´Å¥,°ÑhadoopµÄ½âÑ¹°ü´ò¿ª,ÕÒµ½shareÏÂµÄhadoopÎÄ¼ş¼ĞÏÂµÄhdfsºÍcommonÎÄ¼ş¼Ğ,È»ºó°ÑcommonºÍhdfsÎÄ¼ş¼ĞÀïµÄlibÎÄ¼ş¼ĞÀïµÄjar¶¼È«µ¼Èë½øÈ¥,È»ºó°ÑcommonÎÄ¼şÀïµÄhadoop-common-2.7.3.jarºÍhdfsÎÄ¼ş¼ĞÀïµÄhadoop-hdfs-2.7.3.jarµ¼Èë½øÈ¥,ÈçÍ¼:
+- 1.é€‰ä¸­å·¥ç¨‹,å³é”®å¦‚å›¾:
+![ç¬¬ä¸€æ­¥](https://upload-images.jianshu.io/upload_images/14467627-3441a0c3148b07e6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+- 2.è¿›å…¥Configure bilud Pathä¹‹å,é€‰ä¸­Liraries,é€‰æ‹©add Liraries,å¦‚å›¾:
+![ç¬¬äºŒæ­¥](https://upload-images.jianshu.io/upload_images/14467627-89b010136e8bd275.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+- 3.æ“ä½œå¦‚å›¾,ç‚¹å‡»ä¸‹ä¸€æ­¥.
+![ç¬¬ä¸‰æ­¥](https://upload-images.jianshu.io/upload_images/14467627-9b540df6661857b2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+- 4.å¦‚å›¾,ç‚¹å‡»User Liraries
+![ç¬¬å››æ­¥](https://upload-images.jianshu.io/upload_images/14467627-1620bae19401d455.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+- 5.è¿›å…¥ä¹‹å,é€‰æ‹©new,æ–°å»ºä¸€ä¸ªhdfsçš„jarå¯¼å…¥çš„åç§°.ç‚¹å‡»OK,å¦‚å›¾
+![ç¬¬äº”æ­¥](https://upload-images.jianshu.io/upload_images/14467627-849cbaa82d1522af.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+- 6.å¯¼å…¥jaråŒ…,ç‚¹å‡»å¦‚å›¾æŒ‰é’®,æŠŠhadoopçš„è§£å‹åŒ…æ‰“å¼€,æ‰¾åˆ°shareä¸‹çš„hadoopæ–‡ä»¶å¤¹ä¸‹çš„hdfså’Œcommonæ–‡ä»¶å¤¹,ç„¶åæŠŠcommonå’Œhdfsæ–‡ä»¶å¤¹é‡Œçš„libæ–‡ä»¶å¤¹é‡Œçš„jaréƒ½å…¨å¯¼å…¥è¿›å»,ç„¶åæŠŠcommonæ–‡ä»¶é‡Œçš„hadoop-common-2.7.3.jarå’Œhdfsæ–‡ä»¶å¤¹é‡Œçš„hadoop-hdfs-2.7.3.jarå¯¼å…¥è¿›å»,å¦‚å›¾:
 ![1](https://upload-images.jianshu.io/upload_images/14467627-2aca64c8d7864e21.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 ![2](https://upload-images.jianshu.io/upload_images/14467627-b40abcb7c09a6548.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 ![3](https://upload-images.jianshu.io/upload_images/14467627-010555e50e2dbd0b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
