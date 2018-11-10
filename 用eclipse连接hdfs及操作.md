@@ -1,45 +1,39 @@
-#### Á¬½Ó
-
+#### è¿æ¥
 ```
 Configuration conf = new Configuration();
-// ÉèÖÃÓÃ»§,¸æËßÒªÓÃµÄÓÃ»§ÊÇË­
+// è®¾ç½®ç”¨æˆ·,å‘Šè¯‰è¦ç”¨çš„ç”¨æˆ·æ˜¯è°
 //System.setProperty("HADOOP_USER_NAME", "hadoop");
-// ÉèÖÃÒªÊ¹ÓÃµÄÎÄ¼şÏµÍ³ÊÇhdfs ->µØÖ·ÊÇ 172.18.24.28:9000
+// è®¾ç½®è¦ä½¿ç”¨çš„æ–‡ä»¶ç³»ç»Ÿæ˜¯hdfs ->åœ°å€æ˜¯ 172.18.24.28:9000
 //conf.set("fs.defaultFS",  "hdfs://172.18.24.28:9000");
 //fileSystem = FileSystem.get(conf);
 fileSystem = FileSystem.get(new URI("hdfs://172.18.24.28:9000"), conf, "hadoop");
 ```
 
-#### ²Ù×÷
-
-- 1.ÉÏ´«²Ù×÷
-
+#### æ“ä½œ
+- 1.ä¸Šä¼ æ“ä½œ
 ```
-// 1.±¾µØÎÄ¼şÂ·¾¶¼ÇµÃ¸ü¸ÄĞ±¸Ü
-// 2.hdfsÉÏµÄÎÄ¼şÂ·¾¶,×¢ÒâÎÄ¼ş¼ĞÊÇ·ñ´æÔÚ,ÀıÈç/kll,Èç¹ûÎÄ¼ş¼Ğ´æÔÚ,¾Í»áÉÏ´«µ½¸ÃÎÄ¼ş¼ĞÏÂ;Èç¹û²»´æÔÚ,¾Í»áÒÔ¸ÃÎÄ¼şÌæ´úÔ­ÎÄ¼ş±ä³ÉĞÂµÄ´æÔÚ.
+// 1.æœ¬åœ°æ–‡ä»¶è·¯å¾„è®°å¾—æ›´æ”¹æ–œæ 
+// 2.hdfsä¸Šçš„æ–‡ä»¶è·¯å¾„,æ³¨æ„æ–‡ä»¶å¤¹æ˜¯å¦å­˜åœ¨,ä¾‹å¦‚/kll,å¦‚æœæ–‡ä»¶å¤¹å­˜åœ¨,å°±ä¼šä¸Šä¼ åˆ°è¯¥æ–‡ä»¶å¤¹ä¸‹;å¦‚æœä¸å­˜åœ¨,å°±ä¼šä»¥è¯¥æ–‡ä»¶æ›¿ä»£åŸæ–‡ä»¶å˜æˆæ–°çš„å­˜åœ¨.
 fileSystem.copyFromLocalFile(new Path("G:/MapReduce/input/things.txt"), new Path("/list"));
 ```
 
-- 2.É¾³ı²Ù×÷
-
+- 2.åˆ é™¤æ“ä½œ
 ```
-// É¾³ı·½·¨µÄÒ»²ÎĞÎÊ½ÒÑ¾­ÆôÓÃ
-// Á½²ÎÖĞµÄµÚ¶ş¸ö²ÎÊı±íÊ¾ÊÇ·ñÒªÊ¹ÓÃµİ¹é²Ù×÷,¶ÔÎÒÃÇÉ¾³ıÒ»¸öÎÄ¼şÃ»Ê²Ã´Ó°Ïì,µ«ÊÇÈç¹ûÒªÉ¾³ıµÄÊÇÎÄ¼ş¼Ğ,Ö»Òª²»ÊÇ¿ÕÎÄ¼ş¼Ğ,¾Í±ØĞëÉèÖÃ³Étrue,ÔÊĞíµİ¹é²Ù×÷²ÅÄÜÕæÕıÉ¾³ı.
+// åˆ é™¤æ–¹æ³•çš„ä¸€å‚å½¢å¼å·²ç»å¯ç”¨
+// ä¸¤å‚ä¸­çš„ç¬¬äºŒä¸ªå‚æ•°è¡¨ç¤ºæ˜¯å¦è¦ä½¿ç”¨é€’å½’æ“ä½œ,å¯¹æˆ‘ä»¬åˆ é™¤ä¸€ä¸ªæ–‡ä»¶æ²¡ä»€ä¹ˆå½±å“,ä½†æ˜¯å¦‚æœè¦åˆ é™¤çš„æ˜¯æ–‡ä»¶å¤¹,åªè¦ä¸æ˜¯ç©ºæ–‡ä»¶å¤¹,å°±å¿…é¡»è®¾ç½®æˆtrue,å…è®¸é€’å½’æ“ä½œæ‰èƒ½çœŸæ­£åˆ é™¤.
 fileSystem.delete(new Path("/ccc/ll.md"), true);
 ```
 
-- 3.ÓÃÁ÷ÉÏ´«
-
+- 3.ç”¨æµä¸Šä¼ 
 ```
-// input °ÑÊı¾İ¶ÁÈë
+// input æŠŠæ•°æ®è¯»å…¥
 FileInputStream fis = new FileInputStream("C:/Users/Administrator/Desktop/kk/stream.txt");
-// °ÑÊı¾İ¶ÁÈë
+// æŠŠæ•°æ®è¯»å…¥
 FSDataOutputStream fsDataOutputStream = fileSystem.create(new Path("/list/in.txt"));
 IOUtils.copyBytes(fis, fsDataOutputStream, 1024);
 ```
 
-- 4.ÓÃÁ÷ÏÂÔØ
-
+- 4.ç”¨æµä¸‹è½½
 ```
 FSDataInputStream fsDataInputStream = fileSystem.open(new Path("/list/in.txt"));
 FileOutputStream foStream = new FileOutputStream("C:/Users/Administrator/Desktop/ll/ll.txt");
