@@ -1,23 +1,23 @@
-- 1.ÓÃÁ÷copy»ñÈ¡µÚ¶ş¸öblock¿éµÄÄÚÈİ
-
+- 1.ç”¨æµcopyè·å–ç¬¬äºŒä¸ªblockå—çš„å†…å®¹
 ```
+
 	@Test
 	public void downloadBySeek() throws IllegalArgumentException, IOException {
-		// »ñÈ¡hadoopµÄÑ¹Ëõ°üÎÄ¼ş
+		// è·å–hadoopçš„å‹ç¼©åŒ…æ–‡ä»¶
 		RemoteIterator<LocatedFileStatus> listFiles = 
 				fileSystem.listFiles(new Path("/list/hadoop-2.7.3.tar.gz"), false);
-		// ´´½¨¶ÁÈëÁ÷,¶ÁÈëhadoopÑ¹Ëõ°ü.
+		// åˆ›å»ºè¯»å…¥æµ,è¯»å…¥hadoopå‹ç¼©åŒ….
 		FSDataInputStream fsDataInputStream =
 				fileSystem.open(new Path("/list/hadoop-2.7.3.tar.gz"));
-		// »ñÈ¡¸ÃÎÄ¼şµÄËùÓĞ¿é.
+		// è·å–è¯¥æ–‡ä»¶çš„æ‰€æœ‰å—.
 		while (listFiles.hasNext()) {
 			// 
 			LocatedFileStatus next = listFiles.next();
-			// »ñÈ¡ ¸ÄÎÄ¼şµÄËùÓĞblock¿éĞÅÏ¢
+			// è·å– æ”¹æ–‡ä»¶çš„æ‰€æœ‰blockå—ä¿¡æ¯
 			BlockLocation[] blockLocations = next.getBlockLocations();
-			// Ñ­»·¿é
+			// å¾ªç¯å—
 			for (int i = 0; i < blockLocations.length; i++) {
-				// ÅĞ¶ÏÊÇµÚ¶ş¸ö¿é,½øĞĞ¶ÁÈ¡µ½Á÷ÖĞ.
+				// åˆ¤æ–­æ˜¯ç¬¬äºŒä¸ªå—,è¿›è¡Œè¯»å–åˆ°æµä¸­.
 				if (i == 1) {
 					fsDataInputStream.seek(blockLocations[i].getOffset());
 					break;
@@ -25,24 +25,24 @@
 			}
 			
 		}
-		// ´´½¨Êä³öÁ÷,Ö¸¶¨Î»ÖÃ.
+		// åˆ›å»ºè¾“å‡ºæµ,æŒ‡å®šä½ç½®.
 		FileOutputStream foStream = 
 				new FileOutputStream("C:/Users/Administrator/Desktop/ll/oo.tar.gz");
-		// ½øĞĞÊä³ö.
+		// è¿›è¡Œè¾“å‡º.
 		org.apache.commons.compress.utils.IOUtils.copy(fsDataInputStream, foStream);
 		
 	}
 ```
 
-- 2.»ñÈ¡ËùÓĞblockÄÚÈİ(Í¨¹ıÉèÖÃÆ«ÒÆÁ¿ÊµÏÖ)
-
+- 2.è·å–æ‰€æœ‰blockå†…å®¹(é€šè¿‡è®¾ç½®åç§»é‡å®ç°)
 ```
+
 	@Test
-	// ½«ËùÓĞblock¿éÄÚÈİÏÂÔØÏÂÀ´
+	// å°†æ‰€æœ‰blockå—å†…å®¹ä¸‹è½½ä¸‹æ¥
 	public void getBlocks() throws FileNotFoundException, IllegalArgumentException, IOException {
-		// Í¨¹ıfileSystemµÄlistFiles·½·¨¿ÉÒÔ×Ô¶¯ÊµÏÖµİ¹é(×Ô´øµİ¹é)ÁĞ³öÎÄ¼şÀàĞÍ£¬·µ»ØµÄÊÇÒ»¸öÔ¶³Ì¿Éµü´ú¶ÔÏó,ĞèÒª´«ÈëÁ½¸ö²ÎÊı£¬µÚÒ»¸ö²ÎÊıÊÇ·şÎñÆ÷Â·¾¶£¬µÚ¶ş¸ö²ÎÊıÊÇ·ñµİ¹é
+		// é€šè¿‡fileSystemçš„listFilesæ–¹æ³•å¯ä»¥è‡ªåŠ¨å®ç°é€’å½’(è‡ªå¸¦é€’å½’)åˆ—å‡ºæ–‡ä»¶ç±»å‹ï¼Œè¿”å›çš„æ˜¯ä¸€ä¸ªè¿œç¨‹å¯è¿­ä»£å¯¹è±¡,éœ€è¦ä¼ å…¥ä¸¤ä¸ªå‚æ•°ï¼Œç¬¬ä¸€ä¸ªå‚æ•°æ˜¯æœåŠ¡å™¨è·¯å¾„ï¼Œç¬¬äºŒä¸ªå‚æ•°æ˜¯å¦é€’å½’
 		RemoteIterator<LocatedFileStatus> listFiles = fileSystem.listFiles(new Path("/list/had.zip"), false);
-		// ÓÃÁ÷´ò¿ªÒª¶ÁÈ¡µÄÎÄ¼ş
+		// ç”¨æµæ‰“å¼€è¦è¯»å–çš„æ–‡ä»¶
 		FSDataInputStream open = 
 				fileSystem.open(new Path("/list/had.zip"));
 		while (listFiles.hasNext()) {
@@ -50,12 +50,12 @@
 			BlockLocation[] locations = 
 					next.getBlockLocations();
 			for (int i = 0; i < locations.length; i++) {
-				// ÎªÁË²»ÓÃÃ¿´Î¶ÁÈ¡Ò»¸öÊäÈëÁ÷,Ö±½ÓÉèÖÃËûµÄÆ«ÒÆÁ¿.
-				// seekÊÇ¶ÔÊäÈëÁ÷µÄÎÄ¼şÖ¸Õë×ö²Ù×÷µÄ
+				// ä¸ºäº†ä¸ç”¨æ¯æ¬¡è¯»å–ä¸€ä¸ªè¾“å…¥æµ,ç›´æ¥è®¾ç½®ä»–çš„åç§»é‡.
+				// seekæ˜¯å¯¹è¾“å…¥æµçš„æ–‡ä»¶æŒ‡é’ˆåšæ“ä½œçš„
 				open.seek(0);
 				FileOutputStream fos = 
 						new FileOutputStream("C:/Users/Administrator/Desktop/ll/had1" + i + ".zip");
-				// Óï·¨ÌÇ
+				// è¯­æ³•ç³–
 				org.apache.commons.io.IOUtils.copyLarge(open, fos, locations[i].getOffset(), locations[i].getLength());
 			}
 			
@@ -63,9 +63,9 @@
 	}
 ```
 
-- 3.»ñÈ¡ËùÓĞblockÄÚÈİ(ÓÃorg.apache.commons.io.IOUtils.copyLarge()µÄËÄ²Î·½·¨)
+- 3.è·å–æ‰€æœ‰blockå†…å®¹(ç”¨org.apache.commons.io.IOUtils.copyLarge()çš„å››å‚æ–¹æ³•)
 ```
-// ½«ËùÓĞblock¿éÄÚÈİÏÂÔØÏÂÀ´
+// å°†æ‰€æœ‰blockå—å†…å®¹ä¸‹è½½ä¸‹æ¥
 	public void getBlocksSec() throws FileNotFoundException, IllegalArgumentException, IOException {
 		RemoteIterator<LocatedFileStatus> listFiles = fileSystem.listFiles(new Path("/list/had.zip"), false);
 		FSDataInputStream open = 
@@ -81,14 +81,14 @@
 						new FileOutputStream("C:/Users/Administrator/Desktop/ll/had1" + i + ".zip");
 				long length = locations[i].getLength();
 				long offset = locations[i].getOffset();
-				// Ã¿´ÎµÄ¶ÁÈ¡ÊÇÒ»¸öĞÂµÄblock¿é
-				// ²ÎÊıÒ»:¶ÁÈëÁ÷
-				// ²ÎÊı¶ş:Ğ´³öÁ÷
-				// ²ÎÊıÈı:¶ÁÈëµÄÆ«ÒÆÁ¿
-				// ²ÎÊıËÄ:ÕıÔÚ¶ÁÈ¡µÄblock¿éµÄ³¤¶È.
+				// æ¯æ¬¡çš„è¯»å–æ˜¯ä¸€ä¸ªæ–°çš„blockå—
+				// å‚æ•°ä¸€:è¯»å…¥æµ
+				// å‚æ•°äºŒ:å†™å‡ºæµ
+				// å‚æ•°ä¸‰:è¯»å…¥çš„åç§»é‡
+				// å‚æ•°å››:æ­£åœ¨è¯»å–çš„blockå—çš„é•¿åº¦.
 				org.apache.commons.io.IOUtils.copyLarge
 				(open, fos, sum, locations[i].getLength());
-				// ÒòÎª¿ªÊ¼µÄÆ«ÒÆÁ¿Îª0,ËùÒÔsumÒªÔÚ×îºó½øĞĞ¼Ó.
+				// å› ä¸ºå¼€å§‹çš„åç§»é‡ä¸º0,æ‰€ä»¥sumè¦åœ¨æœ€åè¿›è¡ŒåŠ .
 				sum = length + offset;
 			}
 			
@@ -96,8 +96,7 @@
 	}
 ```
 
-- 4.»ñÈ¡ÎÄ¼şÄÚÈİ,Í¨¹ıÊµÀı»¯ÊµÏÖ
-
+- 4.è·å–æ–‡ä»¶å†…å®¹,é€šè¿‡å®ä¾‹åŒ–å®ç°
 ```
 public void testSeek() throws IllegalArgumentException, IOException {
 		BlockInfo blockInfo1 = new BlockInfo(0, 6);
@@ -113,7 +112,7 @@ public void testSeek() throws IllegalArgumentException, IOException {
 			int offset = blockInfos.get(i).getOffset();
 			int length = blockInfos.get(i).getLength();
 			FileOutputStream fileOutputStream = new FileOutputStream("C:/Users/Administrator/Desktop/hdfs/output/seek"+i+".txt");
-			// Æ«ÒÆÁ¿ÉèÖÃÎªÁã,Ö¸ÕëÒÆµ½Æ«ÒÆÁ¿Îª0µÄÎ»ÖÃ.
+			// åç§»é‡è®¾ç½®ä¸ºé›¶,æŒ‡é’ˆç§»åˆ°åç§»é‡ä¸º0çš„ä½ç½®.
 			org.apache.commons.io.IOUtils.copyLarge(inputStream, fileOutputStream, 0, length);
 			sum = offset+length;
 			
