@@ -20,4 +20,4 @@
 	- [用eclipse连接hdfs及操作](https://kll082511.github.io/%E7%94%A8eclipse%E8%BF%9E%E6%8E%A5hdfs%E5%8F%8A%E6%93%8D%E4%BD%9C)
 	- [block块的获取](https://kll082511.github.io/block%E5%9D%97%E7%9A%84%E8%8E%B7%E5%8F%96)
 	- [mapreduce]
-	- [mapreduce_Join]()
+	- [mapreduce_Join]
