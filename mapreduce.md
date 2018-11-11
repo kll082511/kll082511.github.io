@@ -1,5 +1,5 @@
-##### 1.µ¥´Ê¸öÊıÍ³¼Æ
-mapÀà
+##### 1.å•è¯ä¸ªæ•°ç»Ÿè®¡
+mapç±»
 ```
 package com.lanou.Util;
 
@@ -13,23 +13,23 @@ public class CountMapper extends Mapper<Object, Text, Text, IntWritable>{
 	@Override
 	protected void map(Object key, Text value, Mapper<Object, Text, Text, IntWritable>.Context context)
 			throws IOException, InterruptedException {
-		// »ñÈ¡µ½µÄÒ»ĞĞµÄÄÚÈİ½øĞĞ·Ö¸î
+		// è·å–åˆ°çš„ä¸€è¡Œçš„å†…å®¹è¿›è¡Œåˆ†å‰²
 		String[] val = value.toString().split(" ");
-		// ±éÀúÊä³öµ½context
+		// éå†è¾“å‡ºåˆ°context
 		for (int i = 0; i < val.length; i++) {
-			// ÎªÁË°Ñ×Ö·û×ª³ÉtextÀàĞÍ
-			// ´´½¨text¶ÔÏó
+			// ä¸ºäº†æŠŠå­—ç¬¦è½¬æˆtextç±»å‹
+			// åˆ›å»ºtextå¯¹è±¡
 			Text text = new Text();
-			// ÓÃtextµÄset·½·¨,°Ñ×Ö·û×ª³ÉtextÀàĞÍ
+			// ç”¨textçš„setæ–¹æ³•,æŠŠå­—ç¬¦è½¬æˆtextç±»å‹
 			text.set(val[i]);
-			// °ÑintÀàĞÍ×ª³ÉIntWritableÀàĞÍ
+			// æŠŠintç±»å‹è½¬æˆIntWritableç±»å‹
 			context.write(text, new IntWritable(1));
 		}
 	}
 }
 ```
 
-reduceÀà
+reduceç±»
 ```
 package com.lanou.Util;
 
@@ -55,7 +55,7 @@ public class WordReduce extends Reducer<Text, IntWritable, Text, IntWritable> {
 }
 ```
 
-mainº¯Êı
+mainå‡½æ•°
 ```
 package com.lanou.test;
 import org.apache.hadoop.conf.Configuration;
@@ -81,59 +81,59 @@ public class WordCountTest {
 		}
 		Job job = Job.getInstance(conf, "word count");
 		job.setJarByClass(WordCountTest.class);
-		// sÉèÖÃmapper
+		// sè®¾ç½®mapper
 		job.setMapperClass(CountMapper.class);
-		// ÉèÖÃcombiner
+		// è®¾ç½®combiner
 		job.setCombinerClass(WordReduce.class);
-		// ÉèÖÃReducer
+		// è®¾ç½®Reducer
 		job.setReducerClass(WordReduce.class);
-		// ÉèÖÃreduceµÄkeyºÍvalueÖµµÄÀàĞÍ
+		// è®¾ç½®reduceçš„keyå’Œvalueå€¼çš„ç±»å‹
 		job.setOutputKeyClass(Text.class);
 		job.setOutputValueClass(IntWritable.class);
-		// °Ñ×îºóÒ»¸öÊä³ö¼õµôÁË,Ö»ÊÇÊäÈë
+		// æŠŠæœ€åä¸€ä¸ªè¾“å‡ºå‡æ‰äº†,åªæ˜¯è¾“å…¥
 		for (int i = 0; i < otherArgs.length - 1; i++) {
 			FileInputFormat.addInputPath(job, new Path(otherArgs[i]));
 		}
-		// ÉèÖÃĞ´Èëµ½Êä³öÎ»ÖÃ.
+		// è®¾ç½®å†™å…¥åˆ°è¾“å‡ºä½ç½®.
 		FileOutputFormat.setOutputPath(job, new Path(otherArgs[(otherArgs.length - 1)]));
 
 		System.exit(job.waitForCompletion(true) ? 0 : 1);
 	}
 }
 ```
-##### 2.Partitioner_______´ÓlogÈÕÖ¾ÖĞ»ñÈ¡ÊÖ»úºÅ,ÉÏĞĞÁ÷Á¿,ÏÂĞĞÁ÷Á¿,×ÜÁ÷Á¿(ÒÔÊµÌåÀà¶ÔÏóĞÎÊ½)
-- ×÷ÓÃ:¸ù¾İ·µ»ØÖµ,°Ñ²»Í¬½á¹û·ÅÔÚ²»Í¬µÄÎÄ¼şÖĞ
+##### 2.Partitioner_______ä»logæ—¥å¿—ä¸­è·å–æ‰‹æœºå·,ä¸Šè¡Œæµé‡,ä¸‹è¡Œæµé‡,æ€»æµé‡(ä»¥å®ä½“ç±»å¯¹è±¡å½¢å¼)
+- ä½œç”¨:æ ¹æ®è¿”å›å€¼,æŠŠä¸åŒç»“æœæ”¾åœ¨ä¸åŒçš„æ–‡ä»¶ä¸­
 ```
 /*
- * Ê¹ÓÃ·ÖÇøµÄ²½Öè:
- * 1.ÉèÖÃjob.setPartitionerClass(·ÖÇøÀà.class);
- * ºÍjob.setNumReduceTask(4),Èç¹ûÊıÁ¿²»¶Ô,»á³öÏÖÒì³£;
- * 2.´´½¨·ÖÇøÀà,¼Ì³ĞPartitionerÀÛ,ÊµÏÖgetPartitioner·½·¨
- * 3.¸ù¾İ×Ô¼ºµÄÒµÎñÂß¼­,Í¨¹ıkey,value,countµÄ²Ù×÷,ÀûÓÃ·µ»ØÖµ,µÃµ½µ±Ç°mapĞèÒª½øÈëµÄ·ÖÇø.
+ * ä½¿ç”¨åˆ†åŒºçš„æ­¥éª¤:
+ * 1.è®¾ç½®job.setPartitionerClass(åˆ†åŒºç±».class);
+ * å’Œjob.setNumReduceTask(4),å¦‚æœæ•°é‡ä¸å¯¹,ä¼šå‡ºç°å¼‚å¸¸;
+ * 2.åˆ›å»ºåˆ†åŒºç±»,ç»§æ‰¿Partitionerç´¯,å®ç°getPartitioneræ–¹æ³•
+ * 3.æ ¹æ®è‡ªå·±çš„ä¸šåŠ¡é€»è¾‘,é€šè¿‡key,value,countçš„æ“ä½œ,åˆ©ç”¨è¿”å›å€¼,å¾—åˆ°å½“å‰mapéœ€è¦è¿›å…¥çš„åˆ†åŒº.
  */
 /*
- * ´ÓlogÖĞ»ñÈ¡ÊÖ»úºÅ,ÉÏĞĞÁ÷Á¿,ÏÂĞĞÁ÷Á¿,×ÜÁ÷Á¿
- * reduceÖ®ºó,Êä³ö½á¹ûÒªÊÖ»úºÅ,Á÷Á¿¶ÔÏó(ÉÏĞĞÁ÷Á¿,ÏÂĞĞÁ÷Á¿,Á÷Á¿×ÜºÍ)
- * ÒªÊ¹ÓÃ×Ô¶¨ÒåµÄÀàĞÍ×÷ÎªÊä³ö
- * 1.¸ù¾İÊı¾İÎÒÃÇµÄÊı¾İ½øĞĞ½¨Ä£(´´½¨ÊµÌåÀà)
- * 2.mapperºÍreducerÖĞµÄĞÎ²ÎÔõÃ´Ğ´,map()·½·¨µ±ÖĞÔõÃ´¶ÔÊı¾İ½øĞĞÇĞ¸îÉ¸Ñ¡,½«ÎÒÃÇµÄÊı¾İ·ÅÈë×Ô¶¨ÒåµÄbean(×¢ÒâjavaBean¹æ·¶)µ±ÖĞ,ÏëºÃbeanÊÇÒÔkey»¹ÊÇvalueÊä³ö
- * 3.mapµÄ½á¹û×îÖÕÒªĞ´Èë´ÅÅÌÖĞ,ËùÒÔÒª×¢ÒâÎÒÃÇ×Ô¶¨ÒåµÄÀàÒ»¶¨ÒªÖ§³ÖĞòÁĞ»¯WritableComparable
- *    SerializableÊÇjavaÌá¹©µÄÖØÁ¿¼¶ĞòÁĞ»¯£¬ÔÚhadoopÖĞ½¨ÒéÊ¹ÓÃhadoop×ÔÉíÌá¹©µÄWritableComparable½Ó¿ÚÀ´ÊµÏÖĞòÁĞ»¯ºÍ·´ĞòÁĞ»¯¡£
- *    Òª×¢ÒâÖØĞ´write()ºÍreadFields()·½·¨ ·ñÔòreducer½×¶Î»ñÈ¡²»µ½Êı¾İ
- *    ×¢Òâ:readFields()ÖĞµ÷ÓÃµÄread·½·¨Ò»¶¨Òª°´ÕÕĞ´ÈëµÄË³Ğò½øĞĞ¶ÁÈ¡£¬·ñÔò»áÊôĞÔË³Ğò´íÂÒ
- * 4.mainÖĞµÄjob.setJarByClass(BeanStreamTest.class);
+ * ä»logä¸­è·å–æ‰‹æœºå·,ä¸Šè¡Œæµé‡,ä¸‹è¡Œæµé‡,æ€»æµé‡
+ * reduceä¹‹å,è¾“å‡ºç»“æœè¦æ‰‹æœºå·,æµé‡å¯¹è±¡(ä¸Šè¡Œæµé‡,ä¸‹è¡Œæµé‡,æµé‡æ€»å’Œ)
+ * è¦ä½¿ç”¨è‡ªå®šä¹‰çš„ç±»å‹ä½œä¸ºè¾“å‡º
+ * 1.æ ¹æ®æ•°æ®æˆ‘ä»¬çš„æ•°æ®è¿›è¡Œå»ºæ¨¡(åˆ›å»ºå®ä½“ç±»)
+ * 2.mapperå’Œreducerä¸­çš„å½¢å‚æ€ä¹ˆå†™,map()æ–¹æ³•å½“ä¸­æ€ä¹ˆå¯¹æ•°æ®è¿›è¡Œåˆ‡å‰²ç­›é€‰,å°†æˆ‘ä»¬çš„æ•°æ®æ”¾å…¥è‡ªå®šä¹‰çš„bean(æ³¨æ„javaBeanè§„èŒƒ)å½“ä¸­,æƒ³å¥½beanæ˜¯ä»¥keyè¿˜æ˜¯valueè¾“å‡º
+ * 3.mapçš„ç»“æœæœ€ç»ˆè¦å†™å…¥ç£ç›˜ä¸­,æ‰€ä»¥è¦æ³¨æ„æˆ‘ä»¬è‡ªå®šä¹‰çš„ç±»ä¸€å®šè¦æ”¯æŒåºåˆ—åŒ–WritableComparable
+ *    Serializableæ˜¯javaæä¾›çš„é‡é‡çº§åºåˆ—åŒ–ï¼Œåœ¨hadoopä¸­å»ºè®®ä½¿ç”¨hadoopè‡ªèº«æä¾›çš„WritableComparableæ¥å£æ¥å®ç°åºåˆ—åŒ–å’Œååºåˆ—åŒ–ã€‚
+ *    è¦æ³¨æ„é‡å†™write()å’ŒreadFields()æ–¹æ³• å¦åˆ™reduceré˜¶æ®µè·å–ä¸åˆ°æ•°æ®
+ *    æ³¨æ„:readFields()ä¸­è°ƒç”¨çš„readæ–¹æ³•ä¸€å®šè¦æŒ‰ç…§å†™å…¥çš„é¡ºåºè¿›è¡Œè¯»å–ï¼Œå¦åˆ™ä¼šå±æ€§é¡ºåºé”™ä¹±
+ * 4.mainä¸­çš„job.setJarByClass(BeanStreamTest.class);
         job.setMapperClass(BeanStreamMapper.class);
         job.setCombinerClass(BeanStreamReducer.class);
         job.setReducerClass(BeanStreamReducer.class);
         job.setOutputKeyClass(Text.class);
         job.setOutputValueClass(StreamBean.class);
-                    ×¢ÒâÉèÖÃ
-                    ×¢ÒâºÃÊä³öµÄkey,valueµÄÀàĞÍ
- * 5.×¢ÒâÖØĞ´toString·½·¨
+                    æ³¨æ„è®¾ç½®
+                    æ³¨æ„å¥½è¾“å‡ºçš„key,valueçš„ç±»å‹
+ * 5.æ³¨æ„é‡å†™toStringæ–¹æ³•
  */
 ```
 
-PartitionerÀà
+Partitionerç±»
 ```
 package com.lanou.Util;
 
@@ -145,20 +145,20 @@ import org.apache.hadoop.mapreduce.Partitioner;
 
 import com.lanou.model.StreamBean;
 /*
- * Ê¹ÓÃ·ÖÇøµÄ²½Öè:
- * 1.ÉèÖÃjob.setPartitionerClass(·ÖÇøÀà.class);
- * ºÍjob.setNumReduceTask(4),Èç¹ûÊıÁ¿²»¶Ô,»á³öÏÖÒì³£;
- * 2.´´½¨·ÖÇøÀà,¼Ì³ĞPartitionerÀÛ,ÊµÏÖgetPartitioner·½·¨
- * 3.¸ù¾İ×Ô¼ºµÄÒµÎñÂß¼­,Í¨¹ıkey,value,countµÄ²Ù×÷,ÀûÓÃ·µ»ØÖµ,µÃµ½µ±Ç°mapĞèÒª½øÈëµÄ·ÖÇø.
+ * ä½¿ç”¨åˆ†åŒºçš„æ­¥éª¤:
+ * 1.è®¾ç½®job.setPartitionerClass(åˆ†åŒºç±».class);
+ * å’Œjob.setNumReduceTask(4),å¦‚æœæ•°é‡ä¸å¯¹,ä¼šå‡ºç°å¼‚å¸¸;
+ * 2.åˆ›å»ºåˆ†åŒºç±»,ç»§æ‰¿Partitionerç´¯,å®ç°getPartitioneræ–¹æ³•
+ * 3.æ ¹æ®è‡ªå·±çš„ä¸šåŠ¡é€»è¾‘,é€šè¿‡key,value,countçš„æ“ä½œ,åˆ©ç”¨è¿”å›å€¼,å¾—åˆ°å½“å‰mapéœ€è¦è¿›å…¥çš„åˆ†åŒº.
  */
 public class MobilePartitioner extends Partitioner<Text, StreamBean>{
 
 	private static Map map;
-	// 1.µÚÒ»¸ö²ÎÊıÊÇmap·½·¨ÖĞµÄcontext.write()µ±ÖĞµÄkey
-	// 2.µÚ¶ş¸ö²ÎÊıÊÇmap·½·¨ÖĞµÄcontext.write()µ±ÖĞµÄvalue
-	// 3.µÚÈı¸ö²ÎÊıÊÇreduceTaskµÄÊıÁ¿
-	// Èç¹ûÎÒÃÇÒªÔÚgetPartitioner·½·¨ÖĞÈ¥´´½¨¼ÙÊı¾İmap,»á´´½¨Ì«¶Ô¸ö¶ÔÏó.
-	// ²»Ì«·ûºÏÎÒÃÇµÄÆÚÍû,ÎÒÃÇÖ»Ï£Íû´´½¨Ò»´Î¾ÍºÃ.
+	// 1.ç¬¬ä¸€ä¸ªå‚æ•°æ˜¯mapæ–¹æ³•ä¸­çš„context.write()å½“ä¸­çš„key
+	// 2.ç¬¬äºŒä¸ªå‚æ•°æ˜¯mapæ–¹æ³•ä¸­çš„context.write()å½“ä¸­çš„value
+	// 3.ç¬¬ä¸‰ä¸ªå‚æ•°æ˜¯reduceTaskçš„æ•°é‡
+	// å¦‚æœæˆ‘ä»¬è¦åœ¨getPartitioneræ–¹æ³•ä¸­å»åˆ›å»ºå‡æ•°æ®map,ä¼šåˆ›å»ºå¤ªå¯¹ä¸ªå¯¹è±¡.
+	// ä¸å¤ªç¬¦åˆæˆ‘ä»¬çš„æœŸæœ›,æˆ‘ä»¬åªå¸Œæœ›åˆ›å»ºä¸€æ¬¡å°±å¥½.
 	static {
 		map = new HashMap<>();
 		map.put("134", 0);
@@ -168,14 +168,14 @@ public class MobilePartitioner extends Partitioner<Text, StreamBean>{
 	@Override
 	public int getPartition(Text paramKEY, StreamBean paramVALUE, int paramInt) {
 		// TODO Auto-generated method stub
-		// Êä³öµÄ
+		// è¾“å‡ºçš„
 		System.out.println("get 134 Partitioner:" + map.get("134"));
 		System.out.println("get 135 Partitioner:" + map.get("135"));
 		System.out.println("get 136 Partitioner:" + map.get("136"));
 		System.out.println(paramVALUE);
 		System.out.println(paramInt);
 		String key = paramKEY.toString().substring(0, 3);
-		// ·µ»ØÖµ,ÉèÖÃÕâÌõÊı¾İÕæÕıµÄ½»¸øÄÄ¶ù¸öreduceTask
+		// è¿”å›å€¼,è®¾ç½®è¿™æ¡æ•°æ®çœŸæ­£çš„äº¤ç»™å“ªå„¿ä¸ªreduceTask
 		Integer result = (Integer) map.get(key);
 		if (result == null) {
 			result = 3;
@@ -187,7 +187,7 @@ public class MobilePartitioner extends Partitioner<Text, StreamBean>{
 
 ```
 
-ÊµÌåÀà
+å®ä½“ç±»
 ```
 package com.lanou.model;
 
@@ -250,7 +250,7 @@ public class StreamBean implements WritableComparable<Object> {
 	@Override
 	public void readFields(DataInput paramDataInput) throws IOException {
 		// TODO Auto-generated method stub
-		// È¡ÖµÒªºÍÉÏ±ßµÄĞ´ÈëË³ĞòÒ»ÖÂ
+		// å–å€¼è¦å’Œä¸Šè¾¹çš„å†™å…¥é¡ºåºä¸€è‡´
 		this.uploadStream = paramDataInput.readInt();
 		this.downloadStream = paramDataInput.readInt();
 		this.sumStream = paramDataInput.readInt();
@@ -265,7 +265,7 @@ public class StreamBean implements WritableComparable<Object> {
 
 ```
 
-mapÀà
+mapç±»
 ```
 package com.lanou.Util;
 
@@ -283,7 +283,7 @@ extends Mapper<Object, Text, Text, StreamBean>{
 	@Override
 	protected void map(Object key, Text value, Mapper<Object, Text, Text, StreamBean>.Context context)
 			throws IOException, InterruptedException {
-		// ¶Ô½á¹û½øĞĞ´¦ÀíµÄ¹æÔò
+		// å¯¹ç»“æœè¿›è¡Œå¤„ç†çš„è§„åˆ™
 		String[] vals = value.toString().split("\\s+");
 		String phone = vals[1];
 		String upload = vals[vals.length - 3];
@@ -297,7 +297,7 @@ extends Mapper<Object, Text, Text, StreamBean>{
 }
 ```
 
-reduceÀà
+reduceç±»
 ```
 package com.lanou.Util;
 
@@ -314,7 +314,7 @@ extends Reducer<Text, StreamBean, Text, StreamBean> {
 	@Override
 	protected void reduce(Text key, Iterable<StreamBean> lists,
 			Reducer<Text, StreamBean, Text, StreamBean>.Context context) throws IOException, InterruptedException {
-		// Ã¿¸ö¶ÔÏóµÄÉÏĞĞÁ÷Á¿¼ÓÒ»Æğ,ÏÂĞĞÁ÷Á¿¼ÓÒ»Æğ,×ÜÁ÷Á¿¼ÓÒ»Æğ
+		// æ¯ä¸ªå¯¹è±¡çš„ä¸Šè¡Œæµé‡åŠ ä¸€èµ·,ä¸‹è¡Œæµé‡åŠ ä¸€èµ·,æ€»æµé‡åŠ ä¸€èµ·
 		int uploadSum = 0;
 		int downloadSum = 0;
 		for (StreamBean streamBean : lists) {
@@ -328,7 +328,7 @@ extends Reducer<Text, StreamBean, Text, StreamBean> {
 }
 ```
 
-mainº¯Êı
+mainå‡½æ•°
 ```
 package com.lanou.test;
 
@@ -345,68 +345,68 @@ import com.lanou.Util.BeanStreamReduce;
 import com.lanou.Util.MobilePartitioner;
 import com.lanou.model.StreamBean;
 /*
- * ´ÓlogÖĞ»ñÈ¡ÊÖ»úºÅ,ÉÏĞĞÁ÷Á¿,ÏÂĞĞÁ÷Á¿,×ÜÁ÷Á¿
- * reduceÖ®ºó,Êä³ö½á¹ûÒªÊÖ»úºÅ,Á÷Á¿¶ÔÏó(ÉÏĞĞÁ÷Á¿,ÏÂĞĞÁ÷Á¿,Á÷Á¿×ÜºÍ)
- * ÒªÊ¹ÓÃ×Ô¶¨ÒåµÄÀàĞÍ×÷ÎªÊä³ö
- * 1.¸ù¾İÊı¾İÎÒÃÇµÄÊı¾İ½øĞĞ½¨Ä£(´´½¨ÊµÌåÀà)
- * 2.mapperºÍreducerÖĞµÄĞÎ²ÎÔõÃ´Ğ´,map()·½·¨µ±ÖĞÔõÃ´¶ÔÊı¾İ½øĞĞÇĞ¸îÉ¸Ñ¡,½«ÎÒÃÇµÄÊı¾İ·ÅÈë×Ô¶¨ÒåµÄbean(×¢ÒâjavaBean¹æ·¶)µ±ÖĞ,ÏëºÃbeanÊÇÒÔkey»¹ÊÇvalueÊä³ö
- * 3.mapµÄ½á¹û×îÖÕÒªĞ´Èë´ÅÅÌÖĞ,ËùÒÔÒª×¢ÒâÎÒÃÇ×Ô¶¨ÒåµÄÀàÒ»¶¨ÒªÖ§³ÖĞòÁĞ»¯WritableComparable
- *    SerializableÊÇjavaÌá¹©µÄÖØÁ¿¼¶ĞòÁĞ»¯£¬ÔÚhadoopÖĞ½¨ÒéÊ¹ÓÃhadoop×ÔÉíÌá¹©µÄWritableComparable½Ó¿ÚÀ´ÊµÏÖĞòÁĞ»¯ºÍ·´ĞòÁĞ»¯¡£
- *    Òª×¢ÒâÖØĞ´write()ºÍreadFields()·½·¨ ·ñÔòreducer½×¶Î»ñÈ¡²»µ½Êı¾İ
- *    ×¢Òâ:readFields()ÖĞµ÷ÓÃµÄread·½·¨Ò»¶¨Òª°´ÕÕĞ´ÈëµÄË³Ğò½øĞĞ¶ÁÈ¡£¬·ñÔò»áÊôĞÔË³Ğò´íÂÒ
- * 4.mainÖĞµÄjob.setJarByClass(BeanStreamTest.class);
+ * ä»logä¸­è·å–æ‰‹æœºå·,ä¸Šè¡Œæµé‡,ä¸‹è¡Œæµé‡,æ€»æµé‡
+ * reduceä¹‹å,è¾“å‡ºç»“æœè¦æ‰‹æœºå·,æµé‡å¯¹è±¡(ä¸Šè¡Œæµé‡,ä¸‹è¡Œæµé‡,æµé‡æ€»å’Œ)
+ * è¦ä½¿ç”¨è‡ªå®šä¹‰çš„ç±»å‹ä½œä¸ºè¾“å‡º
+ * 1.æ ¹æ®æ•°æ®æˆ‘ä»¬çš„æ•°æ®è¿›è¡Œå»ºæ¨¡(åˆ›å»ºå®ä½“ç±»)
+ * 2.mapperå’Œreducerä¸­çš„å½¢å‚æ€ä¹ˆå†™,map()æ–¹æ³•å½“ä¸­æ€ä¹ˆå¯¹æ•°æ®è¿›è¡Œåˆ‡å‰²ç­›é€‰,å°†æˆ‘ä»¬çš„æ•°æ®æ”¾å…¥è‡ªå®šä¹‰çš„bean(æ³¨æ„javaBeanè§„èŒƒ)å½“ä¸­,æƒ³å¥½beanæ˜¯ä»¥keyè¿˜æ˜¯valueè¾“å‡º
+ * 3.mapçš„ç»“æœæœ€ç»ˆè¦å†™å…¥ç£ç›˜ä¸­,æ‰€ä»¥è¦æ³¨æ„æˆ‘ä»¬è‡ªå®šä¹‰çš„ç±»ä¸€å®šè¦æ”¯æŒåºåˆ—åŒ–WritableComparable
+ *    Serializableæ˜¯javaæä¾›çš„é‡é‡çº§åºåˆ—åŒ–,åœ¨hadoopä¸­å»ºè®®ä½¿ç”¨hadoopè‡ªèº«æä¾›çš„WritableComparableæ¥å£æ¥å®ç°åºåˆ—åŒ–å’Œååºåˆ—åŒ–.
+ *    è¦æ³¨æ„é‡å†™write()å’ŒreadFields()æ–¹æ³• å¦åˆ™reduceré˜¶æ®µè·å–ä¸åˆ°æ•°æ®
+ *    æ³¨æ„:readFields()ä¸­è°ƒç”¨çš„readæ–¹æ³•ä¸€å®šè¦æŒ‰ç…§å†™å…¥çš„é¡ºåºè¿›è¡Œè¯»å–,å¦åˆ™ä¼šå±æ€§é¡ºåºé”™ä¹±
+ * 4.mainä¸­çš„job.setJarByClass(BeanStreamTest.class);
         job.setMapperClass(BeanStreamMapper.class);
         job.setCombinerClass(BeanStreamReducer.class);
         job.setReducerClass(BeanStreamReducer.class);
         job.setOutputKeyClass(Text.class);
         job.setOutputValueClass(StreamBean.class);
-                    ×¢ÒâÉèÖÃ
-                    ×¢ÒâºÃÊä³öµÄkey,valueµÄÀàĞÍ
- * 5.×¢ÒâÖØĞ´toString·½·¨
+                    æ³¨æ„è®¾ç½®
+                    æ³¨æ„å¥½è¾“å‡ºçš„key,valueçš„ç±»å‹
+ * 5.æ³¨æ„é‡å†™toStringæ–¹æ³•
  */
 public class PartitionerTest {
 	/*
-	 * ¸ù¾İ·ÖÇø½«½á¹ûÊäÈëµ½²»Í¬Î»ÖÃ
+	 * æ ¹æ®åˆ†åŒºå°†ç»“æœè¾“å…¥åˆ°ä¸åŒä½ç½®
 	 */
 	public static void main(String[] args)
 		    throws Exception
 		  {
-		// ÅäÖÃÎÄ¼ş
+		// é…ç½®æ–‡ä»¶
 		    Configuration conf = new Configuration();
 		    System.setProperty("HADOOP_USER_NAME", "hadoop");
 		    conf.set("fs.defaultFS",  "hdfs://172.18.24.28:9000");
-		 // ²ÎÊı´¦Àí
+		 // å‚æ•°å¤„ç†
 		    String[] otherArgs = new GenericOptionsParser(conf, args).getRemainingArgs();
 		    if (otherArgs.length < 2){
 		      System.err.println("Usage: wordcount <in> [<in>...] <out>");
 		      System.exit(2);
 		    }
-		 // ¹¤×÷ -> mapreduce
+		 // å·¥ä½œ -> mapreduce
 		    Job job = Job.getInstance(conf, "word count");
-		 // ´ò°üÊ¹ÓÃµÄ
+		 // æ‰“åŒ…ä½¿ç”¨çš„
 		    job.setJarByClass(PartitionerTest.class);
-		 // ÉèÖÃÖ´ĞĞmap·½·¨µÄÀà
+		 // è®¾ç½®æ‰§è¡Œmapæ–¹æ³•çš„ç±»
 		    job.setMapperClass(BeanStreamMapper.class);
-		 // ºÏ²¢
+		 // åˆå¹¶
 		    job.setCombinerClass(BeanStreamReduce.class);
-		 // ÉèÖÃÖ´ĞĞreduce·½·¨µÄÀà
+		 // è®¾ç½®æ‰§è¡Œreduceæ–¹æ³•çš„ç±»
 		    job.setReducerClass(BeanStreamReduce.class);
-		    // ÉèÖÃ·ÖÇø,Ê¹ÓÃÄÄ¶ù¸öPatitioner
+		    // è®¾ç½®åˆ†åŒº,ä½¿ç”¨å“ªå„¿ä¸ªPatitioner
 		    job.setPartitionerClass(MobilePartitioner.class);
-		    // ÉèÖÃreduceÈÎÎñÊı,·ñÔò·ÖÇø²»»áÉúĞ§.
-		    // ÊıÁ¿²»ÄÜĞ¡ÓÚ·Ö×éµÄ¸öÊı,Ö»ÄÜ´óÓÚµÈÓÚ.·ñÔò»áÅ×Òì³£
-		    // Èç¹û²»ÉèÖÃ×Ô¶¨Òå·ÖÇø,»áÊ¹ÓÃÏµÍ³Ä¬ÈÏµÄHashPartitioner
+		    // è®¾ç½®reduceä»»åŠ¡æ•°,å¦åˆ™åˆ†åŒºä¸ä¼šç”Ÿæ•ˆ.
+		    // æ•°é‡ä¸èƒ½å°äºåˆ†ç»„çš„ä¸ªæ•°,åªèƒ½å¤§äºç­‰äº.å¦åˆ™ä¼šæŠ›å¼‚å¸¸
+		    // å¦‚æœä¸è®¾ç½®è‡ªå®šä¹‰åˆ†åŒº,ä¼šä½¿ç”¨ç³»ç»Ÿé»˜è®¤çš„HashPartitioner
 		    job.setNumReduceTasks(3);
-		    // ÉèÖÃreduceÊä³ö½á¹ûµÄÀàĞÍ
+		    // è®¾ç½®reduceè¾“å‡ºç»“æœçš„ç±»å‹
 		    job.setOutputKeyClass(Text.class);
 		    job.setOutputValueClass(StreamBean.class);
-		    // ¸æËßjobÒª¶ÁÈ¡µÄÎÄ¼şÊÇÄÄ¶ùĞ©
+		    // å‘Šè¯‰jobè¦è¯»å–çš„æ–‡ä»¶æ˜¯å“ªå„¿äº›
 		    for (int i = 0; i < otherArgs.length - 1; i++) {
 		      FileInputFormat.addInputPath(job, new Path(otherArgs[i]));
 		    }
-		    // ¸æËßjobÉèÖÃµÄ½á¹ûÊä³öÎ»ÖÃ.
+		    // å‘Šè¯‰jobè®¾ç½®çš„ç»“æœè¾“å‡ºä½ç½®.
 		    FileOutputFormat.setOutputPath(job, new Path(otherArgs[(otherArgs.length - 1)]));
-		    // job.waitForCompletion(true) ½«ÎÒÃÇÉèÖÃºÃµÄjobÕæÕıµÄÌá½»¸øyarnÀ´°ïÎÒÃÇ·ÖÅä×ÊÔ´.
+		    // job.waitForCompletion(true) å°†æˆ‘ä»¬è®¾ç½®å¥½çš„jobçœŸæ­£çš„æäº¤ç»™yarnæ¥å¸®æˆ‘ä»¬åˆ†é…èµ„æº.
 		    System.exit(job.waitForCompletion(true) ? 0 : 1);
 		  }
 
