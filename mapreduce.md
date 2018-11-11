@@ -118,9 +118,9 @@ public class WordCountTest {
  * 1.根据数据我们的数据进行建模(创建实体类)
  * 2.mapper和reducer中的形参怎么写,map()方法当中怎么对数据进行切割筛选,将我们的数据放入自定义的bean(注意javaBean规范)当中,想好bean是以key还是value输出
  * 3.map的结果最终要写入磁盘中,所以要注意我们自定义的类一定要支持序列化WritableComparable
- *    Serializable是java提供的重量级序列化，在hadoop中建议使用hadoop自身提供的WritableComparable接口来实现序列化和反序列化。
+ *    Serializable是java提供的重量级序列化,在hadoop中建议使用hadoop自身提供的WritableComparable接口来实现序列化和反序列化.
  *    要注意重写write()和readFields()方法 否则reducer阶段获取不到数据
- *    注意:readFields()中调用的read方法一定要按照写入的顺序进行读取，否则会属性顺序错乱
+ *    注意:readFields()中调用的read方法一定要按照写入的顺序进行读取,否则会属性顺序错乱
  * 4.main中的job.setJarByClass(BeanStreamTest.class);
         job.setMapperClass(BeanStreamMapper.class);
         job.setCombinerClass(BeanStreamReducer.class);
