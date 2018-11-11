@@ -2,8 +2,8 @@
 ```
 /*
 * reduce 端join
-* 1. 文件格式要注意,否则有乱码，可以自己处理,String string = new String(value.getBytes(), "GBK");
-* 2.创建一个接受完整的bean(技能存放订单信息，又能存放商品信息)
+* 1. 文件格式要注意,否则有乱码，可以自己处理,String string = new String(value.getBytes(),"GBK");
+* 2.创建一个接受完整的bean(技能存放订单信息,又能存放商品信息)
 * 3.在map端接受不同文件的数据,根据是哪儿个文件,像完整的bean当中设置上对应的信息.没有的也不要是null,要设置默认值,否则
 * 会造成空指针异常.这时候map的工作结束了<thingsid，bean>要注意序列化.
 * 4.这时候因为map端输出的key是tingsId,所以传入reduce的数据已经帮我们进行合并了
@@ -209,7 +209,7 @@ public class ReduceJoinReduce extends Reducer<Text, JoinBean, Text, JoinBean> {
 			throws IOException, InterruptedException {
 		//
 		// key 商品id
-		// 商品 value [订单1,订单2,]
+		// 商品 value [订单1,订单2]
 		ArrayList<JoinBean> ordersList = new ArrayList<>();
 		for (JoinBean joinBean : value) {
 			System.out.println("i am run");
@@ -230,7 +230,7 @@ public class ReduceJoinReduce extends Reducer<Text, JoinBean, Text, JoinBean> {
 				ordersList.add(joinBean2);
 			}
 		}
-		// 商品1      订单1，订单2
+		// 商品1      订单1,订单2
 		// 给迭代器中,所有的订单设置商品信息
 		for (JoinBean joinBean : ordersList) {
 			joinBean.setThingsByBean(thingBean);
@@ -266,12 +266,12 @@ public class ReduceJoinTest {
 		// 
 		/*
 		* reduce 端join
-		* 1. 文件格式要注意,否则有乱码，可以自己处理,String string = new String(value.getBytes(), "GBK");
-		* 2.创建一个接受完整的bean(技能存放订单信息，又能存放商品信息)
+		* 1. 文件格式要注意,否则有乱码,可以自己处理,String string = new String(value.getBytes(), "GBK");
+		* 2.创建一个接受完整的bean(技能存放订单信息,又能存放商品信息)
 		* 3.在map端接受不同文件的数据,根据是哪儿个文件,像完整的bean当中设置上对应的信息.没有的也不要是null,要设置默认值,否则
 		* 会造成空指针异常.这时候map的工作结束了<thingsid，bean>要注意序列化.
 		* 4.这时候因为map端输出的key是tingsId,所以传入reduce的数据已经帮我们进行合并了
-		* 例如以下形式:<thingsId，[orderBean1,orderBean2,thingsBean]>
+		* 例如以下形式:<thingsId,[orderBean1,orderBean2,thingsBean]>
 		* 要将迭代器中的数据进行拆分成如下形式:thingsBan与[orderBean1,orderBean2],我们只需要对orderBean的集合进行循环,将orderBean
 		* 缺少的商品信息通过thingsBean不全,这就得到了我们想要的完整的join之后的数据了,然后就可以输出了.因为我们要使用的数据
 		* 来自迭代器,所以我们拿出来使用,要进行深拷贝.
