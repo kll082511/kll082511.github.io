@@ -1,4 +1,4 @@
-- 1.用流copy获取第二个block块的内容
+#### 1.用流copy获取第二个block块的内容
 ```
 
 	@Test
@@ -34,7 +34,7 @@
 	}
 ```
 
-- 2.获取所有block内容(通过设置偏移量实现)
+#### 2.获取所有block内容(通过设置偏移量实现)
 ```
 
 	@Test
@@ -63,7 +63,7 @@
 	}
 ```
 
-- 3.获取所有block内容(用org.apache.commons.io.IOUtils.copyLarge()的四参方法)
+#### 3.获取所有block内容(用org.apache.commons.io.IOUtils.copyLarge()的四参方法)
 ```
 // 将所有block块内容下载下来
 	public void getBlocksSec() throws FileNotFoundException, IllegalArgumentException, IOException {
@@ -96,7 +96,7 @@
 	}
 ```
 
-- 4.获取文件内容,通过实例化实现
+#### 4.获取文件内容,通过实例化实现
 ```
 public void testSeek() throws IllegalArgumentException, IOException {
 		BlockInfo blockInfo1 = new BlockInfo(0, 6);
