@@ -1,20 +1,20 @@
-### Reduce¶Ëjoin
+### Reduceç«¯join
 ```
 /*
-	 * reduce ¶Ëjoin
-	 * 1. ÎÄ¼ş¸ñÊ½Òª×¢Òâ£¬·ñÔòÓĞÂÒÂë£¬¿ÉÒÔ×Ô¼º´¦Àí£¬String string = new String(value.getBytes(), "GBK");
-	 * 2.´´½¨Ò»¸ö½ÓÊÜÍêÕûµÄbean£¨¼¼ÄÜ´æ·Å¶©µ¥ĞÅÏ¢£¬ÓÖÄÜ´æ·ÅÉÌÆ·ĞÅÏ¢£©
-	 * 3.ÔÚmap¶Ë½ÓÊÜ²»Í¬ÎÄ¼şµÄÊı¾İ£¬¸ù¾İÊÇÄÄ¶ù¸öÎÄ¼ş£¬ÏñÍêÕûµÄbeanµ±ÖĞÉèÖÃÉÏ¶ÔÓ¦µÄĞÅÏ¢¡£Ã»ÓĞµÄÒ²²»ÒªÊÇnull£¬ÒªÉèÖÃÄ¬ÈÏÖµ£¬·ñÔò
-	 * »áÔì³É¿ÕÖ¸ÕëÒì³£¡£ÕâÊ±ºòmapµÄ¹¤×÷½áÊøÁË<thingsid£¬bean>Òª×¢ÒâĞòÁĞ»¯¡£
-	 * 4.ÕâÊ±ºòÒòÎªmap¶ËÊä³öµÄkeyÊÇtingsId£¬ËùÒÔ´«ÈëreduceµÄÊı¾İÒÑ¾­°ïÎÒÃÇ½øĞĞºÏ²¢ÁË
-	 * ÀıÈçÒÔÏÂĞÎÊ½£º<thingsId£¬[orderBean1£¬orderBean2£¬thingsBean]>
-	 * Òª½«µü´úÆ÷ÖĞµÄÊı¾İ½øĞĞ²ğ·Ö³ÉÈçÏÂĞÎÊ½£ºthingsBanÓë[orderBean1£¬orderBean2]£¬ÎÒÃÇÖ»ĞèÒª¶ÔorderBeanµÄ¼¯ºÏ½øĞĞÑ­»·£¬½«orderBean
-	 * È±ÉÙµÄÉÌÆ·ĞÅÏ¢Í¨¹ıthingsBean²»È«£¬Õâ¾ÍµÃµ½ÁËÎÒÃÇÏëÒªµÄÍêÕûµÄjoinÖ®ºóµÄÊı¾İÁË£¬È»ºó¾Í¿ÉÒÔÊä³öÁË¡£ÒòÎªÎÒÃÇÒªÊ¹ÓÃµÄÊı¾İ
-	 * À´×Ôµü´úÆ÷£¬ËùÒÔÎÒÃÇÄÃ³öÀ´Ê¹ÓÃ£¬Òª½øĞĞÉî¿½±´¡£
+* reduce ç«¯join
+* 1. æ–‡ä»¶æ ¼å¼è¦æ³¨æ„,å¦åˆ™æœ‰ä¹±ç ï¼Œå¯ä»¥è‡ªå·±å¤„ç†,String string = new String(value.getBytes(), "GBK");
+* 2.åˆ›å»ºä¸€ä¸ªæ¥å—å®Œæ•´çš„bean(æŠ€èƒ½å­˜æ”¾è®¢å•ä¿¡æ¯ï¼Œåˆèƒ½å­˜æ”¾å•†å“ä¿¡æ¯)
+* 3.åœ¨mapç«¯æ¥å—ä¸åŒæ–‡ä»¶çš„æ•°æ®,æ ¹æ®æ˜¯å“ªå„¿ä¸ªæ–‡ä»¶,åƒå®Œæ•´çš„beanå½“ä¸­è®¾ç½®ä¸Šå¯¹åº”çš„ä¿¡æ¯.æ²¡æœ‰çš„ä¹Ÿä¸è¦æ˜¯null,è¦è®¾ç½®é»˜è®¤å€¼,å¦åˆ™
+* ä¼šé€ æˆç©ºæŒ‡é’ˆå¼‚å¸¸.è¿™æ—¶å€™mapçš„å·¥ä½œç»“æŸäº†<thingsidï¼Œbean>è¦æ³¨æ„åºåˆ—åŒ–.
+* 4.è¿™æ—¶å€™å› ä¸ºmapç«¯è¾“å‡ºçš„keyæ˜¯tingsId,æ‰€ä»¥ä¼ å…¥reduceçš„æ•°æ®å·²ç»å¸®æˆ‘ä»¬è¿›è¡Œåˆå¹¶äº†
+* ä¾‹å¦‚ä»¥ä¸‹å½¢å¼:<thingsIdï¼Œ[orderBean1,orderBean2,thingsBean]>
+* è¦å°†è¿­ä»£å™¨ä¸­çš„æ•°æ®è¿›è¡Œæ‹†åˆ†æˆå¦‚ä¸‹å½¢å¼:thingsBanä¸[orderBean1,orderBean2],æˆ‘ä»¬åªéœ€è¦å¯¹orderBeançš„é›†åˆè¿›è¡Œå¾ªç¯,å°†orderBean
+* ç¼ºå°‘çš„å•†å“ä¿¡æ¯é€šè¿‡thingsBeanä¸å…¨,è¿™å°±å¾—åˆ°äº†æˆ‘ä»¬æƒ³è¦çš„å®Œæ•´çš„joinä¹‹åçš„æ•°æ®äº†,ç„¶åå°±å¯ä»¥è¾“å‡ºäº†.å› ä¸ºæˆ‘ä»¬è¦ä½¿ç”¨çš„æ•°æ®
+* æ¥è‡ªè¿­ä»£å™¨,æ‰€ä»¥æˆ‘ä»¬æ‹¿å‡ºæ¥ä½¿ç”¨,è¦è¿›è¡Œæ·±æ‹·è´.
  */
 ```
 
-BeanÀà
+Beanç±»
 ```
 package com.lanou.model;
 
@@ -25,30 +25,30 @@ import java.io.IOException;
 import org.apache.hadoop.io.Writable;
 
 public class JoinBean implements Writable {
-	private int orderId;// ¶©µ¥ID
-	private int count;// ¶©µ¥¹ºÂòÊıÁ¿
-	private int stockCount;// ÉÌÆ·¿â´æ
-	private String thingsId;// ÉÌÆ·ID
-	private String thingsName;// ÉÌÆ·Ãû³Æ
-	private int flag;//±íÊ¾µ±Ç°¶ÔÏóÊÇÍ¨¹ıÄÄ¶ù¸öÎÄ¼şµÃµ½µÄ
-	// ¸øbean¸³¶©µ¥µÄÎÄ¼şµÄÄÚÈİ
+	private int orderId;// è®¢å•ID
+	private int count;// è®¢å•è´­ä¹°æ•°é‡
+	private int stockCount;// å•†å“åº“å­˜
+	private String thingsId;// å•†å“ID
+	private String thingsName;// å•†å“åç§°
+	private int flag;//è¡¨ç¤ºå½“å‰å¯¹è±¡æ˜¯é€šè¿‡å“ªå„¿ä¸ªæ–‡ä»¶å¾—åˆ°çš„
+	// ç»™beanèµ‹è®¢å•çš„æ–‡ä»¶çš„å†…å®¹
 	public void setOrder(int orderId, String thingsId, int count) {
 		this.thingsId = thingsId;
 		this.orderId = orderId;
 		this.count = count;
-		// Ã»»ñÈ¡µ½µÄÊı¾İÒ²²»ÒªÒÔnull µÄĞÎÊ½Ğ´Èë£¬
-		// ·ñÔò½øÈëreduceµÄÊ±ºò¾Í»á¿ÕÖ¸ÕëÒì³£¡£
+		// æ²¡è·å–åˆ°çš„æ•°æ®ä¹Ÿä¸è¦ä»¥null çš„å½¢å¼å†™å…¥,
+		// å¦åˆ™è¿›å…¥reduceçš„æ—¶å€™å°±ä¼šç©ºæŒ‡é’ˆå¼‚å¸¸.
 		this.thingsName = "";
 		this.stockCount = -1;
 		this.flag = 0;
 	}
-	// ¸øbean¸³ÉÌÆ·µÄÎÄ¼şµÄÄÚÈİ
+	// ç»™beanèµ‹å•†å“çš„æ–‡ä»¶çš„å†…å®¹
 	public void setThings(String thingsId, String thingsName, int stockCount) {
 		this.thingsId = thingsId;
 		this.thingsName = thingsName;
 		this.stockCount = stockCount;
-		// Ã»»ñÈ¡µ½µÄÊı¾İÒ²²»ÒªÒÔnull µÄĞÎÊ½Ğ´Èë£¬
-		// ·ñÔò½øÈëreduceµÄÊ±ºò¾Í»á¿ÕÖ¸ÕëÒì³£¡£
+		// æ²¡è·å–åˆ°çš„æ•°æ®ä¹Ÿä¸è¦ä»¥null çš„å½¢å¼å†™å…¥,
+		// å¦åˆ™è¿›å…¥reduceçš„æ—¶å€™å°±ä¼šç©ºæŒ‡é’ˆå¼‚å¸¸.
 		this.orderId = 0;
 		this.stockCount = 0;
 		this.flag = 1;
@@ -145,7 +145,7 @@ public class JoinBean implements Writable {
 }
 ```
 
-mapÀà
+mapç±»
 ```
 package com.lanou.until;
 
@@ -166,7 +166,7 @@ public class ReduceJoinMapper extends Mapper<Object, Text, Text, JoinBean> {
 	protected void map(Object key, Text value, Mapper<Object, Text, Text, JoinBean>.Context context)
 			throws IOException, InterruptedException {
 		// TODO Auto-generated method stub
-		// »ñÈ¡ÇĞÆ¬(ÓÃ×ÓÀà½ÓÊÕ,¿ÉÒÔµ÷ÓÃÆä·½·¨)
+		// è·å–åˆ‡ç‰‡(ç”¨å­ç±»æ¥æ”¶,å¯ä»¥è°ƒç”¨å…¶æ–¹æ³•)
 		
 		FileSplit fileSplit = (FileSplit)context.getInputSplit();
 		String fileName = fileSplit.getPath().getName();
@@ -186,7 +186,7 @@ public class ReduceJoinMapper extends Mapper<Object, Text, Text, JoinBean> {
 }
 ```
 
-reduceÀà
+reduceç±»
 ```
 package com.lanou.until;
 
@@ -208,8 +208,8 @@ public class ReduceJoinReduce extends Reducer<Text, JoinBean, Text, JoinBean> {
 	protected void reduce(Text key, Iterable<JoinBean> value, Reducer<Text, JoinBean, Text, JoinBean>.Context context)
 			throws IOException, InterruptedException {
 		//
-		// key ÉÌÆ·id
-		// ÉÌÆ· value [¶©µ¥1,¶©µ¥2,]
+		// key å•†å“id
+		// å•†å“ value [è®¢å•1,è®¢å•2,]
 		ArrayList<JoinBean> ordersList = new ArrayList<>();
 		for (JoinBean joinBean : value) {
 			System.out.println("i am run");
@@ -230,8 +230,8 @@ public class ReduceJoinReduce extends Reducer<Text, JoinBean, Text, JoinBean> {
 				ordersList.add(joinBean2);
 			}
 		}
-		// ÉÌÆ·1      ¶©µ¥1£¬¶©µ¥2
-		// ¸øµü´úÆ÷ÖĞ£¬ËùÓĞµÄ¶©µ¥ÉèÖÃÉÌÆ·ĞÅÏ¢
+		// å•†å“1      è®¢å•1ï¼Œè®¢å•2
+		// ç»™è¿­ä»£å™¨ä¸­,æ‰€æœ‰çš„è®¢å•è®¾ç½®å•†å“ä¿¡æ¯
 		for (JoinBean joinBean : ordersList) {
 			joinBean.setThingsByBean(thingBean);
 			context.write(key, joinBean);
@@ -241,7 +241,7 @@ public class ReduceJoinReduce extends Reducer<Text, JoinBean, Text, JoinBean> {
 }
 ```
 
-mainÀà
+mainç±»
 ```
 package com.lanou.test;
 
@@ -265,16 +265,16 @@ public class ReduceJoinTest {
 	public static void main(String[] args) throws IOException, ClassNotFoundException, InterruptedException {
 		// 
 		/*
-		 * reduce ¶Ëjoin
-		 * 1. ÎÄ¼ş¸ñÊ½Òª×¢Òâ£¬·ñÔòÓĞÂÒÂë£¬¿ÉÒÔ×Ô¼º´¦Àí£¬String string = new String(value.getBytes(), "GBK");
-		 * 2.´´½¨Ò»¸ö½ÓÊÜÍêÕûµÄbean£¨¼¼ÄÜ´æ·Å¶©µ¥ĞÅÏ¢£¬ÓÖÄÜ´æ·ÅÉÌÆ·ĞÅÏ¢£©
-		 * 3.ÔÚmap¶Ë½ÓÊÜ²»Í¬ÎÄ¼şµÄÊı¾İ£¬¸ù¾İÊÇÄÄ¶ù¸öÎÄ¼ş£¬ÏñÍêÕûµÄbeanµ±ÖĞÉèÖÃÉÏ¶ÔÓ¦µÄĞÅÏ¢¡£Ã»ÓĞµÄÒ²²»ÒªÊÇnull£¬ÒªÉèÖÃÄ¬ÈÏÖµ£¬·ñÔò
-		 * »áÔì³É¿ÕÖ¸ÕëÒì³£¡£ÕâÊ±ºòmapµÄ¹¤×÷½áÊøÁË<thingsid£¬bean>Òª×¢ÒâĞòÁĞ»¯¡£
-		 * 4.ÕâÊ±ºòÒòÎªmap¶ËÊä³öµÄkeyÊÇtingsId£¬ËùÒÔ´«ÈëreduceµÄÊı¾İÒÑ¾­°ïÎÒÃÇ½øĞĞºÏ²¢ÁË
-		 * ÀıÈçÒÔÏÂĞÎÊ½£º<thingsId£¬[orderBean1£¬orderBean2£¬thingsBean]>
-		 * Òª½«µü´úÆ÷ÖĞµÄÊı¾İ½øĞĞ²ğ·Ö³ÉÈçÏÂĞÎÊ½£ºthingsBanÓë[orderBean1£¬orderBean2]£¬ÎÒÃÇÖ»ĞèÒª¶ÔorderBeanµÄ¼¯ºÏ½øĞĞÑ­»·£¬½«orderBean
-		 * È±ÉÙµÄÉÌÆ·ĞÅÏ¢Í¨¹ıthingsBean²»È«£¬Õâ¾ÍµÃµ½ÁËÎÒÃÇÏëÒªµÄÍêÕûµÄjoinÖ®ºóµÄÊı¾İÁË£¬È»ºó¾Í¿ÉÒÔÊä³öÁË¡£ÒòÎªÎÒÃÇÒªÊ¹ÓÃµÄÊı¾İ
-		 * À´×Ôµü´úÆ÷£¬ËùÒÔÎÒÃÇÄÃ³öÀ´Ê¹ÓÃ£¬Òª½øĞĞÉî¿½±´¡£
+		* reduce ç«¯join
+		* 1. æ–‡ä»¶æ ¼å¼è¦æ³¨æ„,å¦åˆ™æœ‰ä¹±ç ï¼Œå¯ä»¥è‡ªå·±å¤„ç†,String string = new String(value.getBytes(), "GBK");
+		* 2.åˆ›å»ºä¸€ä¸ªæ¥å—å®Œæ•´çš„bean(æŠ€èƒ½å­˜æ”¾è®¢å•ä¿¡æ¯ï¼Œåˆèƒ½å­˜æ”¾å•†å“ä¿¡æ¯)
+		* 3.åœ¨mapç«¯æ¥å—ä¸åŒæ–‡ä»¶çš„æ•°æ®,æ ¹æ®æ˜¯å“ªå„¿ä¸ªæ–‡ä»¶,åƒå®Œæ•´çš„beanå½“ä¸­è®¾ç½®ä¸Šå¯¹åº”çš„ä¿¡æ¯.æ²¡æœ‰çš„ä¹Ÿä¸è¦æ˜¯null,è¦è®¾ç½®é»˜è®¤å€¼,å¦åˆ™
+		* ä¼šé€ æˆç©ºæŒ‡é’ˆå¼‚å¸¸.è¿™æ—¶å€™mapçš„å·¥ä½œç»“æŸäº†<thingsidï¼Œbean>è¦æ³¨æ„åºåˆ—åŒ–.
+		* 4.è¿™æ—¶å€™å› ä¸ºmapç«¯è¾“å‡ºçš„keyæ˜¯tingsId,æ‰€ä»¥ä¼ å…¥reduceçš„æ•°æ®å·²ç»å¸®æˆ‘ä»¬è¿›è¡Œåˆå¹¶äº†
+		* ä¾‹å¦‚ä»¥ä¸‹å½¢å¼:<thingsIdï¼Œ[orderBean1,orderBean2,thingsBean]>
+		* è¦å°†è¿­ä»£å™¨ä¸­çš„æ•°æ®è¿›è¡Œæ‹†åˆ†æˆå¦‚ä¸‹å½¢å¼:thingsBanä¸[orderBean1,orderBean2],æˆ‘ä»¬åªéœ€è¦å¯¹orderBeançš„é›†åˆè¿›è¡Œå¾ªç¯,å°†orderBean
+		* ç¼ºå°‘çš„å•†å“ä¿¡æ¯é€šè¿‡thingsBeanä¸å…¨,è¿™å°±å¾—åˆ°äº†æˆ‘ä»¬æƒ³è¦çš„å®Œæ•´çš„joinä¹‹åçš„æ•°æ®äº†,ç„¶åå°±å¯ä»¥è¾“å‡ºäº†.å› ä¸ºæˆ‘ä»¬è¦ä½¿ç”¨çš„æ•°æ®
+		* æ¥è‡ªè¿­ä»£å™¨,æ‰€ä»¥æˆ‘ä»¬æ‹¿å‡ºæ¥ä½¿ç”¨,è¦è¿›è¡Œæ·±æ‹·è´.
 		 */
 		  Configuration conf = new Configuration();
 		  String[] otherArgs = new GenericOptionsParser(conf, args).getRemainingArgs();
@@ -299,24 +299,24 @@ public class ReduceJoinTest {
 }
 ```
 
-###  map¶Ëjoin
-ÀûÓÃµÄmapperÀàÖĞsetup·½·¨Ö»Ö´ĞĞÒ»´ÎµÄÌØĞÔ.
+###  mapç«¯join
+åˆ©ç”¨çš„mapperç±»ä¸­setupæ–¹æ³•åªæ‰§è¡Œä¸€æ¬¡çš„ç‰¹æ€§.
 
 ```
 /*
-* map¶Ëjoin
-* Ö÷±í£ºorders.txt ´Ó±í£ºthings.txt
-* Ö÷±íÕı³£map´¦Àí£¬´Ó±íÒÔ»º´æÎÄ¼şµÄĞÎÊ½¶ÁÈë£¬¼ÓÈëµ½jobÖĞ
-* Ö÷±íÊı¾İÔÚmapÖĞ´¦ÀíÖ®ºó£¬¾ÍÊÇÈ±ÉÙ´Ó±íÊı¾İµÄÍêÕûĞÔ¡£
-* ¾ÍĞèÒª¶Ô´æ·ÅÁËÖ÷±íÊı¾İµÄÍêÕû¶ÔÏó£¬ÉèÖÃÉÏÈ±Ê§µÄ´Ó±íÊı¾İ
-* ´Ó±íÊı¾İ´Ó-¡·setup()Õâ¸ö»áÔÚÑ­»·µ÷ÓÃmapÇ°Ö»Ö´ĞĞÒ»´ÎµÄ·½·¨
-* À´¶ÔÎÒÃÇµÄ»º´æÎÄ¼ş½øĞĞ¼ÓÔØ¡£½«½âÎöºóµÄÒ»¸öÒ»¸ö´¢´æÁËÉÌÆ·ĞÅÏ¢µÄ¶ÔÏóÒÔ<ÉÌÆ·ID£¬ÉÌÆ·¶ÔÏó>ĞÎÊ½¼ÓÈëmapÖĞ£¬·½±ãÎÒÃÇÊ¹ÓÃ¡£
-* ÕâÑùÔÚmapÖĞ£¬ÎÒÃÇÍ¨¹ımap.get(key)¾Íµ±ÄÜÈ¡µ½µ±Ç°Õâ¸ö¶©µ¥Ëù¶ÔÓ¦µÄÉÌÆ·ÁË£¬½ø¸³ÖµºÍĞ´Èë¾Í¿ÉÒÔÁË¡£
+* mapç«¯join
+* ä¸»è¡¨:orders.txt ä»è¡¨:things.txt
+* ä¸»è¡¨æ­£å¸¸mapå¤„ç†,ä»è¡¨ä»¥ç¼“å­˜æ–‡ä»¶çš„å½¢å¼è¯»å…¥,åŠ å…¥åˆ°jobä¸­
+* ä¸»è¡¨æ•°æ®åœ¨mapä¸­å¤„ç†ä¹‹å,å°±æ˜¯ç¼ºå°‘ä»è¡¨æ•°æ®çš„å®Œæ•´æ€§.
+* å°±éœ€è¦å¯¹å­˜æ”¾äº†ä¸»è¡¨æ•°æ®çš„å®Œæ•´å¯¹è±¡,è®¾ç½®ä¸Šç¼ºå¤±çš„ä»è¡¨æ•°æ®
+* ä»è¡¨æ•°æ®ä»--->setup()è¿™ä¸ªä¼šåœ¨å¾ªç¯è°ƒç”¨mapå‰åªæ‰§è¡Œä¸€æ¬¡çš„æ–¹æ³•
+* æ¥å¯¹æˆ‘ä»¬çš„ç¼“å­˜æ–‡ä»¶è¿›è¡ŒåŠ è½½.å°†è§£æåçš„ä¸€ä¸ªä¸€ä¸ªå‚¨å­˜äº†å•†å“ä¿¡æ¯çš„å¯¹è±¡ä»¥<å•†å“ID,å•†å“å¯¹è±¡>å½¢å¼åŠ å…¥mapä¸­,æ–¹ä¾¿æˆ‘ä»¬ä½¿ç”¨.
+* è¿™æ ·åœ¨mapä¸­,æˆ‘ä»¬é€šè¿‡map.get(key)å°±å½“èƒ½å–åˆ°å½“å‰è¿™ä¸ªè®¢å•æ‰€å¯¹åº”çš„å•†å“äº†,è¿›èµ‹å€¼å’Œå†™å…¥å°±å¯ä»¥äº†.
 * 
 */
 ```
 
-BeanÀà
+Beanç±»
 ```
 package com.lanou.model;
 import java.io.DataInput;
@@ -379,7 +379,7 @@ public class OrderInfo implements WritableComparable<OrderInfo> {
 }
 ```
 
-mapÀà
+mapç±»
 ```
 package com.lanou.until;
 
@@ -402,25 +402,25 @@ public class MapJoinMapper extends Mapper<Object, Text, Text, MapJoinBean> {
 	private Map<String, MapJoinBean> containMap = new HashMap<>();
 	
 	
-	// map»áÑ­»·Ö´ĞĞ
+	// mapä¼šå¾ªç¯æ‰§è¡Œ
 	@Override
 	protected void map(Object key, Text value, Mapper<Object, Text, Text, MapJoinBean>.Context context)
 			throws IOException, InterruptedException {
 	//FileInputStream fileInputStream	= new FileInputStream("things.txt");
 		String[] vals = value.toString().split("\\s+");
-		// Ö»ÓĞ¶©µ¥ĞÅÏ¢
+		// åªæœ‰è®¢å•ä¿¡æ¯
 		mapJoinBean.setOrder(vals[0], vals[2], vals[3]);
-		// ¸ù¾İ¶©µ¥ÖĞµÄÉÌÆ·ĞÅÏ¢£¬À´ÕÒµ½ÈİÆ÷ÖĞ¶ÔÓ¦µÄÉÌÆ·¶ÔÏó£¬½øĞĞÊı¾İÌî³ä¡£
+		// æ ¹æ®è®¢å•ä¸­çš„å•†å“ä¿¡æ¯,æ¥æ‰¾åˆ°å®¹å™¨ä¸­å¯¹åº”çš„å•†å“å¯¹è±¡,è¿›è¡Œæ•°æ®å¡«å…….
 		MapJoinBean thingsBean = containMap.get(mapJoinBean.getThingsId());
 		
-		// ½«ÎÒÃÇ¶©µ¥¶ÔÏóÈ±ÉÙµÄÉÌÆ·ÊôĞÔ½øĞĞ¸³Öµ
+		// å°†æˆ‘ä»¬è®¢å•å¯¹è±¡ç¼ºå°‘çš„å•†å“å±æ€§è¿›è¡Œèµ‹å€¼
 		mapJoinBean.setThings(thingsBean.getThingsName(), thingsBean.getStockCount());
 		
 		keyText.set(mapJoinBean.getThingsId());
 		context.write(keyText, mapJoinBean);
 	}
 	
-	// ÔÚmapÖ®Ç°Ö»ÔËĞĞÒ»´Î
+	// åœ¨mapä¹‹å‰åªè¿è¡Œä¸€æ¬¡
 	@Override
 	protected void setup(Mapper<Object, Text, Text, MapJoinBean>.Context context)
 			throws IOException, InterruptedException {
@@ -429,16 +429,16 @@ public class MapJoinMapper extends Mapper<Object, Text, Text, MapJoinBean> {
 		FileInputStream fileInputStream	= new FileInputStream("things.txt");
 		BufferedReader br = new BufferedReader(new InputStreamReader(fileInputStream, "UTF-8"));
 		String line = "";
-		// ¶¨ÒåÒ»¸öÈİÆ÷£¬À´´æ´¢ËùÓĞ½âÎö³öÀ´µÄÉÌÆ· ¶ÔÏó -¡·map
+		// å®šä¹‰ä¸€ä¸ªå®¹å™¨,æ¥å­˜å‚¨æ‰€æœ‰è§£æå‡ºæ¥çš„å•†å“ å¯¹è±¡ --->map
 		while (!StringUtils.isEmpty(line = br.readLine())) {
-			// »ñÈ¡µÄÉÌÆ·ĞÅÏ¢
+			// è·å–çš„å•†å“ä¿¡æ¯
 			System.out.println("line:" + line);
 			String[] things = line.split("\\s+");
-			// ´´½¨ÉÌÆ·¶ÔÏó
+			// åˆ›å»ºå•†å“å¯¹è±¡
 			MapJoinBean thingsBean = new MapJoinBean();
-			// ¸ø¶ÔÏó¸³Öµ
+			// ç»™å¯¹è±¡èµ‹å€¼
 			thingsBean.setThings(things[0], things[1], Integer.parseInt(things[2]));
-			// ÉÌÆ·id£¬ÉÌÆ·¶ÔÏóµÄĞÎÊ½´æÔÚmapÖĞ
+			// å•†å“id,å•†å“å¯¹è±¡çš„å½¢å¼å­˜åœ¨mapä¸­
 			containMap.put(thingsBean.getThingsId(), thingsBean);
 
 		}
@@ -447,7 +447,7 @@ public class MapJoinMapper extends Mapper<Object, Text, Text, MapJoinBean> {
 }
 ```
 
-reduceÀà
+reduceç±»
 ```
 package com.lanou.until;
 
@@ -473,7 +473,7 @@ public class MaxOrderReduce extends Reducer<OrderInfo, NullWritable, OrderInfo, 
 }
 ```
 
-mainº¯Êı
+mainå‡½æ•°
 ```
 package com.lanou.test;
 
@@ -494,14 +494,14 @@ import com.lanou.until.MapJoinMapper;
 
 public class MapJoinTest {
 	/*
-	 * map¶Ëjoin
-	 * Ö÷±í£ºorders.txt ´Ó±í£ºthings.txt
-	 * Ö÷±íÕı³£map´¦Àí£¬´Ó±íÒÔ»º´æÎÄ¼şµÄĞÎÊ½¶ÁÈë£¬¼ÓÈëµ½jobÖĞ
-	 * Ö÷±íÊı¾İÔÚmapÖĞ´¦ÀíÖ®ºó£¬¾ÍÊÇÈ±ÉÙ´Ó±íÊı¾İµÄÍêÕûĞÔ¡£
-	 * ¾ÍĞèÒª¶Ô´æ·ÅÁËÖ÷±íÊı¾İµÄÍêÕû¶ÔÏó£¬ÉèÖÃÉÏÈ±Ê§µÄ´Ó±íÊı¾İ
-	 * ´Ó±íÊı¾İ´Ó-¡·setup()Õâ¸ö»áÔÚÑ­»·µ÷ÓÃmapÇ°Ö»Ö´ĞĞÒ»´ÎµÄ·½·¨
-	 * À´¶ÔÎÒÃÇµÄ»º´æÎÄ¼ş½øĞĞ¼ÓÔØ¡£½«½âÎöºóµÄÒ»¸öÒ»¸ö´¢´æÁËÉÌÆ·ĞÅÏ¢µÄ¶ÔÏóÒÔ<ÉÌÆ·ID£¬ÉÌÆ·¶ÔÏó>ĞÎÊ½¼ÓÈëmapÖĞ£¬·½±ãÎÒÃÇÊ¹ÓÃ¡£
-	 * ÕâÑùÔÚmapÖĞ£¬ÎÒÃÇÍ¨¹ımap.get(key)¾Íµ±ÄÜÈ¡µ½µ±Ç°Õâ¸ö¶©µ¥Ëù¶ÔÓ¦µÄÉÌÆ·ÁË£¬½ø¸³ÖµºÍĞ´Èë¾Í¿ÉÒÔÁË¡£
+	 * mapç«¯join
+	 * ä¸»è¡¨:orders.txt ä»è¡¨:things.txt
+	 * ä¸»è¡¨æ­£å¸¸mapå¤„ç†,ä»è¡¨ä»¥ç¼“å­˜æ–‡ä»¶çš„å½¢å¼è¯»å…¥,åŠ å…¥åˆ°jobä¸­
+	 * ä¸»è¡¨æ•°æ®åœ¨mapä¸­å¤„ç†ä¹‹å,å°±æ˜¯ç¼ºå°‘ä»è¡¨æ•°æ®çš„å®Œæ•´æ€§.
+	 * å°±éœ€è¦å¯¹å­˜æ”¾äº†ä¸»è¡¨æ•°æ®çš„å®Œæ•´å¯¹è±¡,è®¾ç½®ä¸Šç¼ºå¤±çš„ä»è¡¨æ•°æ®
+	 * ä»è¡¨æ•°æ®ä»--->setup()è¿™ä¸ªä¼šåœ¨å¾ªç¯è°ƒç”¨mapå‰åªæ‰§è¡Œä¸€æ¬¡çš„æ–¹æ³•
+	 * æ¥å¯¹æˆ‘ä»¬çš„ç¼“å­˜æ–‡ä»¶è¿›è¡ŒåŠ è½½.å°†è§£æåçš„ä¸€ä¸ªä¸€ä¸ªå‚¨å­˜äº†å•†å“ä¿¡æ¯çš„å¯¹è±¡ä»¥<å•†å“ID,å•†å“å¯¹è±¡>å½¢å¼åŠ å…¥mapä¸­,æ–¹ä¾¿æˆ‘ä»¬ä½¿ç”¨.
+	 * è¿™æ ·åœ¨mapä¸­,æˆ‘ä»¬é€šè¿‡map.get(key)å°±å½“èƒ½å–åˆ°å½“å‰è¿™ä¸ªè®¢å•æ‰€å¯¹åº”çš„å•†å“äº†,è¿›èµ‹å€¼å’Œå†™å…¥å°±å¯ä»¥äº†.
 	 * 
 	 */
 	public static void main(String[] args) throws IOException, ClassNotFoundException, InterruptedException, URISyntaxException {
@@ -519,7 +519,7 @@ public class MapJoinTest {
 		    job.setOutputKeyClass(Text.class);
 		    job.setOutputValueClass(Text.class);
 		    
-		    // Ìí¼Ó»º´æÎÄ¼ş
+		    // æ·»åŠ ç¼“å­˜æ–‡ä»¶
 		    job.addCacheFile(new URI("hdfs://172.18.24.28:9000/list/things.txt"));
 		    
 		    for (int i = 0; i < otherArgs.length - 1; i++) {
@@ -533,28 +533,28 @@ public class MapJoinTest {
 
 }
 ```
-### Í¨¹ıÉèÖÃGroupingComparator»ñÈ¡ÏàÍ¬¶©µ¥ºÅÖĞµÄ×î´ó½ğ¶î¶©µ¥
-BeanÀàºÍÉÏÒ»¸öÒ»Ñù
+### é€šè¿‡è®¾ç½®GroupingComparatorè·å–ç›¸åŒè®¢å•å·ä¸­çš„æœ€å¤§é‡‘é¢è®¢å•
+Beanç±»å’Œä¸Šä¸€ä¸ªä¸€æ ·
 ```
 /*
- * ·Ö×é - GroupingComparator
- * 1.Òª´´½¨ºÃ×Ô¶¨ÒåµÄ·Ö×éÂß¼­Àà
- * 1.1´´½¨Ò»¸ö¹¹Ôìº¯ÊıÔÚÄÚ²¿µ÷ÓÃsuper£¨Òª½øĞĞ·Ö×é±È½ÏµÄÀà£©
- * 1.2×¢ÒâÕâÀïÒª½øĞĞ±È½ÏµÄÀà±ØĞëÈ¥ÊµÏÖComparable½Ó¿Ú
- * ÒòÎªÎÒÃÇ·Ö×é±È½ÏÔÚsortÅÅĞòÖ®ºó£¬¶øÇÒÖ»ÄÜ¶ÔÏàÁÚµÄ¶ÔÏó½øĞĞ±È½Ï¡£ËùÒÔÒªÔÚÊµÌåÀàµÄcompareTo·½·¨ÖĞ£¬
- * ½«Òª½øĞĞ·Ö×éµÄÌõ¼ş×÷ÎªÎÒÃÇÅÅĞòµÄµÚÒ»ÒªËØ¡£Ö»ÒªÕâÑù²ÅÄÜ±£Ö¤ÏàÍ¬µÄÊôĞÔÏàÁÚ¡£Èç¹ûÏëÒªÅÅĞò£¬´ÓµÚ¶şÒªËØ¿ªÊ¼ÅÅ
- * 1.3¸ù¾İÎÒÃÇÒª½øĞĞ·Ö×éµÄÂß¼­£¬ÊµÏÖ³éÏó·½·¨
+ * åˆ†ç»„ - GroupingComparator
+ * 1.è¦åˆ›å»ºå¥½è‡ªå®šä¹‰çš„åˆ†ç»„é€»è¾‘ç±»
+ * 1.1åˆ›å»ºä¸€ä¸ªæ„é€ å‡½æ•°åœ¨å†…éƒ¨è°ƒç”¨super(è¦è¿›è¡Œåˆ†ç»„æ¯”è¾ƒçš„ç±»)
+ * 1.2æ³¨æ„è¿™é‡Œè¦è¿›è¡Œæ¯”è¾ƒçš„ç±»å¿…é¡»å»å®ç°Comparableæ¥å£
+ * å› ä¸ºæˆ‘ä»¬åˆ†ç»„æ¯”è¾ƒåœ¨sortæ’åºä¹‹å,è€Œä¸”åªèƒ½å¯¹ç›¸é‚»çš„å¯¹è±¡è¿›è¡Œæ¯”è¾ƒ.æ‰€ä»¥è¦åœ¨å®ä½“ç±»çš„compareToæ–¹æ³•ä¸­,
+ * å°†è¦è¿›è¡Œåˆ†ç»„çš„æ¡ä»¶ä½œä¸ºæˆ‘ä»¬æ’åºçš„ç¬¬ä¸€è¦ç´ .åªè¦è¿™æ ·æ‰èƒ½ä¿è¯ç›¸åŒçš„å±æ€§ç›¸é‚».å¦‚æœæƒ³è¦æ’åº,ä»ç¬¬äºŒè¦ç´ å¼€å§‹æ’
+ * 1.3æ ¹æ®æˆ‘ä»¬è¦è¿›è¡Œåˆ†ç»„çš„é€»è¾‘,å®ç°æŠ½è±¡æ–¹æ³•
  * public int compare(WritableComparable a, WritableComparable b)
- * ¶ÔÏàÁÚµÄÁ½¸ö¶ÔÏó½øĞĞ±È½Ï£¬Èç¹û·µ»Ø0£¬¾Í»áÈÏÎªÊÇ¸Ã½øÒ»¸öreduce
- * µ«ÊÇ²»»á£»Á¢¼´µ÷ÓÃreduce£¬»á¼ÌĞø½øĞĞÏÂÒ»ÂÖ±È½Ï¡£ÀıÈç£º1.getOrderId = 2.getOrderId£¿£¬2.getOrderId = 3.getOrderId
- * Ö±µ½±È½Ï½á¹û²¿Î»0ÁË£¬ÖªµÀ²»ÊÇÒ»¸öreduceÁË£¬ÕâÊ±½«ËùÓĞÏàÍ¬µÄ·ÅÈëÒ»¸öreduceÖĞ£¬Èç¹ûÏëÔÚreduceµ±ÖĞ»ñÈ¡µ½ÕâĞ©±»ÈÏÎª
- * ¸Ã½øÈëÒ»×éµÄbean£¬Ö»ÒªÑ­»·µü´úÆ÷£¬ÔÚµü´úÆ÷ÖĞµÄkey¾ÍÊÇÃ¿Ò»¸öbean¡£
- * µ±Ò»¸öreduceÖ´ĞĞÍê£¬»á¼ÌĞøÖ´ĞĞÎÒÃÇµÄ·Ö×é±È½Ï£¬Óöµ½²»Í¬µÄ£¬ÔÚÖ´ĞĞreduce£¬´Ó¶øĞÎ³ÉÒ»¸öÑ­»·£¬Ò»Ö±µ½ÎÒÃÇreduceÔËĞĞ½áÊø¡£
+ * å¯¹ç›¸é‚»çš„ä¸¤ä¸ªå¯¹è±¡è¿›è¡Œæ¯”è¾ƒ,å¦‚æœè¿”å›0,å°±ä¼šè®¤ä¸ºæ˜¯è¯¥è¿›ä¸€ä¸ªreduce
+ * ä½†æ˜¯ä¸ä¼š;ç«‹å³è°ƒç”¨reduce,ä¼šç»§ç»­è¿›è¡Œä¸‹ä¸€è½®æ¯”è¾ƒ.ä¾‹å¦‚:1.getOrderId = 2.getOrderId?,2.getOrderId = 3.getOrderId
+ * ç›´åˆ°æ¯”è¾ƒç»“æœéƒ¨ä½0äº†,çŸ¥é“ä¸æ˜¯ä¸€ä¸ªreduceäº†,è¿™æ—¶å°†æ‰€æœ‰ç›¸åŒçš„æ”¾å…¥ä¸€ä¸ªreduceä¸­,å¦‚æœæƒ³åœ¨reduceå½“ä¸­è·å–åˆ°è¿™äº›è¢«è®¤ä¸º
+ * è¯¥è¿›å…¥ä¸€ç»„çš„bean,åªè¦å¾ªç¯è¿­ä»£å™¨,åœ¨è¿­ä»£å™¨ä¸­çš„keyå°±æ˜¯æ¯ä¸€ä¸ªbean.
+ * å½“ä¸€ä¸ªreduceæ‰§è¡Œå®Œ,ä¼šç»§ç»­æ‰§è¡Œæˆ‘ä»¬çš„åˆ†ç»„æ¯”è¾ƒ,é‡åˆ°ä¸åŒçš„,åœ¨æ‰§è¡Œreduce,ä»è€Œå½¢æˆä¸€ä¸ªå¾ªç¯,ä¸€ç›´åˆ°æˆ‘ä»¬reduceè¿è¡Œç»“æŸ.
  * 
  */
 ```
 
-mapperÀà
+mapperç±»
 ```
 package com.lanou.until;
 
@@ -581,7 +581,7 @@ public class MaxOrderMapper extends Mapper<Object, Text, OrderInfo, NullWritable
 }
 ```
 
-ReduceÀà
+Reduceç±»
 ```
 package com.lanou.until;
 
@@ -607,7 +607,7 @@ public class MaxOrderReduce extends Reducer<OrderInfo, NullWritable, OrderInfo, 
 }
 ```
 
-TestÀà
+Testç±»
 ```
 package com.lanou.test;
 
@@ -626,20 +626,19 @@ import com.lanou.until.GroupByOrderCompartor;
 import com.lanou.until.MaxOrderMapper;
 import com.lanou.until.MaxOrderReduce;
 /*
- * ·Ö×é - GroupingComparator
- * 1.Òª´´½¨ºÃ×Ô¶¨ÒåµÄ·Ö×éÂß¼­Àà
- * 1.1´´½¨Ò»¸ö¹¹Ôìº¯ÊıÔÚÄÚ²¿µ÷ÓÃsuper£¨Òª½øĞĞ·Ö×é±È½ÏµÄÀà£©
- * 1.2×¢ÒâÕâÀïÒª½øĞĞ±È½ÏµÄÀà±ØĞëÈ¥ÊµÏÖComparable½Ó¿Ú
- * ÒòÎªÎÒÃÇ·Ö×é±È½ÏÔÚsortÅÅĞòÖ®ºó£¬¶øÇÒÖ»ÄÜ¶ÔÏàÁÚµÄ¶ÔÏó½øĞĞ±È½Ï¡£ËùÒÔÒªÔÚÊµÌåÀàµÄcompareTo·½·¨ÖĞ£¬
- * ½«Òª½øĞĞ·Ö×éµÄÌõ¼ş×÷ÎªÎÒÃÇÅÅĞòµÄµÚÒ»ÒªËØ¡£Ö»ÒªÕâÑù²ÅÄÜ±£Ö¤ÏàÍ¬µÄÊôĞÔÏàÁÚ¡£Èç¹ûÏëÒªÅÅĞò£¬´ÓµÚ¶şÒªËØ¿ªÊ¼ÅÅ
- * 1.3¸ù¾İÎÒÃÇÒª½øĞĞ·Ö×éµÄÂß¼­£¬ÊµÏÖ³éÏó·½·¨
+  * åˆ†ç»„ - GroupingComparator
+ * 1.è¦åˆ›å»ºå¥½è‡ªå®šä¹‰çš„åˆ†ç»„é€»è¾‘ç±»
+ * 1.1åˆ›å»ºä¸€ä¸ªæ„é€ å‡½æ•°åœ¨å†…éƒ¨è°ƒç”¨super(è¦è¿›è¡Œåˆ†ç»„æ¯”è¾ƒçš„ç±»)
+ * 1.2æ³¨æ„è¿™é‡Œè¦è¿›è¡Œæ¯”è¾ƒçš„ç±»å¿…é¡»å»å®ç°Comparableæ¥å£
+ * å› ä¸ºæˆ‘ä»¬åˆ†ç»„æ¯”è¾ƒåœ¨sortæ’åºä¹‹å,è€Œä¸”åªèƒ½å¯¹ç›¸é‚»çš„å¯¹è±¡è¿›è¡Œæ¯”è¾ƒ.æ‰€ä»¥è¦åœ¨å®ä½“ç±»çš„compareToæ–¹æ³•ä¸­,
+ * å°†è¦è¿›è¡Œåˆ†ç»„çš„æ¡ä»¶ä½œä¸ºæˆ‘ä»¬æ’åºçš„ç¬¬ä¸€è¦ç´ .åªè¦è¿™æ ·æ‰èƒ½ä¿è¯ç›¸åŒçš„å±æ€§ç›¸é‚».å¦‚æœæƒ³è¦æ’åº,ä»ç¬¬äºŒè¦ç´ å¼€å§‹æ’
+ * 1.3æ ¹æ®æˆ‘ä»¬è¦è¿›è¡Œåˆ†ç»„çš„é€»è¾‘,å®ç°æŠ½è±¡æ–¹æ³•
  * public int compare(WritableComparable a, WritableComparable b)
- * ¶ÔÏàÁÚµÄÁ½¸ö¶ÔÏó½øĞĞ±È½Ï£¬Èç¹û·µ»Ø0£¬¾Í»áÈÏÎªÊÇ¸Ã½øÒ»¸öreduce
- * µ«ÊÇ²»»á£»Á¢¼´µ÷ÓÃreduce£¬»á¼ÌĞø½øĞĞÏÂÒ»ÂÖ±È½Ï¡£ÀıÈç£º1.getOrderId = 2.getOrderId£¿£¬2.getOrderId = 3.getOrderId
- * Ö±µ½±È½Ï½á¹û²¿Î»0ÁË£¬ÖªµÀ²»ÊÇÒ»¸öreduceÁË£¬ÕâÊ±½«ËùÓĞÏàÍ¬µÄ·ÅÈëÒ»¸öreduceÖĞ£¬Èç¹ûÏëÔÚreduceµ±ÖĞ»ñÈ¡µ½ÕâĞ©±»ÈÏÎª
- * ¸Ã½øÈëÒ»×éµÄbean£¬Ö»ÒªÑ­»·µü´úÆ÷£¬ÔÚµü´úÆ÷ÖĞµÄkey¾ÍÊÇÃ¿Ò»¸öbean¡£
- * µ±Ò»¸öreduceÖ´ĞĞÍê£¬»á¼ÌĞøÖ´ĞĞÎÒÃÇµÄ·Ö×é±È½Ï£¬Óöµ½²»Í¬µÄ£¬ÔÚÖ´ĞĞreduce£¬´Ó¶øĞÎ³ÉÒ»¸öÑ­»·£¬Ò»Ö±µ½ÎÒÃÇreduceÔËĞĞ½áÊø¡£
- * 
+ * å¯¹ç›¸é‚»çš„ä¸¤ä¸ªå¯¹è±¡è¿›è¡Œæ¯”è¾ƒ,å¦‚æœè¿”å›0,å°±ä¼šè®¤ä¸ºæ˜¯è¯¥è¿›ä¸€ä¸ªreduce
+ * ä½†æ˜¯ä¸ä¼š;ç«‹å³è°ƒç”¨reduce,ä¼šç»§ç»­è¿›è¡Œä¸‹ä¸€è½®æ¯”è¾ƒ.ä¾‹å¦‚:1.getOrderId = 2.getOrderId?,2.getOrderId = 3.getOrderId
+ * ç›´åˆ°æ¯”è¾ƒç»“æœéƒ¨ä½0äº†,çŸ¥é“ä¸æ˜¯ä¸€ä¸ªreduceäº†,è¿™æ—¶å°†æ‰€æœ‰ç›¸åŒçš„æ”¾å…¥ä¸€ä¸ªreduceä¸­,å¦‚æœæƒ³åœ¨reduceå½“ä¸­è·å–åˆ°è¿™äº›è¢«è®¤ä¸º
+ * è¯¥è¿›å…¥ä¸€ç»„çš„bean,åªè¦å¾ªç¯è¿­ä»£å™¨,åœ¨è¿­ä»£å™¨ä¸­çš„keyå°±æ˜¯æ¯ä¸€ä¸ªbean.
+ * å½“ä¸€ä¸ªreduceæ‰§è¡Œå®Œ,ä¼šç»§ç»­æ‰§è¡Œæˆ‘ä»¬çš„åˆ†ç»„æ¯”è¾ƒ,é‡åˆ°ä¸åŒçš„,åœ¨æ‰§è¡Œreduce,ä»è€Œå½¢æˆä¸€ä¸ªå¾ªç¯,ä¸€ç›´åˆ°æˆ‘ä»¬reduceè¿è¡Œç»“æŸ.
  */
 public class MaxOrderTest {
 	public static void main(String[] args) throws IOException, ClassNotFoundException, InterruptedException {
@@ -670,8 +669,8 @@ public class MaxOrderTest {
 }
 ```
 
-### ÀûÓÃ»º³åÎÄ¼şÊµÏÖReduce_Join
-ÊµÌåÀà
+### åˆ©ç”¨ç¼“å†²æ–‡ä»¶å®ç°Reduce_Join
+å®ä½“ç±»
 ```
 package com.lanou.model;
 
@@ -682,11 +681,11 @@ import java.io.IOException;
 import org.apache.hadoop.io.WritableComparable;
 
 public class MapJoinBean implements WritableComparable<MapJoinBean> {
-	private int orderId;// ¶©µ¥ID
-	private int count;// ¶©µ¥¹ºÂòÊıÁ¿
-	private int stockCount;// ÉÌÆ·¿â´æ
-	private String thingsId;// ÉÌÆ·ID
-	private String thingsName;// ÉÌÆ·Ãû³Æ
+	private int orderId;// è®¢å•ID
+	private int count;// è®¢å•è´­ä¹°æ•°é‡
+	private int stockCount;// å•†å“åº“å­˜
+	private String thingsId;// å•†å“ID
+	private String thingsName;// å•†å“åç§°
 	
 	public void setOrder(String orderId, String thingsId, String count) {
 		this.thingsId = thingsId;
@@ -703,8 +702,8 @@ public class MapJoinBean implements WritableComparable<MapJoinBean> {
 		this.thingsId = thingsId;
 		this.thingsName = thingsName;
 		this.stockCount = stockCount;
-		// Ã»»ñÈ¡µ½µÄÊı¾İÒ²²»ÒªÒÔnull µÄĞÎÊ½Ğ´Èë£¬
-//		// ·ñÔò½øÈëreduceµÄÊ±ºò¾Í»á¿ÕÖ¸ÕëÒì³£¡£
+		// æ²¡è·å–åˆ°çš„æ•°æ®ä¹Ÿä¸è¦ä»¥null çš„å½¢å¼å†™å…¥,
+//		// å¦åˆ™è¿›å…¥reduceçš„æ—¶å€™å°±ä¼šç©ºæŒ‡é’ˆå¼‚å¸¸.
 //		this.orderId = 0;
 //		this.stockCount = 0;
 	}
@@ -789,7 +788,7 @@ public class MapJoinBean implements WritableComparable<MapJoinBean> {
 }
 ```
 
-mapperÀà
+mapperç±»
 ```
 package com.lanou.until;
 
@@ -813,25 +812,25 @@ public class JoinMapper extends Mapper<Object, Text, MapJoinBean, NullWritable> 
 	private MapJoinBean mapJoinBean = new MapJoinBean();
 	private Map<String, MapJoinBean> containMap = new HashMap<>();
 
-	// map»áÑ­»·Ö´ĞĞ
+	// mapä¼šå¾ªç¯æ‰§è¡Œ
 	@Override
 	protected void map(Object key, Text value, Mapper<Object, Text, MapJoinBean, NullWritable>.Context context)
 			throws IOException, InterruptedException {
 		// FileInputStream fileInputStream = new FileInputStream("things.txt");
 		String[] vals = value.toString().split("\\s+");
-		// Ö»ÓĞ¶©µ¥ĞÅÏ¢
+		// åªæœ‰è®¢å•ä¿¡æ¯
 		mapJoinBean.setOrder(vals[0], vals[2], vals[3]);
-		// ¸ù¾İ¶©µ¥ÖĞµÄÉÌÆ·ĞÅÏ¢£¬À´ÕÒµ½ÈİÆ÷ÖĞ¶ÔÓ¦µÄÉÌÆ·¶ÔÏó£¬½øĞĞÊı¾İÌî³ä¡£
+		// æ ¹æ®è®¢å•ä¸­çš„å•†å“ä¿¡æ¯,æ¥æ‰¾åˆ°å®¹å™¨ä¸­å¯¹åº”çš„å•†å“å¯¹è±¡,è¿›è¡Œæ•°æ®å¡«å…….
 		MapJoinBean thingsBean = containMap.get(mapJoinBean.getThingsId());
 
-		// ½«ÎÒÃÇ¶©µ¥¶ÔÏóÈ±ÉÙµÄÉÌÆ·ÊôĞÔ½øĞĞ¸³Öµ
+		// å°†æˆ‘ä»¬è®¢å•å¯¹è±¡ç¼ºå°‘çš„å•†å“å±æ€§è¿›è¡Œèµ‹å€¼
 		mapJoinBean.setThings(thingsBean.getThingsName(), thingsBean.getStockCount());
 
 		keyText.set(mapJoinBean.getThingsId());
 		context.write(mapJoinBean, NullWritable.get());
 	}
 
-	// ÔÚmapÖ®Ç°Ö»ÔËĞĞÒ»´Î
+	// åœ¨mapä¹‹å‰åªè¿è¡Œä¸€æ¬¡
 	@Override
 	protected void setup(Mapper<Object, Text, MapJoinBean, NullWritable>.Context context)
 			throws IOException, InterruptedException {
@@ -840,16 +839,16 @@ public class JoinMapper extends Mapper<Object, Text, MapJoinBean, NullWritable> 
 		FileInputStream fileInputStream = new FileInputStream("things.txt");
 		BufferedReader br = new BufferedReader(new InputStreamReader(fileInputStream, "UTF-8"));
 		String line = "";
-		// ¶¨ÒåÒ»¸öÈİÆ÷£¬À´´æ´¢ËùÓĞ½âÎö³öÀ´µÄÉÌÆ· ¶ÔÏó -¡·map
+		// å®šä¹‰ä¸€ä¸ªå®¹å™¨,æ¥å­˜å‚¨æ‰€æœ‰è§£æå‡ºæ¥çš„å•†å“ å¯¹è±¡ --->map
 		while (!StringUtils.isEmpty(line = br.readLine())) {
-			// »ñÈ¡µÄÉÌÆ·ĞÅÏ¢
+			// è·å–çš„å•†å“ä¿¡æ¯
 			System.out.println("line:" + line);
 			String[] things = line.split("\\s+");
-			// ´´½¨ÉÌÆ·¶ÔÏó
+			// åˆ›å»ºå•†å“å¯¹è±¡
 			MapJoinBean thingsBean = new MapJoinBean();
-			// ¸ø¶ÔÏó¸³Öµ
+			// ç»™å¯¹è±¡èµ‹å€¼
 			thingsBean.setThings(things[0], things[1], Integer.parseInt(things[2]));
-			// ÉÌÆ·id£¬ÉÌÆ·¶ÔÏóµÄĞÎÊ½´æÔÚmapÖĞ
+			// å•†å“id,å•†å“å¯¹è±¡çš„å½¢å¼å­˜åœ¨mapä¸­
 			containMap.put(thingsBean.getThingsId(), thingsBean);
 
 		}
@@ -858,7 +857,7 @@ public class JoinMapper extends Mapper<Object, Text, MapJoinBean, NullWritable> 
 }
 ```
 
-ReduceÀà
+Reduceç±»
 ```
 package com.lanou.until;
 
@@ -883,7 +882,7 @@ public class JoinReduce extends Reducer<MapJoinBean, NullWritable, MapJoinBean, 
 }
 ```
 
-TestÀà
+Testç±»
 ```
 package com.lanou.test;
 
@@ -919,7 +918,7 @@ public class JinTest {
 		    job.setOutputKeyClass(MapJoinBean.class);
 		    job.setOutputValueClass(NullWritable.class);
 		    
-		    // Ìí¼Ó»º´æÎÄ¼ş
+		    // æ·»åŠ ç¼“å­˜æ–‡ä»¶
 		    job.addCacheFile(new URI("hdfs://172.18.24.28:9000/list/things.txt"));
 		    
 		    for (int i = 0; i < otherArgs.length - 1; i++) {
