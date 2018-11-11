@@ -40,7 +40,7 @@
 	@Test
 	// 将所有block块内容下载下来
 	public void getBlocks() throws FileNotFoundException, IllegalArgumentException, IOException {
-		// 通过fileSystem的listFiles方法可以自动实现递归(自带递归)列出文件类型，返回的是一个远程可迭代对象,需要传入两个参数，第一个参数是服务器路径，第二个参数是否递归
+		// 通过fileSystem的listFiles方法可以自动实现递归(自带递归)列出文件类型,返回的是一个远程可迭代对象,需要传入两个参数,第一个参数是服务器路径,第二个参数是否递归
 		RemoteIterator<LocatedFileStatus> listFiles = fileSystem.listFiles(new Path("/list/had.zip"), false);
 		// 用流打开要读取的文件
 		FSDataInputStream open = 
