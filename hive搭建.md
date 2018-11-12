@@ -1,18 +1,19 @@
-### hive»·¾³µÄ´î½¨
-1.ÏÈ°Ñhive½âÑ¹,È»ºóÔÚĞéÄâ»úµÄ/etc/profileÎÄ¼şÖĞÅäÖÃhive»·¾³±äÁ¿.ÅäÖÃºÃºó,¼ÇµÃÔËĞĞ´ËÎÄ¼ş.
+### hiveç¯å¢ƒçš„æ­å»º
+1.å…ˆæŠŠhiveè§£å‹,ç„¶ååœ¨è™šæ‹Ÿæœºçš„/etc/profileæ–‡ä»¶ä¸­é…ç½®hiveç¯å¢ƒå˜é‡.é…ç½®å¥½å,è®°å¾—è¿è¡Œæ­¤æ–‡ä»¶.
+
 ```
-export HIVE_HOME=hive½âÑ¹°üÂ·¾¶
-ÔÚpath±äÁ¿ºóÃæ¼ÓÈë :$HIVE_HOME/bin
+export HIVE_HOME=hiveè§£å‹åŒ…è·¯å¾„
+åœ¨pathå˜é‡åé¢åŠ å…¥ :$HIVE_HOME/bin
 ```
 
-2.ÔÚhiveÎÄ¼ş¼ĞÏÂµÄlibÎÄ¼ş¼ĞÀï´«Èëmysql-connector-java-5.1.34.jar°ü
-3.ÔÚhive½âÑ¹°üÏÂµÄconfÎÄ¼ş¼ĞÏÂ´´½¨hive-site.xml(Èç¹ûÃ»ÓĞµÄ»°´´½¨)
-4.ÔÚ¸ÄÎÄ¼şÀïÌí¼ÓÈçÏÂÄÚÈİ
+2.åœ¨hiveæ–‡ä»¶å¤¹ä¸‹çš„libæ–‡ä»¶å¤¹é‡Œä¼ å…¥mysql-connector-java-5.1.34.jaråŒ…
+3.åœ¨hiveè§£å‹åŒ…ä¸‹çš„confæ–‡ä»¶å¤¹ä¸‹åˆ›å»ºhive-site.xml(å¦‚æœæ²¡æœ‰çš„è¯åˆ›å»º)
+4.åœ¨æ”¹æ–‡ä»¶é‡Œæ·»åŠ å¦‚ä¸‹å†…å®¹
 ```
 <configuration>
 	<property>
 		<name>javax.jdo.option.ConnectionURL</name>
-		<value>jdbc:mysql://namenodeµÄipµØÖ·:3306/hivedb?createDatabaseIfNotExist=true</value>
+		<value>jdbc:mysql://namenodeçš„ipåœ°å€:3306/hivedb?createDatabaseIfNotExist=true</value>
 	</property>
 	<property>
 		<name>javax.jdo.option.ConnectionDriverName</name>
@@ -24,55 +25,56 @@ export HIVE_HOME=hive½âÑ¹°üÂ·¾¶
 	</property>
 	<property>
 		<name>javax.jdo.option.ConnectionPassword</name>
-		<value>Êı¾İ¿âµÄÃÜÂë</value>
+		<value>æ•°æ®åº“çš„å¯†ç </value>
 	</property>
 </configuration>
 ```
 
-6.ÊäÈëhive²é¿´ÊÇ·ñ°²×°´î½¨Íê³É.
-### hiveÓëmysqlÁ¬½ÓµÄ²Ù×÷²½Öè.
-###### sqlµÄÏÂÔØÃüÁîÈçÏÂ(°´Ë³ĞòÖ´ĞĞ):
+6.è¾“å…¥hiveæŸ¥çœ‹æ˜¯å¦å®‰è£…æ­å»ºå®Œæˆ.
+
+### hiveä¸mysqlè¿æ¥çš„æ“ä½œæ­¥éª¤.
+###### sqlçš„ä¸‹è½½å‘½ä»¤å¦‚ä¸‹(æŒ‰é¡ºåºæ‰§è¡Œ):
 ```
-// °²×°wgetµÄÃüÁî
+// å®‰è£…wgetçš„å‘½ä»¤
 yum -y install wget
-// ÏÂÔØÍøÖ·
+// ä¸‹è½½ç½‘å€
 wget http://repo.mysql.com/mysql-community-release-el7-5.noarch.rpm
 sudo rpm -ivh mysql-community-release-el7-5.noarch.rpm
 sudo yum -y install mysql
 sudo yum -y install mysql-server
 ```
 
-²é¿´sql°²×°Íê³ÉµÄÃüÁîÈçÏÂ:
+æŸ¥çœ‹sqlå®‰è£…å®Œæˆçš„å‘½ä»¤å¦‚ä¸‹:
 ```
-// Æô¶¯ÃüÁî
+// å¯åŠ¨å‘½ä»¤
 systemctl start mysqld
-// ²é¿´×´Ì¬,ÊÇrunning²ÅËã³É¹¦
+// æŸ¥çœ‹çŠ¶æ€,æ˜¯runningæ‰ç®—æˆåŠŸ
 systemctl status mysqld
-// ¹Ø±ÕÃüÁî
+// å…³é—­å‘½ä»¤
 systemctl stop mysqld
 ```
 
-###### mysqlµÄÃÜÂëĞŞ¸ÄÃüÁî
+###### mysqlçš„å¯†ç ä¿®æ”¹å‘½ä»¤
 ```
-// ĞŞ¸ÄÃÜÂëµÄÃüÁî(ĞèÒªÔÚuserÓÃ»§ÏÂĞŞ¸Ä,ËùÒÔÓÃ mysql -u root -pµÇÂ¼mysql)
-UPDATE mysql.user SET authentication_string=PASSWORD('ÃÜÂëÒªºÍhive-site.xmlÎÄ¼şÄÚµÄÒ»Ö±') where USER='root';
-// ĞŞ¸ÄÍêºóĞèÒªË¢ĞÂÒ»ÏÂ
+// ä¿®æ”¹å¯†ç çš„å‘½ä»¤(éœ€è¦åœ¨userç”¨æˆ·ä¸‹ä¿®æ”¹,æ‰€ä»¥ç”¨ mysql -u root -pç™»å½•mysql)
+UPDATE mysql.user SET authentication_string=PASSWORD('å¯†ç è¦å’Œhive-site.xmlæ–‡ä»¶å†…çš„ä¸€ç›´') where USER='root';
+// ä¿®æ”¹å®Œåéœ€è¦åˆ·æ–°ä¸€ä¸‹
 flush privileges;
-// ÍË³öºó,ÒªÖØÆômysql
+// é€€å‡ºå,è¦é‡å¯mysql
 systemctl restart mysqld
 ```
 
-- ÎªÁË±£Ö¤ÄÜÔÚhiveÉÏÊ¹ÓÃmysql,ĞèÒªÔÚÕâĞ©×öÍêÖ®ºó,ÊäÈëÒÔÏÂÃüÁî,½øĞĞÁ¬½Ó
+- ä¸ºäº†ä¿è¯èƒ½åœ¨hiveä¸Šä½¿ç”¨mysql,éœ€è¦åœ¨è¿™äº›åšå®Œä¹‹å,è¾“å…¥ä»¥ä¸‹å‘½ä»¤,è¿›è¡Œè¿æ¥
 ```
-GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY 'Êı¾İ¿âÃÜÂë' WITH GRANT OPTION;
-Ë¢ĞÂÃüÁî(²»ĞèÒª·âºÅ)
+GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY 'æ•°æ®åº“å¯†ç ' WITH GRANT OPTION;
+åˆ·æ–°å‘½ä»¤(ä¸éœ€è¦å°å·)
 FLUSH PRIVILEGES
 ```
 
-### mysqlÍü¼ÇÃÜÂëµÄ²Ù×÷
-1.ÔÚ/etc/my.cnfÎÄ¼şÀï¼ÓÈë
+### mysqlå¿˜è®°å¯†ç çš„æ“ä½œ
+1.åœ¨/etc/my.cnfæ–‡ä»¶é‡ŒåŠ å…¥
 skip-grant-tables
-2.ÓÃÈ»ºóÓÃmysqlÕâ¸öÓï¾ä½øÈëmysql
-3.ÊäÈëUPDATE mysql.user SET authentication_string=PASSWORD('6757DUgu') where USER='root'ĞŞ¸ÄÃÜÂëÎª6757DUgu
-4.flush privilegesË¢ĞÂ
-5.ÖØÆômysql.
+2.ç”¨ç„¶åç”¨mysqlè¿™ä¸ªè¯­å¥è¿›å…¥mysql
+3.è¾“å…¥UPDATE mysql.user SET authentication_string=PASSWORD('6757DUgu') where USER='root'ä¿®æ”¹å¯†ç ä¸º6757DUgu
+4.flush privilegesåˆ·æ–°
+5.é‡å¯mysql.
