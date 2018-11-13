@@ -17,4 +17,5 @@
 	- [Hadoop伪分布式安装步骤](https://kll082511.github.io/Hadoop伪分布式)
 	- [Hadoop完全分布式配置步骤](https://kll082511.github.io/hadoop完全分布式配置)
 	- [eclipse上配置hadoop路径](https://kll082511.github.io/eclipse上配置hadoop路径)
+	- [用eclipse连接hdfs及操作](https://kll082511.github.io/用eclipse连接hdfs及操作)
 	- [block块的获取](https://kll082511.github.io/block块的获取)
