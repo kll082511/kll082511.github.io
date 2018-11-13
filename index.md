@@ -19,3 +19,4 @@
 	- [eclipse上配置hadoop路径](https://kll082511.github.io/eclipse上配置hadoop路径)
 	- [MapReduce](https://kll082511.github.io/MapReduce)
 	- [block块的获取](https://kll082511.github.io/block块的获取)
+	- [MapReduce----Join](https://kll082511.github.io/JOIN_MapReduce)
