@@ -1,4 +1,4 @@
-# konglinglei's blog Welcome
+﻿# konglinglei's blog Welcome
 ## 点击下面的链接进入相应内容的博客
 - git
 	- [git 命令](https://kll082511.github.io/github命令)
@@ -18,3 +18,4 @@
 	- [block块的获取](https://kll082511.github.io/block块的获取)
 	- [MapReduce----Join](https://kll082511.github.io/JOIN_MapReduce)
 	- [Hive搭建](https://kll082511.github.io/hive搭建)
+	- [InputFormat和OutputFormat的应用](https://kll082511.github.io/InputFormat和OutputFormat)
