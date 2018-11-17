@@ -1,7 +1,7 @@
 ### OutputFormat
-ÔÚoutputFormatÖĞ½ÓÊÕµÄÎÄ¼şÊÇ,ÎÒÃÇÒªĞ´³öÈ¥µÄÎÄ¼ş.ËùÒÔ·ºĞÍÒªºÍMapperÀïµÄĞ´³öÎÄ¼şÀàĞÍ¶ÔÓ¦.
-ÊÂÀıÈçÏÂ:
-TestÀà
+åœ¨outputFormatä¸­æ¥æ”¶çš„æ–‡ä»¶æ˜¯,æˆ‘ä»¬è¦å†™å‡ºå»çš„æ–‡ä»¶,æ‰€ä»¥æ³›å‹è¦å’ŒMapperé‡Œçš„å†™å‡ºæ–‡ä»¶ç±»å‹å¯¹åº”.
+äº‹ä¾‹å¦‚ä¸‹:
+Testç±»
 ```
 package com.lanou.test;
 
@@ -49,7 +49,7 @@ public class MyOutputTest {
 }
 ```
 
-MapperÀà
+Mapperç±»
 ```
 package com.lanou.util;
 
@@ -78,7 +78,7 @@ public class MyoutputMapper extends Mapper<Object, Text, Text, NullWritable> {
 }
 ```
 
-OutputFormatÀà¼Ì³ĞFileOutputFormatÀà
+OutputFormatç±»ç»§æ‰¿FileOutputFormatç±»
 ```
 package com.lanou.util;
 
@@ -101,17 +101,17 @@ public class MyOutputFormat extends FileOutputFormat<Text, NullWritable> {
 	public RecordWriter<Text, NullWritable> getRecordWriter(TaskAttemptContext job)
 			throws IOException, InterruptedException {
 		// TODO Auto-generated method stub
-		// ÔÚoutputFormatÖĞ½ÓÊÕµ½ÎÒÃÇÒªÍùÄÄ¶ùĞ©ÎÄ¼şĞ´
+		// åœ¨outputFormatä¸­æ¥æ”¶åˆ°æˆ‘ä»¬è¦å¾€å“ªå„¿äº›æ–‡ä»¶å†™
 		
 		Configuration conf = job.getConfiguration();
-		// »ñÈ¡ÎÄ¼şÏµÍ³
+		// è·å–æ–‡ä»¶ç³»ç»Ÿ
 		FileSystem fileSystem = FileSystem.get(conf);
-		// »ñÈ¡Â·¾¶
+		// è·å–è·¯å¾„
 		Path outputPath = this.getOutputPath(job);
-		System.out.println("nameÊÇ:" + outputPath.getName());
-		System.out.println("selfÊÇ:" + outputPath);
-		System.out.println("parentÊÇ:" + outputPath.getParent());
-		// ¶¨Òå½á¹ûÊä³öÂ·¾¶,·µ»ØµÄÊÇÁ÷
+		System.out.println("nameæ˜¯:" + outputPath.getName());
+		System.out.println("selfæ˜¯:" + outputPath);
+		System.out.println("parentæ˜¯:" + outputPath.getParent());
+		// å®šä¹‰ç»“æœè¾“å‡ºè·¯å¾„,è¿”å›çš„æ˜¯æµ
 		FSDataOutputStream success = fileSystem.create(new Path(outputPath.toString() + "/success.log"));
 		FSDataOutputStream error = fileSystem.create(new Path(outputPath.toString() + "/error.log"));
 	
@@ -120,7 +120,7 @@ public class MyOutputFormat extends FileOutputFormat<Text, NullWritable> {
 }
 ```
 
-RecordWriterÀà
+RecordWriterç±»
 ```
 package com.lanou.util;
 
@@ -133,7 +133,7 @@ import org.apache.hadoop.mapreduce.RecordWriter;
 import org.apache.hadoop.mapreduce.TaskAttemptContext;
 
 public class MyRecordWriter extends RecordWriter<Text, NullWritable> {
-	// Á½¸öÊä³öÁ÷ÊÇÎªÁËÔÚformatÖĞµÄÊä³öÁ÷ÓÃ
+	// ä¸¤ä¸ªè¾“å‡ºæµæ˜¯ä¸ºäº†åœ¨formatä¸­çš„è¾“å‡ºæµç”¨
 	private FSDataOutputStream success;
 	private FSDataOutputStream error;
 
@@ -169,7 +169,7 @@ public class MyRecordWriter extends RecordWriter<Text, NullWritable> {
 ```
 
 ### InputFormat
-TestÀà
+Testç±»
 ```
 package com.lanou.test;
 
@@ -221,7 +221,7 @@ public class MyInputFormatTest {
 }
 ```
 
-MapperÀà
+Mapperç±»
 ```
 package com.lanou.util;
 
@@ -246,7 +246,7 @@ public class MyInputMapper extends Mapper<Text, NullWritable, Text, NullWritable
 }
 ```
 
-InputFormatÀà¼Ì³ĞFileInputFormatÀà
+InputFormatç±»ç»§æ‰¿FileInputFormatç±»
 ```
 package com.lanou.util;
 
@@ -263,7 +263,7 @@ import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 
 public class MyInputFormat extends FileInputFormat<Text, NullWritable> {
 	
-	// ÅĞ¶ÏÊÇ·ñĞèÒªÇĞÆ¬
+	// åˆ¤æ–­æ˜¯å¦éœ€è¦åˆ‡ç‰‡
 	@Override
 	protected boolean isSplitable(JobContext context, Path filename) {
 		// TODO Auto-generated method stub
@@ -282,7 +282,7 @@ public class MyInputFormat extends FileInputFormat<Text, NullWritable> {
 }
 ```
 
-ĞèÒªÊµÏÖRecordReaderÀà
+éœ€è¦å®ç°RecordReaderç±»
 ```
 package com.lanou.util;
 import java.io.IOException;
@@ -323,42 +323,42 @@ public class MyRecordReader extends RecordReader<Text, NullWritable> {
 		return null;
 	}
 
-	// ½ø¶È
+	// è¿›åº¦
 	@Override
 	public float getProgress() throws IOException, InterruptedException {
 		// TODO Auto-generated method stub
 		return (float) (result ? 1.0 : 0.0);
 	}
 
-	// »ñÈ¡ĞÅÏ¢
+	// è·å–ä¿¡æ¯
 	@Override
 	public void initialize(InputSplit split, TaskAttemptContext context) throws IOException, InterruptedException {
 		// TODO Auto-generated method stub
-		// ÎªÁËÖªµÀÒª¶ÁÈ¡ÄÄ¶ù¸öÎÄ¼ş
+		// ä¸ºäº†çŸ¥é“è¦è¯»å–å“ªå„¿ä¸ªæ–‡ä»¶
 		fileSplit = (FileSplit)split;
-		// hdfsµÄÅäÖÃĞÅÏ¢
+		// hdfsçš„é…ç½®ä¿¡æ¯
 		conf = context.getConfiguration();
 	}
 
 	@Override
 	public boolean nextKeyValue() throws IOException, InterruptedException {
 		// TODO Auto-generated method stub
-		// Ò»´ÎĞÔ¶ÁÈ¡³öÀ´Ğ¡ÎÄ¼şµÄËùÓĞÄÚÈİ,Ò»´ÎĞÔ´«¸ømap.
-//		Ö»ÓĞµÚÒ»´Îµ÷ÓÃµÄÊ±ºò,·µ»Øtrue,Ö®ºó¶¼·µ»Øfalse.
+		// ä¸€æ¬¡æ€§è¯»å–å‡ºæ¥å°æ–‡ä»¶çš„æ‰€æœ‰å†…å®¹,ä¸€æ¬¡æ€§ä¼ ç»™map.
+//		åªæœ‰ç¬¬ä¸€æ¬¡è°ƒç”¨çš„æ—¶å€™,è¿”å›true,ä¹‹åéƒ½è¿”å›false.
 		if (!result) {
-			// »ñÈ¡ ÎÄ¼şÏµÍ³
+			// è·å– æ–‡ä»¶ç³»ç»Ÿ
 			FileSystem fs = FileSystem.get(conf);
-			// ¸ù¾İÎÄ¼şÏµÍ³»ñÈ¡ÊäÈëÁ÷
+			// æ ¹æ®æ–‡ä»¶ç³»ç»Ÿè·å–è¾“å…¥æµ
 			FSDataInputStream open = fs.open(fileSplit.getPath());
-			// ½øĞĞ¶Á.
-			// ´´½¨Ò»¸öÄÜ´æÏÂÕû¸öÎÄ¼şÄÚÈİµÄbuffer
+			// è¿›è¡Œè¯».
+			// åˆ›å»ºä¸€ä¸ªèƒ½å­˜ä¸‹æ•´ä¸ªæ–‡ä»¶å†…å®¹çš„buffer
 			byte[] buffer = new byte[(int)fileSplit.getLength()];
-			// ½«Õû¸öÎÄ¼şµÄÄÚÈİĞ´ÈëbufferÖĞ
+			// å°†æ•´ä¸ªæ–‡ä»¶çš„å†…å®¹å†™å…¥bufferä¸­
 			IOUtils.readFully(open, buffer, 0, buffer.length);
 //			BufferedReader br = new BufferedReader(new InputStreamReader(open));
 //			br.readLine();
 			resultText.set(buffer, 0, buffer.length);
-			// ×÷ÎªÒ»¸ö¿ª¹Ø,¾ö¶¨ÁËmapÑ­»·ÊÇ·ñÒª¼ÌĞø
+			// ä½œä¸ºä¸€ä¸ªå¼€å…³,å†³å®šäº†mapå¾ªç¯æ˜¯å¦è¦ç»§ç»­
 			result = true;
 			return true;
 		}
@@ -368,8 +368,8 @@ public class MyRecordReader extends RecordReader<Text, NullWritable> {
 }
 ```
 
-### InputFormatºÍOutputFormatÒ»ÆğÊ¹ÓÃ
-TestÀà
+### InputFormatå’ŒOutputFormatä¸€èµ·ä½¿ç”¨
+Testç±»
 ```
 package com.lanou.homework;
 
@@ -414,7 +414,7 @@ public class InputOutPutFormatTest {
 }
 ```
 
-MapperÀà
+Mapperç±»
 ```
 package com.lanou.homework;
 
@@ -424,12 +424,12 @@ import org.apache.hadoop.io.NullWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Mapper;
 import org.apache.hadoop.mapreduce.lib.input.FileSplit;
-// ÒòÎªÎÒÃÇÊ¹ÓÃÁË×Ô¶¨ÒåµÄInputFormat,ËùÒÔkeyin,valuein²»ÔÙÊÇobject,text
+// å› ä¸ºæˆ‘ä»¬ä½¿ç”¨äº†è‡ªå®šä¹‰çš„InputFormat,æ‰€ä»¥keyin,valueinä¸å†æ˜¯object,text
 public class SelfMapper extends Mapper<NullWritable, Text, Text, Text> {
 	private Text fileName = new Text();
 	private Text valueText = new Text();
 	
-	// ÀûÓÃsetup·½·¨ÔÚmapÑ­»·ÖĞÖ»Ö´ĞĞµÄÌØĞÔ,À´»ñÈ¡ÎÄ¼şÃû.
+	// åˆ©ç”¨setupæ–¹æ³•åœ¨mapå¾ªç¯ä¸­åªæ‰§è¡Œçš„ç‰¹æ€§,æ¥è·å–æ–‡ä»¶å.
 	@Override
 	protected void setup(Mapper<NullWritable, Text, Text, Text>.Context context)
 			throws IOException, InterruptedException {
@@ -449,7 +449,7 @@ public class SelfMapper extends Mapper<NullWritable, Text, Text, Text> {
 		for (String string : vals) {
 			System.out.println("result:" + string);
 			String[] values = string.split("\\s+");
-			// Ìæ»»µôÖ®ºó,²Å»áÈÃ¼ÓµÄerror²»»»ĞĞÏÔÊ¾.
+			// æ›¿æ¢æ‰ä¹‹å,æ‰ä¼šè®©åŠ çš„errorä¸æ¢è¡Œæ˜¾ç¤º.
 			string = string.replace("\r", "");
 			string = string.replace("\n", "");
 			if (values.length != 3) {
@@ -469,7 +469,7 @@ public class SelfMapper extends Mapper<NullWritable, Text, Text, Text> {
 }
 ```
 
-RecordWriterÀà
+RecordWriterç±»
 ```
 package com.lanou.homework;
 
@@ -483,9 +483,6 @@ import org.apache.hadoop.mapreduce.TaskAttemptContext;
 public class SelfRecordWriter extends RecordWriter<Text, Text> {
 	private FSDataOutputStream success;
 	private FSDataOutputStream error;
-	
-	// ÓĞ²Î¹¹Ôì
-	
 
 	@Override
 	public void write(Text paramK, Text paramV) throws IOException, InterruptedException {
@@ -497,7 +494,7 @@ public class SelfRecordWriter extends RecordWriter<Text, Text> {
 			this.success.writeUTF(result);
 		}
 	}
-
+// æœ‰å‚æ„é€ 
 	public SelfRecordWriter(FSDataOutputStream success, FSDataOutputStream error) {
 		super();
 		this.success = success;
@@ -519,7 +516,7 @@ public class SelfRecordWriter extends RecordWriter<Text, Text> {
 }
 ```
 
-InputFormatÀà
+InputFormatç±»
 ```
 package com.lanou.homework;
 
@@ -536,11 +533,11 @@ import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 
 public class SelfInputFormat extends FileInputFormat<NullWritable, Text> {
 	
-	// ÅĞ¶ÏÊÇ·ñĞèÒªÇĞÆ¬
+	// åˆ¤æ–­æ˜¯å¦éœ€è¦åˆ‡ç‰‡
 	@Override
 	protected boolean isSplitable(JobContext context, Path filename) {
 		// TODO Auto-generated method stub
-		// ²»ÇĞÆ¬
+		// ä¸åˆ‡ç‰‡
 		return false;
 	}
 
@@ -548,18 +545,18 @@ public class SelfInputFormat extends FileInputFormat<NullWritable, Text> {
 	public RecordReader<NullWritable, Text> createRecordReader(InputSplit arg0, TaskAttemptContext arg1)
 			throws IOException, InterruptedException {
 		// TODO Auto-generated method stub
-		// ÒªÊ¹ÓÃ×Ô¶¨ÒåµÄInputFormatÊµ¼ÊÉÏ¾ÍÊÇÒªÊ¹ÓÃ×Ô¶¨ÒåµÄ
-		// recordReaderÀ´½øĞĞÊı¾İµÄ¶ÁÈ¡,ËùÒÔÎÒÃÇĞèÒª´´½¨×Ô¶¨ÒåµÄrecordWriterÀ´·µ»Ø¸øInputFormat½øĞĞÊ¹ÓÃ
+		// è¦ä½¿ç”¨è‡ªå®šä¹‰çš„InputFormatå®é™…ä¸Šå°±æ˜¯è¦ä½¿ç”¨è‡ªå®šä¹‰çš„
+		// recordReaderæ¥è¿›è¡Œæ•°æ®çš„è¯»å–,æ‰€ä»¥æˆ‘ä»¬éœ€è¦åˆ›å»ºè‡ªå®šä¹‰çš„recordWriteræ¥è¿”å›ç»™InputFormatè¿›è¡Œä½¿ç”¨
 		SelfRecordReader selfRecordReader = new SelfRecordReader();
-		// Ö»´´½¨²»¹»,ÒòÎªrecordReaderÊÇÕæÕı¶ÁÈ¡Êı¾İµÄ;ËùÒÔÎÒÃÇĞèÒªÍ¨¹ıinitialize()·½·¨½«ÇĞÆ¬ĞÅÏ¢ºÍjobĞÅÏ¢¸øµ½
-		// recordReader,ÕâÑùrecordReader²ÅÖªµÀ¸ÃÈ¥ÄÄ¶ù¸öÎÄ¼şÏµÍ³¶ÁÈ¡ÄÄ¶ù¸öÎÄ¼ş
+		// åªåˆ›å»ºä¸å¤Ÿ,å› ä¸ºrecordReaderæ˜¯çœŸæ­£è¯»å–æ•°æ®çš„;æ‰€ä»¥æˆ‘ä»¬éœ€è¦é€šè¿‡initialize()æ–¹æ³•å°†åˆ‡ç‰‡ä¿¡æ¯å’Œjobä¿¡æ¯ç»™åˆ°
+		// recordReader,è¿™æ ·recordReaderæ‰çŸ¥é“è¯¥å»å“ªå„¿ä¸ªæ–‡ä»¶ç³»ç»Ÿè¯»å–å“ªå„¿ä¸ªæ–‡ä»¶
 		selfRecordReader.initialize(arg0, arg1);
 		return selfRecordReader;
 	}
 }
 ```
 
-RecordReaderÀà
+RecordReaderç±»
 ```
 package com.lanou.homework;
 
@@ -580,7 +577,7 @@ import org.apache.hadoop.mapreduce.lib.input.FileSplit;
 public class SelfRecordReader extends RecordReader<NullWritable, Text> {
 	private FileSplit fileSplit;
 	private Configuration conf ;
-	private boolean res = true;// ÊÇ·ñÒªÖ´ĞĞµÄ¿ª¹Ø
+	private boolean res = true;// æ˜¯å¦è¦æ‰§è¡Œçš„å¼€å…³
 	private Text valueText = new Text();
 
 	@Override
@@ -610,7 +607,7 @@ public class SelfRecordReader extends RecordReader<NullWritable, Text> {
 	@Override
 	public void initialize(InputSplit arg0, TaskAttemptContext arg1) throws IOException, InterruptedException {
 		// TODO Auto-generated method stub
-		// ÒòÎªÎÒÃÇÍ¨¹ıinitialize»ñÈ¡µ½µÄÄÚÈİÔÚnetKeyValueÕâ¸ö·½·¨ÖĞ½øĞĞÊ¹ÓÃ,ËùÒÔĞèÒª¶¨Òå¶ÔÓ¦µÄÊôĞÔ½øĞĞ½ÓÊÕ
+		// å› ä¸ºæˆ‘ä»¬é€šè¿‡initializeè·å–åˆ°çš„å†…å®¹åœ¨netKeyValueè¿™ä¸ªæ–¹æ³•ä¸­è¿›è¡Œä½¿ç”¨,æ‰€ä»¥éœ€è¦å®šä¹‰å¯¹åº”çš„å±æ€§è¿›è¡Œæ¥æ”¶
 		this.fileSplit = (FileSplit)arg0;
 		this.conf = arg1.getConfiguration();
 	}
@@ -618,24 +615,24 @@ public class SelfRecordReader extends RecordReader<NullWritable, Text> {
 	@Override
 	public boolean nextKeyValue() throws IOException, InterruptedException {
 		// TODO Auto-generated method stub
-		// ÏÈÏëºÃ¿ª¹ØÔõÃ´ÉèÖÃ
-		// ÒòÎªÎÒÃÇÒªÒ»´ÎĞÔ½«Õû¸öÎÄ¼ş¶Á³öÀ´
-		// ËùÒÔnexKeyValue()Ö»ĞèÒªÔÚµÚÒ»´Îµ÷ÓÃµÄÊ±ºò,·µ»Øtrue¾ÍºÃÁË.
+		// å…ˆæƒ³å¥½å¼€å…³æ€ä¹ˆè®¾ç½®
+		// å› ä¸ºæˆ‘ä»¬è¦ä¸€æ¬¡æ€§å°†æ•´ä¸ªæ–‡ä»¶è¯»å‡ºæ¥
+		// æ‰€ä»¥nexKeyValue()åªéœ€è¦åœ¨ç¬¬ä¸€æ¬¡è°ƒç”¨çš„æ—¶å€™,è¿”å›trueå°±å¥½äº†.
 		if (this.res) {
-			// ÒòÎªÎÒÃÇµÄconfÊôĞÔÒÑ¾­½ÓÊÕµ½ÁËjobÖĞµÄconfiguration
-			// ËùÒÔÍ¨¹ıconfÊôĞÔ¾ÍÄÜµÃµ½ÕæÕıÒª¶ÁÈ¡µÄÎÄ¼şÏµÍ³,½ÓÏÂÀ´Ö»ĞèÒªÍ¨¹ıµ÷ÓÃÎÄ¼şÏµÍ³µÄapi»ñÈ¡ÎÄ¼ş¾Í¿ÉÒÔÁË.
+			// å› ä¸ºæˆ‘ä»¬çš„confå±æ€§å·²ç»æ¥æ”¶åˆ°äº†jobä¸­çš„configuration
+			// æ‰€ä»¥é€šè¿‡confå±æ€§å°±èƒ½å¾—åˆ°çœŸæ­£è¦è¯»å–çš„æ–‡ä»¶ç³»ç»Ÿ,æ¥ä¸‹æ¥åªéœ€è¦é€šè¿‡è°ƒç”¨æ–‡ä»¶ç³»ç»Ÿçš„apiè·å–æ–‡ä»¶å°±å¯ä»¥äº†.
 			FileSystem fileSystem = FileSystem.get(conf);
-			// »ñÈ¡µ±Ç°ÎÄ¼şÂ·¾¶
+			// è·å–å½“å‰æ–‡ä»¶è·¯å¾„
 			Path path = fileSplit.getPath();
-			// Í¨¹ıopen»ñÈ¡µ±Ç°Òª¶ÁÎÄ¼şµÄÊäÈëÁ÷
-			// ¸ù¾İÎÒÃÇµÄfileSplitÍ¨¹ıÇĞÆ¬»ñÈ¡µ½,ÎÒÃÇÒª¶ÁµÄÎÄ¼şµÄÊäÈëÁ÷.
+			// é€šè¿‡openè·å–å½“å‰è¦è¯»æ–‡ä»¶çš„è¾“å…¥æµ
+			// æ ¹æ®æˆ‘ä»¬çš„fileSplité€šè¿‡åˆ‡ç‰‡è·å–åˆ°,æˆ‘ä»¬è¦è¯»çš„æ–‡ä»¶çš„è¾“å…¥æµ.
 			FSDataInputStream open = fileSystem.open(path);
-			// ½ÓÊÕÕû¸öÎÄ¼şµÄÄÚÈİ
+			// æ¥æ”¶æ•´ä¸ªæ–‡ä»¶çš„å†…å®¹
 			byte[] buff = new byte[(int)fileSplit.getLength()];
-			// ÕæÕı½«ÊäÈëÁ÷µÄÄÚÈİĞ´µ½×Ö½ÚÊı×éÖĞ,Ö´ĞĞÍêÕâÒ»¾ä,buffÖĞ¾ÍÊÇÎÒÃÇÏëÒªµÄ½á¹ûÁË
+			// çœŸæ­£å°†è¾“å…¥æµçš„å†…å®¹å†™åˆ°å­—èŠ‚æ•°ç»„ä¸­,æ‰§è¡Œå®Œè¿™ä¸€å¥,buffä¸­å°±æ˜¯æˆ‘ä»¬æƒ³è¦çš„ç»“æœäº†
 			IOUtils.readFully(open, buff, 0, buff.length);
-			// ½«ÎÒÃÇµÄ½á¹ûĞ´Èëµ½ÎÒÃÇ¶ÔÓ¦µÄÊôĞÔÖĞ,
-			// ¹©¶ÔÓ¦µÄ·½·¨½øĞĞµ÷ÓÃ
+			// å°†æˆ‘ä»¬çš„ç»“æœå†™å…¥åˆ°æˆ‘ä»¬å¯¹åº”çš„å±æ€§ä¸­,
+			// ä¾›å¯¹åº”çš„æ–¹æ³•è¿›è¡Œè°ƒç”¨
 			valueText.set(buff, 0, buff.length);
 			
 			this.res = false;
