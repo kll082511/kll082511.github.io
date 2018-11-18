@@ -17,5 +17,6 @@
 	- [MapReduce](https://kll082511.github.io/MapReduce)
 	- [block块的获取](https://kll082511.github.io/block块的获取)
 	- [MapReduce----Join](https://kll082511.github.io/JOIN_MapReduce)
-	- [Hive搭建](https://kll082511.github.io/hive搭建)
 	- [InputFormat和OutputFormat的应用](https://kll082511.github.io/InputFormat和OutputFormat)
+- Hive
+	- [Hive搭建](https://kll082511.github.io/hive搭建)
