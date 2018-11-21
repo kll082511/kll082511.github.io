@@ -6,7 +6,7 @@ azkaban-web-server-2.5.0.tar.gz		存放azkaban运行需要的sql(sql倒完了这
 create-all-sql-2.5.0.sql	完整的sql文件,只执行它就可以了
 
 
-ssl访问		https://安装了azkaban的服务器的ip:8443
+ssl访问		
 
 
 azkaban-executor-2.5.0		启动,关闭执行器  start/shutdown
@@ -27,11 +27,10 @@ azkaban-user.xml	设置登录按照kaban的用户及其权限
 - 6.把证书keystore(在执行5命令的目录下)拷贝到azkaban-web-2.5.0的文件夹下:cp keystore azkaban-web-2.5.0/
 - 7.修改azkaban-web-2.5.0文件.
 	- 7.1修改文件:conf/azkaban.properties ,修改如下:
-	7.2.修改conf/azkaban-users.xml文件,加入:<user username="admin" password="admin" roles="admin,metrics" />
+	- 7.2.修改conf/azkaban-users.xml文件,加入:<user username="admin" password="admin" roles="admin,metrics" />
 ```
 文件里的时区修改成如下:
 default.timezone.id=Asia/Shanghai
-
 mysql.host=localhost修改成ip[意味着远程连接]
 mysql.database=azkaban[写自己新建的数据库名]
 把下面的用户名改为root用户,和数据库密码.
