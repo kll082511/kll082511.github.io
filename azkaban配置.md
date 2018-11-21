@@ -6,7 +6,7 @@ azkaban-web-server-2.5.0.tar.gz		存放azkaban运行需要的sql(sql倒完了这
 create-all-sql-2.5.0.sql	完整的sql文件,只执行它就可以了
 
 
-ssl访问	https://安装了azkaban的服务器的ip:8443	
+ssl访问
 
 
 azkaban-executor-2.5.0		启动,关闭执行器  start/shutdown
