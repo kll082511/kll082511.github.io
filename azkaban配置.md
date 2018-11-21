@@ -1,43 +1,43 @@
-**azkabanÅäÖÃ**
+**azkabané…ç½®**
 
-azkaban-executor-server-2.5.0.tar.gz	´æ·ÅÁËÖ´ĞĞÆ÷
-azkaban-sql-script-2.5.0.tar.gz		´æ·ÅÁËweb·şÎñÆ÷
-azkaban-web-server-2.5.0.tar.gz		´æ·ÅazkabanÔËĞĞĞèÒªµÄsql(sqlµ¹ÍêÁËÕâ¸öÎÄ¼ş¾ÍÃ»ÓÃÁË)
-create-all-sql-2.5.0.sql	ÍêÕûµÄsqlÎÄ¼ş,Ö»Ö´ĞĞËü¾Í¿ÉÒÔÁË
-
-
-ssl·ÃÎÊ		https://°²×°ÁËazkabanµÄ·şÎñÆ÷µÄip:8443
+azkaban-executor-server-2.5.0.tar.gz	å­˜æ”¾äº†æ‰§è¡Œå™¨
+azkaban-sql-script-2.5.0.tar.gz		å­˜æ”¾äº†webæœåŠ¡å™¨
+azkaban-web-server-2.5.0.tar.gz		å­˜æ”¾azkabanè¿è¡Œéœ€è¦çš„sql(sqlå€’å®Œäº†è¿™ä¸ªæ–‡ä»¶å°±æ²¡ç”¨äº†)
+create-all-sql-2.5.0.sql	å®Œæ•´çš„sqlæ–‡ä»¶,åªæ‰§è¡Œå®ƒå°±å¯ä»¥äº†
 
 
-azkaban-executor-2.5.0		Æô¶¯,¹Ø±ÕÖ´ĞĞÆ÷  start/shutdown
-azkaban.properties		ÉèÖÃÊ±Çø,ÉèÖÃmysqlµÄĞÅÏ¢
-
-azkaban-web2.5.0	Æô¶¯,¹Ø±Õweb·şÎñÆ÷ start/shutdown
-azkaban.properties	ÉèÖÃÊ±Çø,ÉèÖÃmysqlµÄĞÅÏ¢,jettyÃÜÂëµÈÍ¬ÓÚsshlµÄÃÜÂë
-azkaban-user.xml	ÉèÖÃµÇÂ¼°´ÕÕkabanµÄÓÃ»§¼°ÆäÈ¨ÏŞ
+sslè®¿é—®		https://å®‰è£…äº†azkabançš„æœåŠ¡å™¨çš„ip:8443
 
 
-### Ò».ÅäÖÃSSL.
-- 1.Ê¹ÓÃ:mysql -u root -pÃüÁî½øÈëÊı¾İ¿â.
-- 2.´´½¨Êı¾İ¿â:create azkaban;
-- 3.½øÈëÊı¾İ¿â:use azkaban;
-- 4.Ö´ĞĞÃüÁî:source /home/hadoop/azkaban/azkaban-2.5.0/create-all-sql-2.5.0.sql
-- 5.ÊäÈëÃüÁî:keytool -keystore keystore -alias jetty -genkey -keyalg RSA
-ÏÈÊäÈëÃÜÂë,ÆäËûÖ±½Ó»Ø³µ,ÖĞ¼äÊäÒ»´Îy,½øĞĞÈ·ÈÏ,½Ó×ÅÖ±½Ó»Ø³µ¼´¿É.
-- 6.°ÑÖ¤Êékeystore(ÔÚÖ´ĞĞ5ÃüÁîµÄÄ¿Â¼ÏÂ)¿½±´µ½azkaban-web-2.5.0µÄÎÄ¼ş¼ĞÏÂ:cp keystore azkaban-web-2.5.0/
-- 7.ĞŞ¸Äazkaban-web-2.5.0ÎÄ¼ş.
-	- 7.1ĞŞ¸ÄÎÄ¼ş:conf/azkaban.properties ,ĞŞ¸ÄÈçÏÂ:
+azkaban-executor-2.5.0		å¯åŠ¨,å…³é—­æ‰§è¡Œå™¨  start/shutdown
+azkaban.properties		è®¾ç½®æ—¶åŒº,è®¾ç½®mysqlçš„ä¿¡æ¯
+
+azkaban-web2.5.0	å¯åŠ¨,å…³é—­webæœåŠ¡å™¨ start/shutdown
+azkaban.properties	è®¾ç½®æ—¶åŒº,è®¾ç½®mysqlçš„ä¿¡æ¯,jettyå¯†ç ç­‰åŒäºsshlçš„å¯†ç 
+azkaban-user.xml	è®¾ç½®ç™»å½•æŒ‰ç…§kabançš„ç”¨æˆ·åŠå…¶æƒé™
+
+
+### ä¸€.é…ç½®SSL.
+- 1.ä½¿ç”¨:mysql -u root -på‘½ä»¤è¿›å…¥æ•°æ®åº“.
+- 2.åˆ›å»ºæ•°æ®åº“:create azkaban;
+- 3.è¿›å…¥æ•°æ®åº“:use azkaban;
+- 4.æ‰§è¡Œå‘½ä»¤:source /home/hadoop/azkaban/azkaban-2.5.0/create-all-sql-2.5.0.sql
+- 5.è¾“å…¥å‘½ä»¤:keytool -keystore keystore -alias jetty -genkey -keyalg RSA
+å…ˆè¾“å…¥å¯†ç ,å…¶ä»–ç›´æ¥å›è½¦,ä¸­é—´è¾“ä¸€æ¬¡y,è¿›è¡Œç¡®è®¤,æ¥ç€ç›´æ¥å›è½¦å³å¯.
+- 6.æŠŠè¯ä¹¦keystore(åœ¨æ‰§è¡Œ5å‘½ä»¤çš„ç›®å½•ä¸‹)æ‹·è´åˆ°azkaban-web-2.5.0çš„æ–‡ä»¶å¤¹ä¸‹:cp keystore azkaban-web-2.5.0/
+- 7.ä¿®æ”¹azkaban-web-2.5.0æ–‡ä»¶.
+	- 7.1ä¿®æ”¹æ–‡ä»¶:conf/azkaban.properties ,ä¿®æ”¹å¦‚ä¸‹:
+	7.2.ä¿®æ”¹conf/azkaban-users.xmlæ–‡ä»¶,åŠ å…¥:<user username="admin" password="admin" roles="admin,metrics" />
 ```
-ÎÄ¼şÀïµÄÊ±ÇøĞŞ¸Ä³ÉÈçÏÂ:
+æ–‡ä»¶é‡Œçš„æ—¶åŒºä¿®æ”¹æˆå¦‚ä¸‹:
 default.timezone.id=Asia/Shanghai
 
-mysql.host=localhostĞŞ¸Ä³Éip[ÒâÎ¶×ÅÔ¶³ÌÁ¬½Ó]
-mysql.database=azkaban[Ğ´×Ô¼ºĞÂ½¨µÄÊı¾İ¿âÃû]
-°ÑÏÂÃæµÄÓÃ»§Ãû¸ÄÎªrootÓÃ»§,ºÍÊı¾İ¿âÃÜÂë.
-ÔÚjettyµÄÉèÖÃÖĞ,°ÑËùÓĞµÄkeystoreµÄÃû×ÖĞ´³ÉÖ®Ç°Éú³ÉµÄkeystoreÃû,¶Ë¿Ú²»ÓÃĞŞ¸Ä,
-ËùÓĞÃÜÂëÉèÖÃ³ÉÔÚµÚÎå²½ÌîµÄÃÜÂë.
+mysql.host=localhostä¿®æ”¹æˆip[æ„å‘³ç€è¿œç¨‹è¿æ¥]
+mysql.database=azkaban[å†™è‡ªå·±æ–°å»ºçš„æ•°æ®åº“å]
+æŠŠä¸‹é¢çš„ç”¨æˆ·åæ”¹ä¸ºrootç”¨æˆ·,å’Œæ•°æ®åº“å¯†ç .
+åœ¨jettyçš„è®¾ç½®ä¸­,æŠŠæ‰€æœ‰çš„keystoreçš„åå­—å†™æˆä¹‹å‰ç”Ÿæˆçš„keystoreå,ç«¯å£ä¸ç”¨ä¿®æ”¹,
+æ‰€æœ‰å¯†ç è®¾ç½®æˆåœ¨ç¬¬äº”æ­¥å¡«çš„å¯†ç .
 ```
 
-	- 7.2.ĞŞ¸Äconf/azkaban-users.xmlÎÄ¼ş,¼ÓÈë:<user username="admin" password="admin" roles="admin,metrics" />
-- 8.ĞŞ¸Ãazkaban-executor-2.5.0ÎÄ¼ş¼Ğ
-	- 8.1ĞŞ¸Äconf/azkaban.propertiesÎÄ¼ş,ÀïµÄÊ±ÇøĞŞ¸ÄµÄºÍÉÏ±ßµÄÒ»Ñù,»¹ÓĞÊı¾İ¿âÃûºÍÃÜÂëÓÃ»§.
+- 8.ä¿®è¯¥azkaban-executor-2.5.0æ–‡ä»¶å¤¹
+	- 8.1ä¿®æ”¹conf/azkaban.propertiesæ–‡ä»¶,é‡Œçš„æ—¶åŒºä¿®æ”¹çš„å’Œä¸Šè¾¹çš„ä¸€æ ·,è¿˜æœ‰æ•°æ®åº“åå’Œå¯†ç ç”¨æˆ·.
