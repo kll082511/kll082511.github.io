@@ -20,6 +20,7 @@
 	- #### [InputFormat和OutputFormat的应用](https://kll082511.github.io/InputFormat和OutputFormat)
 - ## Hive
 	- #### [Hive搭建](https://kll082511.github.io/hive搭建)
+	- [hive的查询和创建分区分桶表命令](https://kll082511.github.io/hive的查询和创建分区分桶表命令)
 - ## flume
 - ## azkaban
 	- #### [azkaban配置](https://kll082511.github.io/azkaban配置)
