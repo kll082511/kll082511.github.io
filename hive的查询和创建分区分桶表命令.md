@@ -1,59 +1,59 @@
-### Á¬½Óhive
-- 1.ÔÚhive´î½¨Íê³Éºó,Ö´ĞĞhive½âÑ¹°üÏÂµÄbinÎÄ¼ş¼ĞÏÂµÄhiveserver2ÃüÁîÖ®ºó,´¦ÓÚµÈ´ı×´Ì¬
-- 2.È»ºóÑ¡ÖĞĞéÄâ»úµÄ»á»°¿ò,ÓÒ¼ü,Ñ¡ÖĞ¸´ÖÆ»á»°,ÔÚĞÂµÄ»á»°ÖĞ,ÊäÈëÃüÁîbeeline
-- 3.½Ó×ÅÊäÈëÃüÁî[!connect jdbc:hive2://localhost:10000],»Ø³µ.(Èç¹ûmysqlÔÚ±¾Ì¨·şÎñÆ÷ÉÏ,¾ÍÌîlocalhost,Ã»ÔÚ,¾ÍÌîÔÚµÄÄÇÌ¨ip)
-- 4.ÌîĞ´µ±Ç°·şÎñÎäÆ÷µÇÂ¼µÄÓÃ»§Ãû,»Ø³µ.
-- 5.ÃÜÂë²»Ìî,Ö±½Ó»Ø³µ.
-- 6.½áÊø,¿ÉÒÔ´´½¨±íºÍÊı¾İ¿â.
-#### Êı¾İ¿âµÄ´´½¨: create ¿âÃû;
-### Ò».±íµÄ´´½¨ºÍ²éÑ¯
-**Çå¿Õ±íÊı¾İ:**truncate table ±íÃû;
-**É¾³ı±í:**drop ±íÃû;
-**Ê¹ÓÃÊı¾İ¿â:**use ¿âÃû;
-- 1.ÄÚ²¿±í´´½¨:
+### è¿æ¥hive
+- 1.åœ¨hiveæ­å»ºå®Œæˆå,æ‰§è¡Œhiveè§£å‹åŒ…ä¸‹çš„binæ–‡ä»¶å¤¹ä¸‹çš„hiveserver2å‘½ä»¤ä¹‹å,å¤„äºç­‰å¾…çŠ¶æ€
+- 2.ç„¶åé€‰ä¸­è™šæ‹Ÿæœºçš„ä¼šè¯æ¡†,å³é”®,é€‰ä¸­å¤åˆ¶ä¼šè¯,åœ¨æ–°çš„ä¼šè¯ä¸­,è¾“å…¥å‘½ä»¤beeline
+- 3.æ¥ç€è¾“å…¥å‘½ä»¤[!connect jdbc:hive2://localhost:10000],å›è½¦.(å¦‚æœmysqlåœ¨æœ¬å°æœåŠ¡å™¨ä¸Š,å°±å¡«localhost,æ²¡åœ¨,å°±å¡«åœ¨çš„é‚£å°ip)
+- 4.å¡«å†™å½“å‰æœåŠ¡æ­¦å™¨ç™»å½•çš„ç”¨æˆ·å,å›è½¦.
+- 5.å¯†ç ä¸å¡«,ç›´æ¥å›è½¦.
+- 6.ç»“æŸ,å¯ä»¥åˆ›å»ºè¡¨å’Œæ•°æ®åº“.
+#### æ•°æ®åº“çš„åˆ›å»º: create åº“å;
+### ä¸€.è¡¨çš„åˆ›å»ºå’ŒæŸ¥è¯¢
+**æ¸…ç©ºè¡¨æ•°æ®:**truncate table è¡¨å;
+**åˆ é™¤è¡¨:**drop è¡¨å;
+**ä½¿ç”¨æ•°æ®åº“:**use åº“å;
+- 1.å†…éƒ¨è¡¨åˆ›å»º:
 ```
-create table user(id int,name string) row format delimited fields terminated by "\t";[ÒıºÅÄÚÌîµÄÊÇ°´Ê²Ã´¸ñÊ½°ÑÊı¾İµ¼Èëµ½±íÖĞ]
+create table user(id int,name string) row format delimited fields terminated by "\t";[å¼•å·å†…å¡«çš„æ˜¯æŒ‰ä»€ä¹ˆæ ¼å¼æŠŠæ•°æ®å¯¼å…¥åˆ°è¡¨ä¸­]
 ```
 
-- 2.Íâ²¿±í´´½¨:
-Íâ²¿±íÉ¾³ıÖ®ºó,hdfsÉÏ´´½¨µÄ±íÊı¾İ»¹´æÔÚ,Ö»ÊÇ¶ÏµôÁËÓë¸Ã±íµÄÁ¬½Ó.
+- 2.å¤–éƒ¨è¡¨åˆ›å»º:
+å¤–éƒ¨è¡¨åˆ é™¤ä¹‹å,hdfsä¸Šåˆ›å»ºçš„è¡¨æ•°æ®è¿˜å­˜åœ¨,åªæ˜¯æ–­æ‰äº†ä¸è¯¥è¡¨çš„è¿æ¥.
 ```
 create external table user(id int,name string) row format delimited fields terminated by "\t";
 ```
 
-- 3.·ÖÇø±í´´½¨:
+- 3.åˆ†åŒºè¡¨åˆ›å»º:
 ```
 create table user(id int,name string)
-partitioned by(year string,month string)";[·ÖÇø¿ÉÒÔ²»Ö¹Ò»²ã,ÇÒÊÇ±í´´½¨Ê±µÄ²»´æÔÚ×Ö¶Î]
+partitioned by(year string,month string)";[åˆ†åŒºå¯ä»¥ä¸æ­¢ä¸€å±‚,ä¸”æ˜¯è¡¨åˆ›å»ºæ—¶çš„ä¸å­˜åœ¨å­—æ®µ]
 row format delimited fields terminated by "\t
 ```
 
-- 4.·ÖÍ°±í´´½¨:
+- 4.åˆ†æ¡¶è¡¨åˆ›å»º:
 ```
 create table order_lin(orderId int,orderNo string,goodsId int,times string)
-clustered by (goodsId) into 3 buckets[¸ù¾İĞèÇó½øĞĞ·ÖÍ°,´Ë´¦ÊÇ¸ù¾İÉÌÆ·id½øĞĞ·ÖÇø]
+clustered by (goodsId) into 3 buckets[æ ¹æ®éœ€æ±‚è¿›è¡Œåˆ†æ¡¶,æ­¤å¤„æ˜¯æ ¹æ®å•†å“idè¿›è¡Œåˆ†åŒº]
 row format delimited fields terminated by '\t';
 ```
 
-- **5.arrayÊı×éÀàĞÍ½¨±íºÍcontains·½·¨**
-½«ÒÔÏÂÊı¾İµ¼Èë±íÖĞ:
-Õ½ÀÇ2,Îâ¾©:Îâ¸Õ:ÓàÄĞ,2017-08-16
-ÈıÉúÈıÊÀÊ®ÀïÌÒ»¨,ÁõÒà·Æ:Ñ÷Ñ÷,2017-08-20
-ĞßĞßµÄÌúÈ­,ÉòÌÚ:ÂêÀö:°¬Â×,2017-12-20
+- **5.arrayæ•°ç»„ç±»å‹å»ºè¡¨å’Œcontainsæ–¹æ³•**
+å°†ä»¥ä¸‹æ•°æ®å¯¼å…¥è¡¨ä¸­:
+æˆ˜ç‹¼2,å´äº¬:å´åˆš:ä½™ç”·,2017-08-16
+ä¸‰ç”Ÿä¸‰ä¸–åé‡Œæ¡ƒèŠ±,åˆ˜äº¦è²:ç—’ç—’,2017-08-20
+ç¾ç¾çš„é“æ‹³,æ²ˆè…¾:ç›ä¸½:è‰¾ä¼¦,2017-12-20
 ```
 create table movies(moive_name string,actors array<string>,first_show date)
 row format delimited fields terminated by ','
 collection items terminated by ':';
 ```
 
-ĞèÇó:²é³öÓĞÎâ¸ÕÑİµÄµçÊÓ
-**²éÑ¯ÃüÁî:**
+éœ€æ±‚:æŸ¥å‡ºæœ‰å´åˆšæ¼”çš„ç”µè§†
+**æŸ¥è¯¢å‘½ä»¤:**
 ```
-select moive_name,actors from t_movie where array_contains(actors,'Îâ¸Õ');
+select moive_name,actors from t_movie where array_contains(actors,'å´åˆš');
 ```
 
-- **6.mapÀàĞÍ½¨±íºÍ²éÑ¯**
-ĞèÇó:°ÑÒÔÏÂÊı¾İ·ÅÔÚ±íÖĞ
+- **6.mapç±»å‹å»ºè¡¨å’ŒæŸ¥è¯¢**
+éœ€æ±‚:æŠŠä»¥ä¸‹æ•°æ®æ”¾åœ¨è¡¨ä¸­
 1,zhangsan,father:xiaoming#mother:xiaohuang#brother:xiaoxu,28
 2,lisi,father:mayun#mother:huangyi#brother:guanyu,22
 3,wangwu,father:wangjianlin#mother:ruhua#sister:jingtian,29
@@ -65,38 +65,38 @@ collection items terminated by '#'
 map keys terminated by ':';
 ```
 
-**²éÑ¯ÃüÁî:**
+**æŸ¥è¯¢å‘½ä»¤:**
 ```
-## È¡map×Ö¶ÎµÄÖ¸¶¨keyµÄÖµ
+## å–mapå­—æ®µçš„æŒ‡å®škeyçš„å€¼
 select id,name,members['father'] as father from maps;
-## È¡map×Ö¶ÎµÄËùÓĞkey
+## å–mapå­—æ®µçš„æ‰€æœ‰key
 select id,name,map_keys(members) as relation from  maps;
-## È¡map×Ö¶ÎµÄËùÓĞvalue
+## å–mapå­—æ®µçš„æ‰€æœ‰value
 select id,name,map_values(members) from t_person;
-## È¡map×Ö¶ÎÖ¸¶¨value
+## å–mapå­—æ®µæŒ‡å®švalue
 select id,name,map_values(members)[0] from maps;
 ```
 
-- 7.²é¿´µ±Ç°ËùÔÚÊı¾İ¿âµÄÎ»ÖÃ:select current_database();
-- 8.²é¿´·ÖÇø:show partitions ±íÃû;
-- **9.Ìõ¼ş²éÑ¯:**
-**ifÓï¾ä**
-select name,if(array_contains(actors,'ÁõÒà·Æ'),'look','no look') from arrs;
+- 7.æŸ¥çœ‹å½“å‰æ‰€åœ¨æ•°æ®åº“çš„ä½ç½®:select current_database();
+- 8.æŸ¥çœ‹åˆ†åŒº:show partitions è¡¨å;
+- **9.æ¡ä»¶æŸ¥è¯¢:**
+**ifè¯­å¥**
+select name,if(array_contains(actors,'åˆ˜äº¦è²'),'look','no look') from arrs;
 
-**caseÓï¾ä**
+**caseè¯­å¥**
 ```
 select name,salary,
 case
-when salary <= 10000 then 'Ç±Á¦¹É'
-when salary < 100000 then 'Ğ¡×Ó'
+when salary <= 10000 then 'æ½œåŠ›è‚¡'
+when salary < 100000 then 'å°å­'
 when salary >= 100000 then '666'
 end st
 from company_emp
 ```
 
-####¡¡1.×ÛºÏ°¸Àı·ÖÎö:´´½¨·ÖÇø·ÖÍ°±í,µ¼ÈëÊı¾İ
-ĞèÇó£º´´½¨·ÖÇø·ÖÍ°±í£¬°ÑÒÔÏÂÊı¾İµ¼Èëµ½·ÖÇø·ÖÍ°±íÖĞ,Êı¾İÒªÇó×Ô¶¯·ÖÇø·ÖÍ°
-Êı¾İÊÇ°´¶©µ¥±àºÅ£¬¶©µ¥Ãû³Æ,ÉÌÆ·±àºÅ,Ê±¼ä
+####ã€€1.ç»¼åˆæ¡ˆä¾‹åˆ†æ:åˆ›å»ºåˆ†åŒºåˆ†æ¡¶è¡¨,å¯¼å…¥æ•°æ®
+éœ€æ±‚:åˆ›å»ºåˆ†åŒºåˆ†æ¡¶,æŠŠä»¥ä¸‹æ•°æ®å¯¼å…¥åˆ°åˆ†åŒºåˆ†æ¡¶è¡¨ä¸­,æ•°æ®è¦æ±‚è‡ªåŠ¨åˆ†åŒºåˆ†æ¡¶
+æ•°æ®æ˜¯æŒ‰è®¢å•ç¼–å·,è®¢å•åç§°,å•†å“ç¼–å·,æ—¶é—´
 101     order123        1       2015-10-01
 102     order123        2       2015-10-01
 103     order125        5       2016-06-02
@@ -107,30 +107,30 @@ from company_emp
 108     order130        7       2015-03-07
 109     order131        8       2916-09-08
 ```
-1.´´½¨ÆÕÍ¨±í
+1.åˆ›å»ºæ™®é€šè¡¨
 create table order_lin(orderId int,orderNo string,goodsId int,times string)
  row format delimited fields terminated by '\t';
-2.´´½¨·ÖÇø·ÖÍ°±í
+2.åˆ›å»ºåˆ†åŒºåˆ†æ¡¶è¡¨
 create table partbucket(orderId int,orderNo string,goodsId int,times date)
-// Ìí¼Ó·ÖÇø
+// æ·»åŠ åˆ†åŒº
 partitioned by (year string,month string)
-// Ìí¼Ó·ÖÍ°
+// æ·»åŠ åˆ†æ¡¶
 clustered by (goodsId) into 3 buckets
 row format delimited fields terminated by '\t';
-// ÉèÖÃ¶¯Ì¬·ÖÇø
+// è®¾ç½®åŠ¨æ€åˆ†åŒº
 set hive.exec.dynamic.partition.mode=nonstrict;
-// ÉèÖÃ·ÖÍ°×´Ì¬
+// è®¾ç½®åˆ†æ¡¶çŠ¶æ€
 set hive.enforce.bucketing=true;
 
 
-3.ÆÕÍ¨±íÊı¾İµ¼Èëµ½·ÖÇø·ÖÍ°±íÖĞ
+3.æ™®é€šè¡¨æ•°æ®å¯¼å…¥åˆ°åˆ†åŒºåˆ†æ¡¶è¡¨ä¸­
 insert into partbucket
 partition(year,month)
 select *,year(times),month(times) from order_lin;
 ```
 
-####¡¡2.×ÛºÏ°¸Àı·ÖÎö:Õ¹Ê¾Á¬ĞøÈıÌìÓĞÏúÊÛ¶îµÄµêÆÌ
-ĞèÇóÊı¾İÈçÏÂ:µêÆÌÃû,Ê±¼ä,ÏúÁ¿
+####ã€€2.ç»¼åˆæ¡ˆä¾‹åˆ†æ:å±•ç¤ºè¿ç»­ä¸‰å¤©æœ‰é”€å”®é¢çš„åº—é“º
+éœ€æ±‚æ•°æ®å¦‚ä¸‹:åº—é“ºå,æ—¶é—´,é”€é‡
 a,2017-02-10,600
 b,2017-02-05,200
 b,2017-02-06,300
@@ -148,21 +148,21 @@ a,2017-03-03,200
 a,2017-03-04,400
 a,2017-03-05,600
 
-1.¸ù¾İµêÆÌ½øĞĞ·ÖÇø,¸ù¾İÊ±¼ä½øĞĞÉıĞòÅÅĞò,Éú³ÉĞĞºÅ
+1.æ ¹æ®åº—é“ºè¿›è¡Œåˆ†åŒº,æ ¹æ®æ—¶é—´è¿›è¡Œå‡åºæ’åº,ç”Ÿæˆè¡Œå·
 ```
 select *,row_number() over(partition by name order by times) as row_num from shops
 ```
 
-2.½«µÃµ½µÄÁÙÊ±±íÖĞµÄtimes-row_numµÃµ½µÄ²îÖµ,Èç¹ûÏàÍ¬±íÊ¾ÊÇÁ¬ĞøµÄ
-ÒòÎªÊÇÒª´ÓÉÏÒ»´ÎµÄ²éÑ¯½á¹ûµÄÁÙÊ±±íÖĞÈ¡Êı¾İ,ËùÒÔĞèÒª°ÑÉÏ´ÎµÄÁÙÊ±±í×÷ÎªÕâ´ÎÒª²éÑ¯µÄ±íÀ´Ê¹ÓÃ
+2.å°†å¾—åˆ°çš„ä¸´æ—¶è¡¨ä¸­çš„times-row_numå¾—åˆ°çš„å·®å€¼,å¦‚æœç›¸åŒè¡¨ç¤ºæ˜¯è¿ç»­çš„
+å› ä¸ºæ˜¯è¦ä»ä¸Šä¸€æ¬¡çš„æŸ¥è¯¢ç»“æœçš„ä¸´æ—¶è¡¨ä¸­å–æ•°æ®,æ‰€ä»¥éœ€è¦æŠŠä¸Šæ¬¡çš„ä¸´æ—¶è¡¨ä½œä¸ºè¿™æ¬¡è¦æŸ¥è¯¢çš„è¡¨æ¥ä½¿ç”¨
 ```
 select name,times,count,date_sub(times,row_num) as diff
 from
 (select *,row_number() over(partition by name order by times) as row_num from shops) as firstTable
 ```
 
-3.½«²éÑ¯µ½µÄÁÙÊ±±íÔÙ×÷ÎªÒª½øĞĞ²éÑ¯µÄ±í,´ÓÕâ¸ö±íÖĞ,ÎÒÃÇÒÔµêÆÌÃûºÍ¼õ³öÀ´µÄ½á¹û½øĞĞ·Ö×é(group)
-´Ó·Ö×éµÄ½á¹ûÖĞÈ¡³öµêÆÌÃûºÍ·Ö×éµÄ¼ÇÂ¼µÄ¸öÊı,Ò²µÃµ½ÁËÕâ¸öµêÆÌÁ¬ĞøÏúÊÛÁË¼¸Ìì.
+3.å°†æŸ¥è¯¢åˆ°çš„ä¸´æ—¶è¡¨å†ä½œä¸ºè¦è¿›è¡ŒæŸ¥è¯¢çš„è¡¨,ä»è¿™ä¸ªè¡¨ä¸­,æˆ‘ä»¬ä»¥åº—é“ºåå’Œå‡å‡ºæ¥çš„ç»“æœè¿›è¡Œåˆ†ç»„(group)
+ä»åˆ†ç»„çš„ç»“æœä¸­å–å‡ºåº—é“ºåå’Œåˆ†ç»„çš„è®°å½•çš„ä¸ªæ•°,ä¹Ÿå¾—åˆ°äº†è¿™ä¸ªåº—é“ºè¿ç»­é”€å”®äº†å‡ å¤©.
 ```
 select name,count(*) as res_count
 from
@@ -172,7 +172,7 @@ from
 group by diff,name
 ```
 
-4.¸ù¾İĞèÇóÒª½«½á¹ûÖĞÁ¬ĞøÏúÊÛÈıÌì¼°ÒÔÉÏµÄµêÆÌ½øĞĞÕ¹Ê¾,ËùÒÔÒª¶Ô·Ö×éµÄ½á¹û½øĞĞÌõ¼şÉ¸Ñ¡
+4.æ ¹æ®éœ€æ±‚è¦å°†ç»“æœä¸­è¿ç»­é”€å”®ä¸‰å¤©åŠä»¥ä¸Šçš„åº—é“ºè¿›è¡Œå±•ç¤º,æ‰€ä»¥è¦å¯¹åˆ†ç»„çš„ç»“æœè¿›è¡Œæ¡ä»¶ç­›é€‰
 ```
 select name,count(*) as res_count
 from
@@ -182,63 +182,63 @@ from
 group by diff,name having res_count >= 3;
 ```
 
-### ¶ş.Êı¾İµÄµ¼Èëµ¼³ö
-- 1.±¾µØÊı¾İµ¼Èëµ½±íÖĞ:
+### äºŒ.æ•°æ®çš„å¯¼å…¥å¯¼å‡º
+- 1.æœ¬åœ°æ•°æ®å¯¼å…¥åˆ°è¡¨ä¸­:
 ```
-load data local inpath 'ÎÄ¼şÔÚµ±Ç°ÔËĞĞµÄĞéÄâ»úÉÏµÄÂ·¾¶' into table ±íÃû;
-```
-
-- 2.hdfsµÄÊı¾İµ¼Èë±íÖĞ:
-```
-load data inpath 'ÎÄ¼şÔÚhdfsÉÏµÄÂ·¾¶' into table ±íÃû;
+load data local inpath 'æ–‡ä»¶åœ¨å½“å‰è¿è¡Œçš„è™šæ‹Ÿæœºä¸Šçš„è·¯å¾„' into table è¡¨å;
 ```
 
-- 3.½«hive±íÖĞµÄÊı¾İµ¼Èëµ½±¾µØ:
+- 2.hdfsçš„æ•°æ®å¯¼å…¥è¡¨ä¸­:
+```
+load data inpath 'æ–‡ä»¶åœ¨hdfsä¸Šçš„è·¯å¾„' into table è¡¨å;
+```
+
+- 3.å°†hiveè¡¨ä¸­çš„æ•°æ®å¯¼å…¥åˆ°æœ¬åœ°:
 ```
 insert overwrite local directory '/hadoop/shop'
 row format delimited fields terminated by ' '
 select * from shops limit 100000;
 ```
 
-##### limit 100000¿ÉÒÔ²»Òª,ÊÇ¶ÁÈ¡Ç°100000ĞĞµÄÒâË¼.
-- 4.½«hive±íÖĞµÄÊı¾İµ¼Èëµ½hdfsÉÏ:
+##### limit 100000å¯ä»¥ä¸è¦,æ˜¯è¯»å–å‰100000è¡Œçš„æ„æ€.
+- 4.å°†hiveè¡¨ä¸­çš„æ•°æ®å¯¼å…¥åˆ°hdfsä¸Š:
 ```
 insert overwrite directory '/dbdata/shop'
-row format delimited fields terminated by ','[µ¼³öµÄ±íÒÔ¶ººÅ¸ô¿ª]
+row format delimited fields terminated by ','[å¯¼å‡ºçš„è¡¨ä»¥é€—å·éš”å¼€]
 select * from shops;
 ```
 
-### Èı.ĞŞ¸Ä±í¶¨Òå
-- 1.ĞŞ¸Ä±íÃû:alter table table_name rename to new_table_name;
-- 2.ĞŞ¸Ä·ÖÇøÃû:alter table t_partition partition(department='xiangsheng',sex='male',howold=20) rename to partition(department='1',sex='1',howold=20);
-- 3.Ìí¼Ó·ÖÇø:alter table t_partition add partition (department='2',sex='0',howold=40); 
-- 4.É¾³ı·ÖÇø:alter table t_partition drop partition (department='2',sex='2',howold=24); 
-- 5.ĞŞ¸Ä±íµÄÎÄ¼ş¸ñÊ½¶¨Òå:ALTER TABLE table_name [PARTITION partitionSpec] SET FILEFORMAT file_format;
-- 6.ĞŞ¸Ä±íµÄÄ³¸öÎÄ¼ş¸ñÊ½¶¨Òå:alter table t_partition partition(department='2',sex='0',howold=40 ) set fileformat sequencefile;
-- 7.ĞŞ¸ÄÁĞÃû¶¨Òå:ALTER TABLE table_name CHANGE col_old_name col_new_name column_type first;[°ÑĞŞ¸ÄºóµÄÁĞ±íÃû·ÅÔÚ×îÇ°ÃæÒ»ÁĞ,Ò²¿ÉÒÔÊ¹ÓÃafter ×Ö¶ÎÃû,Ê¹ÆäÔÚÄ³¸ö×Ö¶Îºó]
-- 8.Ôö¼ÓÁĞ:alter table t_user add columns (sex string,addr string);
-- 9.Ìæ»»ÁĞ:alter table t_user replace columns (id string,age int,price float);[Ô­ÓĞµÄÈ«±»ÏÖÓĞµÄÌæ»»µô]
-### ËÄ.º¯Êı
-- 1.Êı×éÅÅĞòº¯Êı:select sort_array(array(3,7,5));
-- 2.»ñÈ¡Êı×é³¤¶È:select size(array(3,7,5,9));
+### ä¸‰.ä¿®æ”¹è¡¨å®šä¹‰
+- 1.ä¿®æ”¹è¡¨å:alter table table_name rename to new_table_name;
+- 2.ä¿®æ”¹åˆ†åŒºå:alter table t_partition partition(department='xiangsheng',sex='male',howold=20) rename to partition(department='1',sex='1',howold=20);
+- 3.æ·»åŠ åˆ†åŒº:alter table t_partition add partition (department='2',sex='0',howold=40); 
+- 4.åˆ é™¤åˆ†åŒº:alter table t_partition drop partition (department='2',sex='2',howold=24); 
+- 5.ä¿®æ”¹è¡¨çš„æ–‡ä»¶æ ¼å¼å®šä¹‰:ALTER TABLE table_name [PARTITION partitionSpec] SET FILEFORMAT file_format;
+- 6.ä¿®æ”¹è¡¨çš„æŸä¸ªæ–‡ä»¶æ ¼å¼å®šä¹‰:alter table t_partition partition(department='2',sex='0',howold=40 ) set fileformat sequencefile;
+- 7.ä¿®æ”¹åˆ—åå®šä¹‰:ALTER TABLE table_name CHANGE col_old_name col_new_name column_type first;[æŠŠä¿®æ”¹åçš„åˆ—è¡¨åæ”¾åœ¨æœ€å‰é¢ä¸€åˆ—,ä¹Ÿå¯ä»¥ä½¿ç”¨after å­—æ®µå,ä½¿å…¶åœ¨æŸä¸ªå­—æ®µå]
+- 8.å¢åŠ åˆ—:alter table t_user add columns (sex string,addr string);
+- 9.æ›¿æ¢åˆ—:alter table t_user replace columns (id string,age int,price float);[åŸæœ‰çš„å…¨è¢«ç°æœ‰çš„æ›¿æ¢æ‰]
+### å››.å‡½æ•°
+- 1.æ•°ç»„æ’åºå‡½æ•°:select sort_array(array(3,7,5));
+- 2.è·å–æ•°ç»„é•¿åº¦:select size(array(3,7,5,9));
 
-- 3.»ñÈ¡±íÖĞÓĞ½ãÃÃµÄÒ»ÁĞ:
+- 3.è·å–è¡¨ä¸­æœ‰å§å¦¹çš„ä¸€åˆ—:
 ```
 select * from maps where
 array_contains(map_keys(relationship),'sister')
 ```
 
-- 4.count()º¯Êı:À¨ºÅÄÚÌîÊı×Ö´ú±íÊı¾İ»áÒÀ´ÎÀÛ¼Ó1,È¡µ½Í³¼ÆµÄÊı¾İ,ÌîNULL,Ôò»áÍ³¼ÆÖ±½ÓÎª0.
+- 4.count()å‡½æ•°:æ‹¬å·å†…å¡«æ•°å­—ä»£è¡¨æ•°æ®ä¼šä¾æ¬¡ç´¯åŠ 1,å–åˆ°ç»Ÿè®¡çš„æ•°æ®,å¡«NULL,åˆ™ä¼šç»Ÿè®¡ç›´æ¥ä¸º0.
 select count(if(salary > 20000,1,null)) from company_emp 
-- 5.´°¿Úº¯ÊıÖ®Ò»:row_number() over()
-Í¨¹ıpartition byµÄÊôĞÔ ¶Ô×ÜÊôĞÔ·ÖÇø,Í¨¹ıorder by¶ÔÃ¿¸ö·ÖÇøµ¥¶ÀÅÅĞò²¢Éú³ÉÒ»ÁĞĞòºÅ ,·Ö×éTOPN[¿ÉÒÔÖ±½ÓÔÚÆÕÍ¨±íÖĞ²Ù×÷]
+- 5.çª—å£å‡½æ•°ä¹‹ä¸€:row_number() over()
+é€šè¿‡partition byçš„å±æ€§ å¯¹æ€»å±æ€§åˆ†åŒº,é€šè¿‡order byå¯¹æ¯ä¸ªåˆ†åŒºå•ç‹¬æ’åºå¹¶ç”Ÿæˆä¸€åˆ—åºå· ,åˆ†ç»„TOPN[å¯ä»¥ç›´æ¥åœ¨æ™®é€šè¡¨ä¸­æ“ä½œ]
 ```
-ÀıÈç:select *,row_number() over(partition by gender order by age desc) from topn;
+ä¾‹å¦‚:select *,row_number() over(partition by gender order by age desc) from topn;
 ```
 
-**²éÑ¯ĞÔ±ğÖĞ,ÄêÁä×î¸ßµÄÁ½¸öÈË**
+**æŸ¥è¯¢æ€§åˆ«ä¸­,å¹´é¾„æœ€é«˜çš„ä¸¤ä¸ªäºº**
 ```
-ÀıÈç:
+ä¾‹å¦‚:
 select * from
 (select *,row_number() over(partition by gender order by age desc) as row_num from topn) as res
 where row_num<=2;
