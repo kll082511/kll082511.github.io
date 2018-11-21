@@ -1,4 +1,4 @@
-### hive环境的搭建
+﻿### hive环境的搭建
 1.先把hive解压,然后在虚拟机的/etc/profile文件中配置hive环境变量.配置好后,记得运行此文件.
 
 ```
@@ -73,8 +73,10 @@ FLUSH PRIVILEGES
 
 ### mysql忘记密码的操作
 1.在/etc/my.cnf文件里加入
-skip-grant-tables
+skip-grant-tables[免密]
 2.用然后用mysql这个语句进入mysql
-3.输入UPDATE mysql.user SET authentication_string=PASSWORD('6757DUgu') where USER='root'修改密码为6757DUgu
+3.输入:UPDATE mysql.user SET authentication_string=PASSWORD('6757DUgu') where USER='root';修改密码为6757DUgu
+**注意:如果上述方式不能修改成功,需要使用:UPDATE mysql.user SET Password=PASSWORD('新密码') where USER='root;进行修改.
 4.flush privileges刷新
-5.重启mysql.
+5.再到/etc/my.cnf文件里把刚才的skip-grant-tables注释掉.
+6.重启mysql.
