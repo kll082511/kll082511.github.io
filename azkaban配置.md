@@ -5,7 +5,7 @@ azkaban-sql-script-2.5.0.tar.gz		存放了web服务器
 azkaban-web-server-2.5.0.tar.gz		存放azkaban运行需要的sql(sql倒完了这个文件就没用了)
 create-all-sql-2.5.0.sql	完整的sql文件,只执行它就可以了
 
-ssl访问  是通过输入https,安装了azkaban的服务器的ip,最后加上8443端口号.
+ssl访问  
 
 azkaban-executor-2.5.0		启动,关闭执行器  start/shutdown
 azkaban.properties		设置时区,设置mysql的信息
