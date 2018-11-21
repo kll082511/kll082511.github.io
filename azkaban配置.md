@@ -3,18 +3,18 @@
 azkaban-executor-server-2.5.0.tar.gz	存放了执行器
 azkaban-sql-script-2.5.0.tar.gz		存放了web服务器
 azkaban-web-server-2.5.0.tar.gz		存放azkaban运行需要的sql(sql倒完了这个文件就没用了)
-create-all-sql-2.5.0.sql		完整的sql文件,只执行它就可以了
+create-all-sql-2.5.0.sql	完整的sql文件,只执行它就可以了
 
 
-ssl访问				https://安装了azkaban的服务器的ip:8443
+ssl访问		https://安装了azkaban的服务器的ip:8443
 
 
-azkaban-executor-2.5.0 		启动,关闭执行器  start/shutdown
+azkaban-executor-2.5.0		启动,关闭执行器  start/shutdown
 azkaban.properties		设置时区,设置mysql的信息
 
-azkaban-web2.5.0		启动,关闭web服务器 start/shutdown
-azkaban.properties		设置时区,设置mysql的信息,jetty密码等同于sshl的密码
-azkaban-user.xml 		设置登录按照kaban的用户及其权限
+azkaban-web2.5.0	启动,关闭web服务器 start/shutdown
+azkaban.properties	设置时区,设置mysql的信息,jetty密码等同于sshl的密码
+azkaban-user.xml	设置登录按照kaban的用户及其权限
 
 
 ### 一.配置SSL.
