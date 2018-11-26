@@ -1,0 +1,3 @@
+1.先把flume解压包下的conf文件夹下的flume-env.sh文件内的JOVA_HOME路径给写上
+2.把jdbc的connector   jar包导入到flume的lib文件夹下即完成
+3.做其他的文件的监控操作,可以在flume文件夹下单建立工作目录
