@@ -1,47 +1,48 @@
-**°²×°:**
-Ö»ĞèÒª°Ñmysql-connector-java-5.1.34µ¼Èëµ½libÎÄ¼ş¼ĞÏÂ¾Í¿ÉÒÔÁË
-
-**sqoopÃüÁîÖ®import**
-´Ó¹ØÏµĞÍÊı¾İ¿âµ¼ÈëÊı¾İµ½hdfsÉÏ(ÒòÎªÎ´Ö¸¶¨Òª´æ·Åµ½hdfsµÄÄÄ¶ù¸öÄ¿Â¼ÏÂ,ËùÒÔÄ¬ÈÏ»á´æ·ÅÔÚ/user/ÓÃ»§Ãû/±íÃûÏÂ)
-
-\ ÊÇ±íÊ¾»Ø³µµÄº¬Òå
--m 1ÊÇ±íÊ¾Ö»¿ªÒ»¸ömap¹¤×÷ 
+**å®‰è£…:**
+åªéœ€è¦æŠŠmysql-connector-java-5.1.34å¯¼å…¥åˆ°libæ–‡ä»¶å¤¹ä¸‹å°±å¯ä»¥äº†
+**sqoopå‘½ä»¤ä¹‹import**
+ä»å…³ç³»å‹æ•°æ®åº“å¯¼å…¥æ•°æ®åˆ°hdfsä¸Š(å› ä¸ºæœªæŒ‡å®šè¦å­˜æ”¾åˆ°hdfsçš„å“ªå„¿ä¸ªç›®å½•ä¸‹,æ‰€ä»¥é»˜è®¤ä¼šå­˜æ”¾åœ¨/user/ç”¨æˆ·å/è¡¨åä¸‹)
+\ æ˜¯è¡¨ç¤ºå›è½¦çš„å«ä¹‰
+-m 1æ˜¯è¡¨ç¤ºåªå¼€ä¸€ä¸ªmapå·¥ä½œ 
 bin/sqoop/ import /
---connect jdbs:mysql://Êı¾İ¿âµÄÄÇÌ¨µçÄÔIPµØÖ·:3306/Êı¾İ¿âÃû \
+--connect jdbs:mysql://æ•°æ®åº“çš„é‚£å°ç”µè„‘IPåœ°å€:3306/æ•°æ®åº“å \
 --username root \
 --password kll \
---table ±íÃû --m 1
-
-Èç¹û²»ÏëÊ¹ÓÃÄ¬ÈÏÂ·¾¶,ÏëÒª×Ô¶¨ÒåµÄÂ·¾¶,¾ÍÒªÔö¼ÓÅäÖÃ--target-dir ÏëÒª´æ·ÅµÄÂ·¾¶(ÒªÊÇ²»´æÔÚµÄÂ·¾¶)
+--table è¡¨å --m 1
+å¦‚æœä¸æƒ³ä½¿ç”¨é»˜è®¤è·¯å¾„,æƒ³è¦è‡ªå®šä¹‰çš„è·¯å¾„,å°±è¦å¢åŠ é…ç½®--target-dir æƒ³è¦å­˜æ”¾çš„è·¯å¾„(è¦æ˜¯ä¸å­˜åœ¨çš„è·¯å¾„)
+```
 ./sqoop import \
 --connect jdbc:mysql://172.18.24.28:3306/kllsqoop \
 --username root --password kll \
 --target-dir /sqoopTable/users \
 --table users --m 1
+```
 
-
+```
 ./sqoop import --connect jdbc:mysql://172.18.24.28:3306/kllsqoop --username root --password kll \
 --target-dir /sqoopTable/users1 --table users --fields-terminated-by '\t' --m 1
+```
 
-
+```
 ./sqoop import --connect jdbc:mysql://172.18.24.28:3306/kllsqoop --username root --password kll \
 --target-dir /sqoopTable/users2 --table users --fields-terminated-by '\t' --m 1 --columns name,pwd
+```
 
-
-
-hiveÖĞµ¼ÈëÊı¾İ(ÔÚÃ»ÓĞÖ¸¶¨´æµ½ÄÄ¶ù¸öÊı¾İ¿âµÄÄÄ¶ù¸ö±íÖĞµÄÊ±ºò,»áÄ¬ÈÏÔÚdefaultÊı¾İ¿âÖĞ´æ·Å,±íÃû¾ÍÊÇ¹ØÏµÊı¾İ¿âÖĞµÄ±íÃû)
+hiveä¸­å¯¼å…¥æ•°æ®(åœ¨æ²¡æœ‰æŒ‡å®šå­˜åˆ°å“ªå„¿ä¸ªæ•°æ®åº“çš„å“ªå„¿ä¸ªè¡¨ä¸­çš„æ—¶å€™,ä¼šé»˜è®¤åœ¨defaultæ•°æ®åº“ä¸­å­˜æ”¾,è¡¨åå°±æ˜¯å…³ç³»æ•°æ®åº“ä¸­çš„è¡¨å)
+```
  ./sqoop import --connect jdbc:mysql://172.18.24.28:3306/kllsqoop --username root --password kll --table users --m 1 \
 --hive-import --target-dir /sqoopTable/hive1
+```
 
-hiveÖĞ´æµ½Ö¸¶¨Êı¾İ¿â±íÖĞ:--hive-table klljdbc.db.klluser1
-Èç¹ûÏë¶Ô¹ØÏµĞÍÊı¾İ¿âÖĞµÄÊı¾İ½øĞĞ²éÑ¯Ö®ºó,ÔÙµ¼Èëµ½hdfsÉÏ,Ê¹ÓÃ:--query 'sqlÓï¾ä where [id>3 and $CONDITIONS'
-Èç¹ûÊ¹ÓÃÁË--queryÒªµ¼ÈëµÄÊı¾İ¾ÍÊÇÎÒÃÇ²éÑ¯³öÀ´µÄ½á¹û¼¯ÁË,¾Í²»ÒªÉèÖÃ--tableÁË.ÇÒÓĞwhereÓï¾ä¾Í±ØĞëÓĞ$CONDITIONS.
+hiveä¸­å­˜åˆ°æŒ‡å®šæ•°æ®åº“è¡¨ä¸­:--hive-table klljdbc.db.klluser1
+å¦‚æœæƒ³å¯¹å…³ç³»å‹æ•°æ®åº“ä¸­çš„æ•°æ®è¿›è¡ŒæŸ¥è¯¢ä¹‹å,å†å¯¼å…¥åˆ°hdfsä¸Š,ä½¿ç”¨:--query 'sqlè¯­å¥ where (id>3 and $CONDITIONS)'
+å¦‚æœä½¿ç”¨äº†--queryè¦å¯¼å…¥çš„æ•°æ®å°±æ˜¯æˆ‘ä»¬æŸ¥è¯¢å‡ºæ¥çš„ç»“æœé›†äº†,å°±ä¸è¦è®¾ç½®--tableäº†.ä¸”æœ‰whereè¯­å¥å°±å¿…é¡»æœ‰$CONDITIONS.
+```
 bin/sqoop import --connect jdbc:mysql://172.18.24.28:3306/kllsqoop --username root --password kll \
 --m 1 -query 'select id,name from users where $CONDITIONS' --target-dir /user/hadoop/users
+```
 
-
-
-ÔöÁ¿µ¼Èë[µ¼ÈëidÎª5ÒÔºóµÄÊı¾İ]
+å¢é‡å¯¼å…¥(å¯¼å…¥idä¸º5ä»¥åçš„æ•°æ®)
 bin/sqoop import \
 --connect jdbc:mysql://172.18.24.28:3306/kllsqoop \
 --username root \
@@ -51,7 +52,7 @@ bin/sqoop import \
 --check-column id \
 --last-value 5
 
-**sqoopÃüÁîÖ®export**
+**sqoopå‘½ä»¤ä¹‹export**
 bin/sqoop export \
 --connect jdbc:mysql://172.18.24.28:3306/kllsqoop \
 --username root \
