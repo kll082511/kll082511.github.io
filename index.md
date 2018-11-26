@@ -25,3 +25,5 @@
 - ## azkaban
 	- #### [azkaban配置](https://kll082511.github.io/azkaban配置)
 	- #### [azkaban工作流调度](https://kll082511.github.io/azkaban工作流调度)
+- ## sqoop
+	- #### [sqoop安装和导表命令](https://kll082511.github.io/sqoop安装和导表命令)
