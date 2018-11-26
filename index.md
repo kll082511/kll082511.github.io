@@ -1,7 +1,7 @@
 ﻿# konglinglei's blog Welcome
 ## 点击下面的链接进入相应内容的博客
-- ### git
-	- ###### [git 命令](https://kll082511.github.io/github命令)
+- ## git
+	- #### [git 命令](https://kll082511.github.io/github命令)
 - ### linux
 	- ###### [Liunx基础命令1](https://kll082511.github.io/Liunx)
 	- ###### [Liunx基础命令2](https://kll082511.github.io/unix)
@@ -20,7 +20,7 @@
 	- ###### [InputFormat和OutputFormat的应用](https://kll082511.github.io/InputFormat和OutputFormat)
 - ### Hive
 	- ###### [Hive搭建](https://kll082511.github.io/hive搭建)
-	- [hive的查询和创建分区分桶表命令](https://kll082511.github.io/hive的查询和创建分区分桶表命令)
+	- ###### [hive的查询和创建分区分桶表命令](https://kll082511.github.io/hive的查询和创建分区分桶表命令)
 - ### flume
 	- ###### [flume安装](https://kll082511.github.io/flume安装)
 - ### azkaban
