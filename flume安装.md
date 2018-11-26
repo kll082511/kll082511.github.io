@@ -1,3 +1,5 @@
-1.ÏÈ°Ñflume½âÑ¹°üÏÂµÄconfÎÄ¼þ¼ÐÏÂµÄflume-env.shÎÄ¼þÄÚµÄJOVA_HOMEÂ·¾¶¸øÐ´ÉÏ
-2.°ÑjdbcµÄconnector   jar°üµ¼Èëµ½flumeµÄlibÎÄ¼þ¼ÐÏÂ¼´Íê³É
-3.×öÆäËûµÄÎÄ¼þµÄ¼à¿Ø²Ù×÷,¿ÉÒÔÔÚflumeÎÄ¼þ¼ÐÏÂµ¥½¨Á¢¹¤×÷Ä¿Â¼
+1.å…ˆæŠŠflumeè§£åŽ‹åŒ…ä¸‹çš„confæ–‡ä»¶å¤¹ä¸‹çš„flume-env.shæ–‡ä»¶å†…çš„JOVA_HOMEè·¯å¾„ç»™å†™ä¸Š
+
+2.æŠŠjdbcçš„connector  jaråŒ…å¯¼å…¥åˆ°flumeçš„libæ–‡ä»¶å¤¹ä¸‹å³å®Œæˆ
+
+3.åšå…¶ä»–çš„æ–‡ä»¶çš„ç›‘æŽ§æ“ä½œ,å¯ä»¥åœ¨flumeæ–‡ä»¶å¤¹ä¸‹å•å»ºç«‹å·¥ä½œç›®å½•
