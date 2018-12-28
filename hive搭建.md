@@ -58,6 +58,7 @@ systemctl stop mysqld
 ```
 // 修改密码的命令(需要在user用户下修改,所以用 mysql -u root -p登录mysql)
 UPDATE mysql.user SET authentication_string=PASSWORD('密码要和hive-site.xml文件内的一直') where USER='root';
+// 如果此语句如果修改不成功,可以试一下把上面的命令的authentication_string改为Password尝试即可.
 // 修改完后需要刷新一下
 flush privileges;
 // 退出后,要重启mysql
