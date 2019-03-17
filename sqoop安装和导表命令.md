@@ -61,3 +61,25 @@ bin/sqoop export \
 --export-dir /user/hadoop/users/
 
 
+
+
+
+
+
+```
+sqoop import \
+-D mapred.job.name="j_stg_loaninfo_d" \
+--connect  jdbc:mysql://10.50.101.1:3306/loan  \
+--username queryetl \
+--password queryetl \
+--query "select id,contract_no,term,pay_date,must_base,must_inst,must_penalty,must_default,real_base,real_inst,real_penalty,real_default FROM loan.loaninfo where \$CONDITIONS" \
+--fields-terminated-by '\001' \
+--split-by  id \
+--m 4 \
+--delete-target-dir \
+--hive-drop-import-delims \
+--null-string '\\N' \
+--null-non-string '\\N' \
+--target-dir /home/dw/stg/loan/loaninfo/dt=20180101
+```
+
